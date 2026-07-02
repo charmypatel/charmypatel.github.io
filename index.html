@@ -4,415 +4,358 @@
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Modern Profile Tabs</title>
-
       <link
          rel="stylesheet"
          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-      />
-
+         />
       <style>
          * {
-            box-sizing: border-box;
+         box-sizing: border-box;
          }
-
          body {
-            margin: 0;
-            min-height: 100vh;
-            font-family: "Inter", "Segoe UI", Arial, sans-serif;
-            background: linear-gradient(135deg, #eef2ff, #f8fafc);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 40px;
+         margin: 0;
+         min-height: 100vh;
+         font-family: "Inter", "Segoe UI", Arial, sans-serif;
+         background: linear-gradient(135deg, #eef2ff, #f8fafc);
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         padding: 40px;
          }
-
          .profile-card {
-            width: 100%;
-            max-width: 950px;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(15px);
-            border-radius: 24px;
-            padding: 35px;
-            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
+         width: 100%;
+         max-width: 950px;
+         background: rgba(255, 255, 255, 0.9);
+         backdrop-filter: blur(15px);
+         border-radius: 24px;
+         padding: 35px;
+         box-shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
          }
-
          /* HEADER */
          .profile-header {
-            margin-bottom: 25px;
+         margin-bottom: 25px;
          }
-
          .name-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
          }
-
          .header-actions {
-            display: flex;
-            gap: 10px;
+         display: flex;
+         gap: 10px;
          }
-
          .header-btn {
-            padding: 10px 14px;
-            border-radius: 10px;
-            border: 1px solid #e2e8f0;
-            background: white;
-            font-weight: 600;
-            text-decoration: none;
-            color: #1e293b;
+         padding: 10px 14px;
+         border-radius: 10px;
+         border: 1px solid #e2e8f0;
+         background: white;
+         font-weight: 600;
+         text-decoration: none;
+         color: #1e293b;
          }
-
          .profile-desc {
-            margin-top: 10px;
-            color: #64748b;
-            font-size: 15px;
+         margin-top: 10px;
+         color: #64748b;
+         font-size: 15px;
          }
-
          /* TABS */
          .tabs {
-            display: flex;
-            gap: 8px;
-            background: #f1f5f9;
-            padding: 8px;
-            border-radius: 14px;
-            margin: 20px 0;
+         display: flex;
+         gap: 8px;
+         background: #f1f5f9;
+         padding: 8px;
+         border-radius: 14px;
+         margin: 20px 0;
          }
-
          .tab-button {
-            flex: 1;
-            border: none;
-            padding: 14px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: 600;
-            color: #64748b;
-            background: transparent;
+         flex: 1;
+         border: none;
+         padding: 14px;
+         border-radius: 10px;
+         cursor: pointer;
+         font-weight: 600;
+         color: #64748b;
+         background: transparent;
          }
-
          .tab-button.active {
-            background: white;
-            color: #2563eb;
+         background: white;
+         color: #2563eb;
          }
-
          /* CONTENT */
          .tab-content {
-            display: none;
-            background: white;
-            border-radius: 18px;
-            padding: 30px;
+         display: none;
+         background: white;
+         border-radius: 18px;
+         padding: 30px;
          }
-
          .tab-content.active {
-            display: block;
+         display: block;
          }
-
          /* EXPERIENCE */
          .experience-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 22px;
+         display: flex;
+         flex-direction: column;
+         gap: 22px;
          }
-
          .experience-item {
-            border: 1px solid #e2e8f0;
-            border-radius: 14px;
-            padding: 18px;
-            background: #ffffff;
+         border: 1px solid #e2e8f0;
+         border-radius: 14px;
+         padding: 18px;
+         background: #ffffff;
          }
-
          .company {
-            font-weight: 800;
-            font-size: 16px;
-            color: #0f172a;
-            margin-bottom: 12px;
+         font-weight: 800;
+         font-size: 16px;
+         color: #0f172a;
+         margin-bottom: 12px;
          }
-
          .role {
-            padding: 12px;
-            border-radius: 12px;
-            background: #f8fafc;
-            margin-bottom: 12px;
+         padding: 12px;
+         border-radius: 12px;
+         background: #f8fafc;
+         margin-bottom: 12px;
          }
-
          .role-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 12px;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         gap: 12px;
          }
-
          .role-title {
-            font-weight: 600;
-            color: #0f172a;
+         font-weight: 600;
+         color: #0f172a;
          }
-
          .role-date {
-            font-size: 13px;
-            color: #64748b;
-            white-space: nowrap;
+         font-size: 13px;
+         color: #64748b;
+         white-space: nowrap;
          }
-
          .responsibility-btn {
-            margin-top: 8px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 12px;
-            border-radius: 10px;
-            border: 1px solid #c7d2fe;
-            background: #eef2ff;
-            color: #3730a3;
-            font-size: 13px;
-            cursor: pointer;
+         margin-top: 8px;
+         display: inline-flex;
+         align-items: center;
+         gap: 8px;
+         padding: 8px 12px;
+         border-radius: 10px;
+         border: 1px solid #c7d2fe;
+         background: #eef2ff;
+         color: #3730a3;
+         font-size: 13px;
+         cursor: pointer;
          }
-
          .responsibility-btn:hover {
-            background: #e0e7ff;
+         background: #e0e7ff;
          }
-
          .position-details {
-            display: none;
-            margin-top: 10px;
-            font-size: 13px;
-            color: #475569;
-            line-height: 1.6;
-            padding-left: 18px;
+         display: none;
+         margin-top: 10px;
+         font-size: 13px;
+         color: #475569;
+         line-height: 1.6;
+         padding-left: 18px;
          }
-
          .position-details ul {
-            margin: 0;
-            padding-left: 18px;
+         margin: 0;
+         padding-left: 18px;
          }
-
          .position-details li {
-            margin-bottom: 6px;
+         margin-bottom: 6px;
          }
-
          /* SKILLS */
          .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
+         display: grid;
+         grid-template-columns: repeat(3, 1fr);
+         gap: 25px;
          }
-
          .skills-column {
-            background: #f8fafc;
-            padding: 20px;
-            border-radius: 16px;
-            border: 1px solid #e2e8f0;
+         background: #f8fafc;
+         padding: 20px;
+         border-radius: 16px;
+         border: 1px solid #e2e8f0;
          }
-
          .skill {
-            display: inline-block;
-            margin: 5px;
-            padding: 8px 12px;
-            background: #dbeafe;
-            border-radius: 999px;
-            font-size: 13px;
+         display: inline-block;
+         margin: 5px;
+         padding: 8px 12px;
+         background: #dbeafe;
+         border-radius: 999px;
+         font-size: 13px;
          }
-
          /* RECOMMENDATIONS */
          .rec-filters {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 15px;
+         display: flex;
+         gap: 10px;
+         margin-bottom: 15px;
          }
-
          .rec-filter-btn {
-            border: 1px solid #e2e8f0;
-            background: #f8fafc;
-            padding: 8px 14px;
-            border-radius: 999px;
-            cursor: pointer;
-            font-weight: 600;
+         border: 1px solid #e2e8f0;
+         background: #f8fafc;
+         padding: 8px 14px;
+         border-radius: 999px;
+         cursor: pointer;
+         font-weight: 600;
          }
-
          .rec-filter-btn.active {
-            background: #2563eb;
-            color: white;
+         background: #2563eb;
+         color: white;
          }
-
          .recommendation-card {
-            border: 1px solid #e2e8f0;
-            border-radius: 14px;
-            padding: 18px 20px;
-            margin-bottom: 15px;
+         border: 1px solid #e2e8f0;
+         border-radius: 14px;
+         padding: 18px 20px;
+         margin-bottom: 15px;
          }
-
          .recommendation-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 10px;
+         display: flex;
+         justify-content: space-between;
+         align-items: flex-start;
+         margin-bottom: 10px;
          }
-
          .rec-name {
-            font-weight: 700;
-            font-size: 15px;
+         font-weight: 700;
+         font-size: 15px;
          }
-
          .rec-sub {
-            font-size: 13px;
-            color: #64748b;
+         font-size: 13px;
+         color: #64748b;
          }
-
          .rec-tag {
-            margin-left: auto;
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            padding: 4px 10px;
-            border-radius: 999px;
-            background: #e0e7ff;
-            color: #3730a3;
-            white-space: nowrap;
+         margin-left: auto;
+         font-size: 11px;
+         font-weight: 700;
+         text-transform: uppercase;
+         padding: 4px 10px;
+         border-radius: 999px;
+         background: #e0e7ff;
+         color: #3730a3;
+         white-space: nowrap;
          }
-
          .recommendation-text {
-            font-size: 14px;
-            color: #334155;
-            line-height: 1.6;
+         font-size: 14px;
+         color: #334155;
+         line-height: 1.6;
          }
-
          /* =========================
-   PROJECTS (UPDATED LAYOUT)
-========================= */
-
+         PROJECTS (UPDATED LAYOUT)
+         ========================= */
          .projects-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 18px;
+         display: grid;
+         grid-template-columns: 1fr;
+         gap: 18px;
          }
-
          .project-card {
-            display: flex;
-            gap: 18px;
-            border: 1px solid #e2e8f0;
-            border-radius: 14px;
-            padding: 18px;
-            background: #f8fafc;
-            align-items: center;
+         display: flex;
+         gap: 18px;
+         border: 1px solid #e2e8f0;
+         border-radius: 14px;
+         padding: 18px;
+         background: #f8fafc;
+         align-items: center;
          }
-
          /* LEFT IMAGE SIDE */
          .project-image {
-            width: 160px;
-            height: 120px;
-            object-fit: cover;
-            border-radius: 12px;
-            flex-shrink: 0;
+         width: 160px;
+         height: 120px;
+         object-fit: cover;
+         border-radius: 12px;
+         flex-shrink: 0;
          }
-
          /* RIGHT CONTENT SIDE */
          .project-content {
-            flex: 1;
+         flex: 1;
          }
-
          .project-title {
-            font-weight: 700;
-            color: #0f172a;
-            margin-bottom: 6px;
+         font-weight: 700;
+         color: #0f172a;
+         margin-bottom: 6px;
          }
-
          .project-desc {
-            font-size: 13px;
-            color: #475569;
-            line-height: 1.5;
-            margin-bottom: 10px;
+         font-size: 13px;
+         color: #475569;
+         line-height: 1.5;
+         margin-bottom: 10px;
          }
-
          .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
+         display: flex;
+         flex-wrap: wrap;
+         gap: 6px;
          }
-
          .project-tag {
-            font-size: 11px;
-            padding: 4px 8px;
-            border-radius: 999px;
-            background: #dbeafe;
-            color: #1e3a8a;
+         font-size: 11px;
+         padding: 4px 8px;
+         border-radius: 999px;
+         background: #dbeafe;
+         color: #1e3a8a;
          }
       </style>
    </head>
-
    <body>
       <div class="profile-card">
          <!-- HEADER -->
          <div class="profile-header">
             <div class="name-row">
                <h1>Charmy Patel</h1>
-
                <div class="header-actions">
                   <a
                      class="header-btn"
                      href="http://www.linkedin.com/in/charmyppatel"
                      target="_blank"
-                  >
-                     <i class="fa-brands fa-linkedin"></i> LinkedIn
+                     >
+                  <i class="fa-brands fa-linkedin"></i> LinkedIn
                   </a>
-
                   <a
                      class="header-btn"
                      href="mailto:charmy500@gmail.com?subject=Portfolio%20Contact%20Charmy%20Patel%20&body=Hi%20Charmy%2C"
-                  >
-                     <i class="fa-solid fa-envelope"></i> Contact
+                     >
+                  <i class="fa-solid fa-envelope"></i> Contact
                   </a>
                </div>
             </div>
-
             <div class="profile-desc">
                Technology and helping others are two things I enjoy so I made it career out of it. I have a diverse background in product management, design, research, and front end development. Have a project in mind? Let's connect ✌🏻
             </div>
          </div>
-
          <!-- TABS -->
          <div class="tabs">
             <button
                class="tab-button active"
                onclick="openTab(event,'experience')"
-            >
-               Experience
+               >
+            Experience
             </button>
             <button class="tab-button" onclick="openTab(event,'skills')">
-               Skills
+            Skills
             </button>
             <button class="tab-button" onclick="openTab(event,'projects')">
-               Projects
+            Projects
             </button>
             <button
                class="tab-button"
                onclick="openTab(event,'recommendations')"
-            >
-               Recommendations
+               >
+            Recommendations
             </button>
          </div>
-
          <!-- EXPERIENCE -->
          <div id="experience" class="tab-content active">
             <h2>Experience</h2>
-
             <div class="experience-grid">
                <div class="experience-item">
                   <div class="company">
                      Advertising Specialty Institute (ASI)
                   </div>
-
                   <div class="role">
                      <div class="role-header">
                         <div class="role-title">Product Manager</div>
                         <div class="role-date">Jan 2024 - Jun 2026</div>
                      </div>
-
                      <button
                         class="responsibility-btn"
                         onclick="toggleExp(this)"
-                     >
-                        <i class="fa-solid fa-chevron-down"></i>
-                        View Responsibilities
+                        >
+                     <i class="fa-solid fa-chevron-down"></i>
+                     View Responsibilities
                      </button>
-
                      <div class="position-details">
                         <ul>
                            <li>
@@ -434,7 +377,6 @@
                         </ul>
                      </div>
                   </div>
-
                   <div class="role">
                      <div class="role-header">
                         <div class="role-title">UX Product Management Intern</div>
@@ -442,41 +384,33 @@
                            Jun 2023 - Dec 2023 
                         </div>
                      </div>
-
                      <button
                         class="responsibility-btn"
                         onclick="toggleExp(this)"
-                     >
-                        <i class="fa-solid fa-chevron-down"></i>
-                        View Responsibilities
+                        >
+                     <i class="fa-solid fa-chevron-down"></i>
+                     View Responsibilities
                      </button>
-
                      <div class="position-details">
                         <ul>
                            <li>
-                                                         Refined product scope based on stakeholder feedback to align solutions with business objectives.
-
+                              Refined product scope based on stakeholder feedback to align solutions with business objectives.
                            </li>
                            <li>
                               Supported product discovery and definition research to identify user needs and feature opportunities.
-
                            </li>
                            <li>
                               Developed business requirements, including user stories and epics, to guide feature implementation.
-
                            </li>
                            <li>
                               Created a pitch for a CSR program for potential company implementation.
-
                            </li>
                         </ul>
                      </div>
                   </div>
                </div>
-
                <div class="experience-item">
                   <div class="company">SpaceLab</div>
-
                   <div class="role">
                      <div class="role-header">
                         <div class="role-title">
@@ -484,15 +418,13 @@
                         </div>
                         <div class="role-date">Jan 2023 - Jun 2023</div>
                      </div>
-
                      <button
                         class="responsibility-btn"
                         onclick="toggleExp(this)"
-                     >
-                        <i class="fa-solid fa-chevron-down"></i>
-                        View Responsibilities
+                        >
+                     <i class="fa-solid fa-chevron-down"></i>
+                     View Responsibilities
                      </button>
-
                      <div class="position-details">
                         <div class="experience">
                            <h2>UX Designer</h2>
@@ -513,7 +445,6 @@
                                  conversions.
                               </li>
                            </ul>
-
                            <h2>UX Researcher</h2>
                            <ul>
                               <li>
@@ -530,7 +461,6 @@
                                  usability, engagement, and clear communication.
                               </li>
                            </ul>
-
                            <h2>Graphic Designer</h2>
                            <ul>
                               <li>
@@ -551,15 +481,10 @@
                      </div>
                   </div>
                </div>
-
-
-
-
-      <div class="experience-item">
+               <div class="experience-item">
                   <div class="company">
                      Advertising Specialty Institute (ASI)
                   </div>
-
                   <div class="role">
                      <div class="role-header">
                         <div class="role-title">Front End Developer Intern</div>
@@ -567,98 +492,33 @@
                            Jun 2021 - Aug 2021 
                         </div>
                      </div>
-
                      <button
                         class="responsibility-btn"
                         onclick="toggleExp(this)"
-                     >
-                        <i class="fa-solid fa-chevron-down"></i>
-                        View Responsibilities
+                        >
+                     <i class="fa-solid fa-chevron-down"></i>
+                     View Responsibilities
                      </button>
-
                      <div class="position-details">
                         <ul>
-
-<li>
+                           <li>
                               Designed a Chrome extension to improve supply chain communication and collaboration.
-
-</li>
-
+                           </li>
                            <li>
                               Gathered user requirements through stakeholder interviews and incorporated feedback to enhance solution design.
-
-   
-</li>
-
+                           </li>
                            <li>
                               Developed wireframes in Sketch and built a functional prototype using Angular 11.
-
-   
-</li>
-                           
-                        </ul>
-                     </div>
-                  </div>
-
-                  <div class="role">
-                     <div class="role-header">
-                        <div class="role-title">UX Product Management Intern</div>
-                        <div class="role-date">
-                           Jun 2023 - Dec 2023 
-                        </div>
-                     </div>
-
-                     <button
-                        class="responsibility-btn"
-                        onclick="toggleExp(this)"
-                     >
-                        <i class="fa-solid fa-chevron-down"></i>
-                        View Responsibilities
-                     </button>
-
-                     <div class="position-details">
-                        <ul>
-                           <li>
-                                                         Refined product scope based on stakeholder feedback to align solutions with business objectives.
-
-                           </li>
-                           <li>
-                              Supported product discovery and definition research to identify user needs and feature opportunities.
-
-                           </li>
-                           <li>
-                              Developed business requirements, including user stories and epics, to guide feature implementation.
-
-                           </li>
-                           <li>
-                              Created a pitch for a CSR program for potential company implementation.
-
                            </li>
                         </ul>
                      </div>
                   </div>
                </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-               
             </div>
          </div>
-
          <!-- SKILLS -->
          <div id="skills" class="tab-content">
             <h2>Skills</h2>
-
             <div class="skills-grid">
                <div class="skills-column">
                   <h3>Product</h3>
@@ -669,16 +529,14 @@
                   <span class="skill">Requirements Gathering </span>
                   <span class="skill">User Story Developement</span>
                </div>
-
                <div class="skills-column">
                   <h3>UX Design</h3>
                   <span class="skill">Wireframing & Prototyping</span>
                   <span class="skill"
                      >Design Systems & Component Libraries</span
-                  >
+                     >
                   <span class="skill">Usability Testing & Iteration</span>
                </div>
-
                <div class="skills-column">
                   <h3>UX Research</h3>
                   <span class="skill">User Interviews & Moderation</span>
@@ -688,11 +546,9 @@
                </div>
             </div>
          </div>
-
          <!-- PROJECTS -->
          <div id="projects" class="tab-content">
             <h2>Projects</h2>
-
             <div class="projects-grid">
                <div class="project-card">
                   <!-- PROJECT IMAGE: replace src with your image URL -->
@@ -700,135 +556,117 @@
                      class="project-image"
                      src="YOUR_IMAGE_LINK_HERE"
                      alt=""
-                  />
-
+                     />
                   <div class="project-content">
                      <div class="project-title">Amazon: Enhancing Product Manager Productivity Through AI Tools</div>
-
                      <div class="project-desc">
-                     <p>
-                        Case submission for ADPList's AI-powered Product Management course.
-                     </p>  
-<ul>
-   <li>
-     Evaluated the impact of AI integration on product management workflows, assessing improvements in efficiency, decision making, and process effectiveness. 
-   </li>
-   <li>
-      Analyzed pre and post AI product management practices at Amazon to identify performance gains and process optimization opportunities.
-
-   </li>
-</ul>
-   
-  
+                        <p>
+                           Case submission for ADPList's AI-powered Product Management course.
+                        </p>
+                        <ul>
+                           <li>
+                              Evaluated the impact of AI integration on product management workflows, assessing improvements in efficiency, decision making, and process effectiveness. 
+                           </li>
+                           <li>
+                              Analyzed pre and post AI product management practices at Amazon to identify performance gains and process optimization opportunities.
+                           </li>
+                        </ul>
                      </div>
-
                      <!-- PROJECT LINK: replace href with your project URL -->
                      <a
                         href="https://www.figma.com/proto/9ybkzTSw7v7CTk1Diu293q/Charmy-Patel---ADPList-AI-powered-Product-Management-Case-Submission?type=design&node-id=1-30&t=LX955I1esFM2QtnY-1&scaling=contain&page-id=0%3A1"
                         target="_blank"
                         style="
-                           display: inline-block;
-                           margin-bottom: 10px;
-                           color: #2563eb;
-                           font-weight: 600;
-                           text-decoration: none;
+                        display: inline-block;
+                        margin-bottom: 10px;
+                        color: #2563eb;
+                        font-weight: 600;
+                        text-decoration: none;
                         "
-                     >
-                        View Project
+                        >
+                     View Project
                      </a>
-
                      <div class="project-tags">
                         <span class="project-tag">Product Management</span>
                         <span class="project-tag">AI</span>
                      </div>
                   </div>
                </div>
-
                <div class="project-card">
                   <!-- PROJECT IMAGE: replace src with your image URL -->
                   <img
                      class="project-image"
                      src="YOUR_IMAGE_LINK_HERE"
                      alt=""
-                  />
-
+                     />
                   <div class="project-content">
                      <div class="project-title">SpaceLab Logo Redesign</div>
-
                      <div class="project-desc">
-                     <ul>
-                        <li>Worked on the successful redesign of a nonprofit company logo, employing targeted strategies to connect with the desired audience and convey the brand personality effectively.</li>
-<li>Executed comprehensive design elements, including logo aesthetics, color schemes, typography, and imagery, showcasing attention to detail and creativity.</li>
-<li>Produced a versatile logo package, encompassing primary, secondary, submark, and favicon versions, while also demonstrating proficiency in brand typeface selection, color palette creation, and mockup development.</li>
-                     </ul>
-                        
+                        <ul>
+                           <li>Worked on the successful redesign of a nonprofit company logo, employing targeted strategies to connect with the desired audience and convey the brand personality effectively.</li>
+                           <li>Executed comprehensive design elements, including logo aesthetics, color schemes, typography, and imagery, showcasing attention to detail and creativity.</li>
+                           <li>Produced a versatile logo package, encompassing primary, secondary, submark, and favicon versions, while also demonstrating proficiency in brand typeface selection, color palette creation, and mockup development.</li>
+                        </ul>
                      </div>
-
                      <!-- PROJECT LINK: replace href with your project URL -->
                      <a
                         href="https://www.figma.com/proto/4xFNgYLptngs5LPdSTgrvz/Charmy-s-Portfolio---SpaceLab?type=design&node-id=174-74&t=gc1L2JZ1sN38YXkD-0&scaling=scale-down&page-id=0%3A1"
                         target="_blank"
                         style="
-                           display: inline-block;
-                           margin-bottom: 10px;
-                           color: #2563eb;
-                           font-weight: 600;
-                           text-decoration: none;
+                        display: inline-block;
+                        margin-bottom: 10px;
+                        color: #2563eb;
+                        font-weight: 600;
+                        text-decoration: none;
                         "
-                     >
-                        View Project
+                        >
+                     View Project
                      </a>
-
                      <div class="project-tags">
-                        <span class="project-tag">Data Viz</span>
-                        <span class="project-tag">Frontend</span>
+                        <span class="project-tag">UX Design</span>
+                                                <span class="project-tag">UX Research</span>
+
+                        <span class="project-tag">Graphic Design</span>
                      </div>
                   </div>
                </div>
             </div>
          </div>
-
          <!-- RECOMMENDATIONS -->
          <div id="recommendations" class="tab-content">
             <h2>Recommendations</h2>
-
             <div class="rec-filters">
                <button
                   class="rec-filter-btn active"
                   onclick="filterRecs('all', event)"
-               >
-                  All
+                  >
+               All
                </button>
                <button
                   class="rec-filter-btn"
                   onclick="filterRecs('manager', event)"
-               >
-                  Managers
+                  >
+               Managers
                </button>
                <button
                   class="rec-filter-btn"
                   onclick="filterRecs('teammate', event)"
-               >
-                  Teammates
+                  >
+               Teammates
                </button>
-
-
                <button
                   class="rec-filter-btn"
                   onclick="filterRecs('stakeholder', event)"
-               >
-                  Stakeholder
+                  >
+               Stakeholder
                </button>
-
-               
                <button
                   class="rec-filter-btn"
                   onclick="filterRecs('mentor', event)"
-               >
-                  Mentor
+                  >
+               Mentor
                </button>
             </div>
-
             <div class="recommendation-card" data-role="manager">
                <div class="recommendation-header">
                   <div>
@@ -846,7 +684,6 @@
                   meet their goals.
                </div>
             </div>
-
             <div class="recommendation-card" data-role="manager">
                <div class="recommendation-header">
                   <div>
@@ -856,40 +693,37 @@
                   <div class="rec-tag">Manager</div>
                </div>
                <div class="recommendation-text">
-
                   <p>
-                          I had the pleasure of working with Charmy on the Aspire
-                  Supplier Portal redesign at ASI, where I served as the Senior
-                  Product Manager leading the initiative and Charmy supported
-                  the effort as a Junior Product Manager.
+                     I had the pleasure of working with Charmy on the Aspire
+                     Supplier Portal redesign at ASI, where I served as the Senior
+                     Product Manager leading the initiative and Charmy supported
+                     the effort as a Junior Product Manager.
                   </p>
-                   <p>
-                       Charmy quickly became
-                  an invaluable member of the product team, contributing to
-                  product discovery, requirements definition, backlog
-                  management, and stakeholder collaboration. She was
-                  particularly effective at translating business needs into
-                  well-defined user stories and epics, partnering closely with
-                  engineering teams to refine requirements and support
-                  successful delivery. Her attention to detail, strong
-                  organizational skills, and ability to take ownership helped
-                  our team operate more efficiently and allowed me to focus more
-                  time on customer discovery and product strategy.
-                   </p>
-                   <p>
-                          Beyond her
-                  execution skills, Charmy consistently demonstrated curiosity,
-                  professionalism, and a strong desire to learn and grow as a
-                  product manager. She is a collaborative teammate, a thoughtful
-                  problem solver, and someone who can be trusted to follow
-                  through on commitments. I would recommend Charmy to any
-                  organization looking for a motivated and capable product
-                  professional.
-                   </p>
-          
+                  <p>
+                     Charmy quickly became
+                     an invaluable member of the product team, contributing to
+                     product discovery, requirements definition, backlog
+                     management, and stakeholder collaboration. She was
+                     particularly effective at translating business needs into
+                     well-defined user stories and epics, partnering closely with
+                     engineering teams to refine requirements and support
+                     successful delivery. Her attention to detail, strong
+                     organizational skills, and ability to take ownership helped
+                     our team operate more efficiently and allowed me to focus more
+                     time on customer discovery and product strategy.
+                  </p>
+                  <p>
+                     Beyond her
+                     execution skills, Charmy consistently demonstrated curiosity,
+                     professionalism, and a strong desire to learn and grow as a
+                     product manager. She is a collaborative teammate, a thoughtful
+                     problem solver, and someone who can be trusted to follow
+                     through on commitments. I would recommend Charmy to any
+                     organization looking for a motivated and capable product
+                     professional.
+                  </p>
                </div>
             </div>
-
             <div class="recommendation-card" data-role="teammate">
                <div class="recommendation-header">
                   <div>
@@ -906,12 +740,10 @@
                      product managers I've had the privilege of collaborating
                      with.
                   </p>
-
                   <p>
                      Charmy is sharp, humble, and someone who takes full
                      ownership of her work and consistently delivers with care.
                   </p>
-
                   <p>
                      Working alongside Charmy as her design lead was a seamless
                      and rewarding experience. She understood the value of
@@ -921,7 +753,6 @@
                      customer feedback into meaningful product decisions that
                      strengthened the overall user experience.
                   </p>
-
                   <p>
                      Charmy is a fast learner who always follows through. She is
                      someone you can count on to get things done thoroughly and
@@ -930,7 +761,6 @@
                   </p>
                </div>
             </div>
-
             <div class="recommendation-card" data-role="teammate">
                <div class="recommendation-header">
                   <div>
@@ -942,44 +772,41 @@
                <div class="recommendation-text">
                   <p>
                      I had the pleasure of working with Charmy on the Aspire
-                  Supplier Portal Redesign at ASI, where I served as the UX
-                  Researcher focused on improving the supplier experience.
-                  Charmy was an exceptional product manager and partner
-                  throughout the process.
+                     Supplier Portal Redesign at ASI, where I served as the UX
+                     Researcher focused on improving the supplier experience.
+                     Charmy was an exceptional product manager and partner
+                     throughout the process.
                   </p>
-
                   <p>
-                    She consistently helped coordinate
-                  stakeholders, cross-functional team members, and research
-                  efforts to ensure our work stayed aligned with both user needs
-                  and business goals. At every stage of the project, Charmy was
-                  communicative, organized, and thoughtful about how she could
-                  support the research process, from helping shape our approach
-                  to ensuring the right voices were involved. She was highly
-                  effective at planning sprint work, prioritizing what needed to
-                  be executed, and managing team capacity to ensure the right
-                  work moved forward. 
+                     She consistently helped coordinate
+                     stakeholders, cross-functional team members, and research
+                     efforts to ensure our work stayed aligned with both user needs
+                     and business goals. At every stage of the project, Charmy was
+                     communicative, organized, and thoughtful about how she could
+                     support the research process, from helping shape our approach
+                     to ensuring the right voices were involved. She was highly
+                     effective at planning sprint work, prioritizing what needed to
+                     be executed, and managing team capacity to ensure the right
+                     work moved forward. 
                   </p>
-
                   <p>
-                         One of the things I appreciated most was
-                  her dedication to learning directly from our users. Charmy
-                  often joined research interviews to better understand our
-                  suppliers, hear their feedback firsthand, and bring those
-                  insights back into the product conversation. Her curiosity,
-                  attention to detail, and strong sense of ownership made her a
-                  valuable partner and a trusted member of the product team.
+                     One of the things I appreciated most was
+                     her dedication to learning directly from our users. Charmy
+                     often joined research interviews to better understand our
+                     suppliers, hear their feedback firsthand, and bring those
+                     insights back into the product conversation. Her curiosity,
+                     attention to detail, and strong sense of ownership made her a
+                     valuable partner and a trusted member of the product team.
                   </p>
-                  
-                 <p>
-                  I highly recommend Charmy to any organization looking for a
-                  product manager who can lead with clarity, bring teams
-                  together, and help deliver meaningful results through both
-                  discovery and execution.</p>
+                  <p>
+                     I highly recommend Charmy to any organization looking for a
+                     product manager who can lead with clarity, bring teams
+                     together, and help deliver meaningful results through both
+                     discovery and execution.
+                  </p>
                </div>
             </div>
-
-                        <div class="recommendation-card" data-role="stakeholder">
+            <div class="recommendation-card" data-role="stakeholder">
                <div class="recommendation-header">
                   <div>
                      <div class="rec-name">Kim McDade</div>
@@ -997,7 +824,6 @@
                   invaluable to the project's success.
                </div>
             </div>
-
             <div class="recommendation-card" data-role="mentor">
                <div class="recommendation-header">
                   <div>
@@ -1007,11 +833,10 @@
                   <div class="rec-tag">Mentor</div>
                </div>
                <div class="recommendation-text">
-                 Charmy has the right mindset for a designer. We met when she was looking for a mentor to take her skills to a new level, and from our first meeting, she was earnest about it. Charmy demonstrated being dedicated, self-motivated, organized, and extremely capable. She is always willing to share her learnings with the design community. And that, to me, demonstrates how much she cares about communicating and helping others. Add her front-end engineering skills to the mix, and you have an extremely reliable product person who can tackle complex problems from end to end.
+                  Charmy has the right mindset for a designer. We met when she was looking for a mentor to take her skills to a new level, and from our first meeting, she was earnest about it. Charmy demonstrated being dedicated, self-motivated, organized, and extremely capable. She is always willing to share her learnings with the design community. And that, to me, demonstrates how much she cares about communicating and helping others. Add her front-end engineering skills to the mix, and you have an extremely reliable product person who can tackle complex problems from end to end.
                </div>
             </div>
-
-               <div class="recommendation-card" data-role="manager">
+            <div class="recommendation-card" data-role="manager">
                <div class="recommendation-header">
                   <div>
                      <div class="rec-name">Matthew Paterson</div>
@@ -1025,7 +850,6 @@
             </div>
          </div>
       </div>
-
       <script>
          function openTab(event, tabName) {
             document
@@ -1034,17 +858,17 @@
             document
                .querySelectorAll(".tab-button")
                .forEach((b) => b.classList.remove("active"));
-
+         
             document.getElementById(tabName).classList.add("active");
             event.currentTarget.classList.add("active");
          }
-
+         
          function filterRecs(role, event) {
             document
                .querySelectorAll(".rec-filter-btn")
                .forEach((b) => b.classList.remove("active"));
             event.currentTarget.classList.add("active");
-
+         
             document
                .querySelectorAll(".recommendation-card")
                .forEach((card) => {
@@ -1054,11 +878,11 @@
                         : "none";
                });
          }
-
+         
          function toggleExp(btn) {
             const details = btn.nextElementSibling;
             const isOpen = details.style.display === "block";
-
+         
             details.style.display = isOpen ? "none" : "block";
             btn.querySelector("i").style.transform = isOpen
                ? "rotate(0deg)"
