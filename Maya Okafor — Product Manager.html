@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<!--
+  ==========================================================
+  HOW TO CUSTOMIZE THIS PORTFOLIO
+  Search for "EDIT" to find every spot where you can swap in
+  your own information (name, text, links, email, colors).
+  ==========================================================
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- EDIT: page title shown in the browser tab -->
+<title>Maya Okafor — Product Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* EDIT: brand colors. Change --accent for your main color; --t1, --t2, --t3 are soft tints used on cards. */
+:root{
+  --bg:#ffffff; --surface:#ffffff; --ink:#0f1419; --muted:#5b6573; --line:#e3e6eb;
+  --accent:#2f5bff; --on-accent:#ffffff; --good:#1fa971;
+  --t1:#e2eaff; --t2:#dcf2ec; --t3:#ebe6fb;
+  --shadow:0 1px 2px rgba(15,20,25,.05),0 18px 40px -20px rgba(15,20,25,.18);
+  /* EDIT: fonts. Swap the names here and in the Google Fonts link above. */
+  --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  --body:"Figtree","Helvetica Neue",Arial,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.05rem;line-height:1.6}
+h1,h2,h3,h4{font-family:var(--display);line-height:1.05;margin:0;letter-spacing:-.025em}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 clamp(18px,4vw,40px);overflow-x:clip}
+
+/* top bar */
+.bar{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 0}
+.bar b{font-family:var(--display);font-size:1.15rem;letter-spacing:-.02em}
+.bar nav{display:flex;gap:2px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:4px}
+.bar nav a{text-decoration:none;font-weight:500;font-size:.93rem;padding:6px 16px;border-radius:999px;color:var(--muted);transition:background .15s,color .15s}
+.bar nav a:hover{background:var(--ink);color:var(--bg)}
+
+/* hero */
+.hero{padding:clamp(48px,10vw,120px) 0 clamp(44px,8vw,96px)}
+.status{display:inline-flex;align-items:center;gap:9px;font-size:.92rem;font-weight:500;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px}
+.status::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--good);box-shadow:0 0 0 4px color-mix(in srgb,var(--good) 22%,transparent)}
+.hero h1{font-size:clamp(2.8rem,8.4vw,6.8rem);font-weight:700;max-width:13ch;margin-top:28px;letter-spacing:-.04em;line-height:.98}
+.hero p.lede{margin-top:28px;max-width:40ch;font-size:clamp(1.1rem,2vw,1.3rem);color:var(--muted)}
+.cta{display:inline-block;margin-top:34px;background:var(--accent);color:var(--on-accent);font-weight:700;text-decoration:none;padding:14px 26px;border-radius:999px;transition:transform .15s,box-shadow .15s}
+.cta:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px var(--accent)}
+
+/* section heads */
+section{padding:clamp(44px,7vw,88px) 0}
+.head{display:flex;align-items:baseline;gap:18px;margin-bottom:38px;flex-wrap:wrap}
+.head h2{font-size:clamp(2rem,4.4vw,3.1rem);font-weight:700}
+.head p{color:var(--muted);max-width:42ch}
+
+/* about */
+.about{display:grid;grid-template-columns:300px 1fr;gap:clamp(30px,6vw,72px);align-items:start}
+.side{position:sticky;top:20px}
+/* camera illustration */
+.dispenser{position:relative;width:min(100%,290px);view-timeline:--dispense block}
+/* digital illustration of the camera (inline SVG) */
+.camera{position:relative;z-index:2}
+.glow{opacity:0}
+.camera svg{display:block;width:100%;height:auto;overflow:visible;filter:drop-shadow(0 22px 18px rgba(15,20,25,.35))}
+@keyframes glow{0%{opacity:0}6%,14%{opacity:.85}26%,100%{opacity:0}}
+/* the lens flashes as the visitor scrolls here (scroll-driven animation) */
+@supports (animation-timeline:view()){
+  @media (prefers-reduced-motion:no-preference){
+    .glow{animation:glow linear both;animation-timeline:--dispense;animation-range:entry 22% cover 42%}
+  }
+}
+.stickers{margin:40px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.stickers li{list-style:none;font-weight:500;font-size:.92rem;padding:7px 14px;border-radius:999px;border:1px solid var(--line)}
+.stickers li:nth-child(1){background:#fff1c9;transform:rotate(-2deg)}
+.stickers li:nth-child(2){background:var(--t1);transform:rotate(1.5deg)}
+.stickers li:nth-child(3){background:var(--t2);transform:rotate(-1deg)}
+.story p{font-size:1.2rem;max-width:58ch}
+.story p+p{margin-top:16px;color:var(--muted)}
+.off{margin-top:38px}
+.off h3{font-size:1.2rem;margin-bottom:14px}
+.off ul{display:flex;flex-wrap:wrap;gap:10px;margin:0;padding:0}
+.off li{list-style:none;border:1px solid var(--line);border-radius:14px;padding:10px 16px;font-weight:500;transition:transform .2s,background .2s}
+.off li:hover{transform:translateY(-3px) rotate(-1.5deg);background:#fff1c9}
+
+/* projects */
+.proj{background:var(--surface);border:1px solid var(--line);border-radius:24px;display:grid;grid-template-columns:230px 1fr;box-shadow:var(--shadow);overflow:hidden}
+.proj+.proj{margin-top:28px}
+.proj aside{padding:28px 24px;display:flex;flex-direction:column;gap:12px}
+.proj:nth-of-type(1) aside{background:var(--t1)}
+.proj:nth-of-type(2) aside{background:var(--t2)}
+.proj:nth-of-type(3) aside{background:var(--t3)}
+.proj aside b{font-family:var(--display);font-size:2.7rem;line-height:1;letter-spacing:-.04em}
+.proj aside span{font-size:.95rem;color:var(--muted)}
+.proj .body{padding:30px clamp(20px,3vw,38px)}
+.proj h3{font-size:1.65rem;margin-bottom:6px}
+.proj .role{color:var(--muted);margin-bottom:22px}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.cols h4{margin:0 0 4px;font-size:1.02rem}
+.cols p{font-size:.97rem;color:var(--muted);line-height:1.5}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 0;padding:0}
+.tags li{list-style:none;font-size:.85rem;font-weight:500;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:3px 12px}
+
+/* recommendations: CSS-only filter (radio buttons + pills) */
+.filter{position:absolute;opacity:0;pointer-events:none}
+.pills{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:30px}
+.pills label{cursor:pointer;font-weight:500;font-size:.95rem;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:8px 18px;transition:background .15s,color .15s,border-color .15s}
+.pills label:hover{border-color:var(--ink)}
+#f-all:checked~.pills [for="f-all"],
+#f-eng:checked~.pills [for="f-eng"],
+#f-des:checked~.pills [for="f-des"],
+#f-sales:checked~.pills [for="f-sales"],
+#f-lead:checked~.pills [for="f-lead"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+#f-all:focus-visible~.pills [for="f-all"],
+#f-eng:focus-visible~.pills [for="f-eng"],
+#f-des:focus-visible~.pills [for="f-des"],
+#f-sales:focus-visible~.pills [for="f-sales"],
+#f-lead:focus-visible~.pills [for="f-lead"]{outline:3px solid var(--accent);outline-offset:3px}
+#f-eng:checked~.wall .note:not(.eng),
+#f-des:checked~.wall .note:not(.des),
+#f-sales:checked~.wall .note:not(.sales),
+#f-lead:checked~.wall .note:not(.lead){display:none}
+.wall{columns:3 280px;column-gap:22px}
+.note{break-inside:avoid;margin:0 0 22px;padding:26px 24px 22px;background:var(--surface);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);animation:rise .35s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.note blockquote{margin:0;font-size:1.06rem;line-height:1.55}
+.note figcaption{margin-top:20px;display:flex;align-items:center;gap:12px;font-size:.9rem;line-height:1.3;color:var(--muted)}
+.note figcaption i{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-family:var(--display);font-weight:700;color:var(--ink)}
+.eng i{background:var(--t1)} .des i{background:var(--t3)} .sales i{background:var(--t2)} .lead i{background:var(--line)}
+.note figcaption b{display:block;font-family:var(--display);font-size:1.02rem;color:var(--ink)}
+
+/* footer */
+footer{padding:40px 0 40px}
+.end{background:var(--accent);color:#fff;border-radius:24px}
+.end-body{padding:clamp(22px,4vw,36px) clamp(22px,4vw,40px);display:flex;justify-content:space-between;align-items:center;gap:20px 32px;flex-wrap:wrap}
+.end-body p{margin:0;max-width:34ch;font-size:1.1rem;line-height:1.4}
+.links{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;text-decoration:none;padding:11px 20px;border-radius:999px;transition:transform .15s,background .15s,color .15s}
+.btn:hover{transform:translateY(-3px)}
+.btn svg{width:20px;height:20px;fill:currentColor}
+.btn.mail{background:#ffd54a;color:#0f1419}
+.btn.soc{border:2px solid rgba(255,255,255,.6);color:#fff}
+.btn.soc:hover{background:#fff;color:var(--accent)}
+.fine{margin-top:26px;text-align:center;color:var(--muted);font-size:.9rem}
+
+@media (max-width:860px){
+  .about,.proj{grid-template-columns:1fr}
+  .side{position:static;display:grid;grid-template-columns:minmax(0,300px) 1fr;gap:28px;align-items:center}
+  .stickers{margin:0}
+  .proj aside{flex-direction:row;align-items:center;flex-wrap:wrap}
+  .cols{grid-template-columns:1fr}
+  .bar nav a{padding:6px 11px}
+  .bar b{display:none}
+  .bar{justify-content:center}
+}
+@media (max-width:560px){
+  .side{grid-template-columns:1fr;gap:26px;justify-items:center}
+  .stickers{justify-content:center}
+  .bar{padding:14px 0}
+  .bar nav a{font-size:.85rem;padding:6px 10px}
+  .hero{padding-top:36px}
+  .proj aside b{font-size:2.2rem}
+  .proj .body{padding:22px 18px}
+  .note{padding:22px 20px 18px}
+  .links .btn{flex:1 1 140px;justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .note,.cta,.pills label,.bar nav a,.btn{animation:none;transition:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="bar">
+    <!-- EDIT: your name (top left; hidden on small phones) -->
+    <b>Maya Okafor</b>
+    <nav aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#kind-words">Recommendations</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ================= HERO ================= -->
+    <div class="hero">
+      <!-- EDIT: availability status (or delete this line) -->
+      <span class="status">Open to new roles</span>
+      <!-- EDIT: your headline -->
+      <h1>I build products people keep using.</h1>
+      <!-- EDIT: one or two sentences about what you do -->
+      <p class="lede">Senior product manager with eight years in fintech and marketplaces. I find the work that matters most and the smallest way to ship it.</p>
+      <a class="cta" href="#projects">See what I’ve shipped</a>
+    </div>
+
+    <!-- ================= ABOUT ME ================= -->
+    <section id="about">
+      <div class="head"><h2>About me</h2></div>
+      <div class="about">
+        <div class="side">
+          <!-- EDIT (optional): the camera is a drawing. Your photo shows on its screen (see the EDIT note inside the camera below).
+               As the visitor scrolls here, the lens flashes warm (current Chrome, Edge and Safari; other browsers skip it). -->
+          <div class="dispenser">
+          <div class="camera" aria-hidden="true">
+            <!-- EDIT (optional): the camera is a drawing made of shapes. You can change the printed words ("Canon", "G7X", the lens text) in the <text> lines below. -->
+            <svg viewBox="0 0 300 330" xmlns="http://www.w3.org/2000/svg" focusable="false">
+              <defs>
+                <linearGradient id="gBody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#46484d"/><stop offset=".06" stop-color="#2c2d31"/><stop offset=".5" stop-color="#18191c"/><stop offset="1" stop-color="#0b0c0e"/></linearGradient>
+                <linearGradient id="gEdge" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".1" stop-color="#fff" stop-opacity=".12"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+                <linearGradient id="gSheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".12"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/></linearGradient>
+                <linearGradient id="gScreen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2d2f34"/><stop offset=".5" stop-color="#111214"/><stop offset="1" stop-color="#1b1c1f"/></linearGradient>
+                <linearGradient id="gRim" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#43454a"/><stop offset="1" stop-color="#0c0d0f"/></linearGradient>
+                <linearGradient id="gMetal" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5d5f65"/><stop offset=".2" stop-color="#e9eaec"/><stop offset=".5" stop-color="#9a9ca2"/><stop offset=".8" stop-color="#dfe0e3"/><stop offset="1" stop-color="#55575c"/></linearGradient>
+                <linearGradient id="gChrome" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4f5f6"/><stop offset=".45" stop-color="#8e9096"/><stop offset=".6" stop-color="#d9dadd"/><stop offset="1" stop-color="#6b6d73"/></linearGradient>
+                <linearGradient id="gBarrel" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3a3b40"/><stop offset=".5" stop-color="#141517"/><stop offset="1" stop-color="#050506"/></linearGradient>
+                <radialGradient id="gGlass" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#030409"/><stop offset=".35" stop-color="#0d1736"/><stop offset=".62" stop-color="#050710"/><stop offset=".8" stop-color="#2a2260"/><stop offset=".92" stop-color="#0a2a2a"/><stop offset="1" stop-color="#030305"/></radialGradient>
+                <pattern id="pGrip" width="3" height="3" patternUnits="userSpaceOnUse"><rect width="3" height="3" fill="#131416"/><circle cx="1.5" cy="1.5" r=".75" fill="#2d2e32"/></pattern>
+                <pattern id="pKnurl" width="3" height="10" patternUnits="userSpaceOnUse"><rect width="3" height="10" fill="#7d7f85"/><rect width="1.2" height="10" fill="#f0f1f3"/></pattern>
+                <clipPath id="cBody"><rect x="6" y="150" width="288" height="152" rx="14"/></clipPath>
+                <filter id="fBlur"><feGaussianBlur stdDeviation="2.4"/></filter>
+                <filter id="fSoft"><feGaussianBlur stdDeviation=".8"/></filter>
+                <path id="pTop" d="M75,258 a41,41 0 1,1 82,0"/>
+                <path id="pBot" d="M71,258 a45,45 0 0,0 90,0"/>
+              </defs>
+
+              <!-- flipped-up screen that shows your photo -->
+              <rect x="82" y="2" width="214" height="152" rx="4" fill="#0b0c0e"/>
+              <rect x="82" y="2" width="214" height="152" rx="4" fill="url(#gScreen)"/>
+              <defs><clipPath id="cScreen"><rect x="87" y="7" width="202" height="142" rx="2"/></clipPath><linearGradient id="gPh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c4d1ff"/><stop offset=".62" stop-color="#6f8bff"/><stop offset="1" stop-color="#3a4fc4"/></linearGradient></defs>
+              <!-- EDIT: YOUR PHOTO GOES ON THE SCREEN. Delete the placeholder group below (everything from the <g> line to its </g>)
+                   and put this one line in its place:
+                   <image href="your-photo.jpg" x="87" y="7" width="202" height="142" preserveAspectRatio="xMidYMid slice" clip-path="url(#cScreen)"/>
+                   Use a landscape photo, roughly 3 wide by 2 tall (for example 1200 x 800 pixels). Keep the photo file in the same folder as this page. -->
+              <g clip-path="url(#cScreen)">
+                <rect x="87" y="7" width="202" height="142" fill="url(#gPh)"/>
+                <circle cx="188" cy="62" r="26" fill="#f0d6c2"/>
+                <ellipse cx="188" cy="150" rx="64" ry="62" fill="#1e2b6e"/>
+              </g>
+              <path d="M98 8 L196 8 L126 150 L98 150Z" fill="#fff" opacity=".08"/>
+              <rect x="289" y="2" width="7" height="152" rx="2" fill="url(#gRim)"/>
+              <rect x="82" y="2" width="214" height="2" rx="1" fill="#fff" opacity=".28"/>
+
+              <!-- top controls: mode dial and control dial -->
+              <rect x="22" y="132" width="46" height="21" rx="3" fill="url(#pKnurl)"/>
+              <rect x="22" y="132" width="46" height="21" rx="3" fill="url(#gMetal)" opacity=".55"/>
+              <rect x="22" y="132" width="46" height="3" rx="1.5" fill="#fff" opacity=".5"/>
+              <rect x="76" y="139" width="34" height="14" rx="3" fill="url(#gChrome)"/>
+              <rect x="80" y="135" width="26" height="7" rx="3.5" fill="#1d1e21"/>
+              <rect x="80" y="135" width="26" height="2" rx="1" fill="#fff" opacity=".3"/>
+
+              <!-- body with rubber grip -->
+              <g clip-path="url(#cBody)">
+                <rect x="6" y="150" width="288" height="152" fill="url(#gBody)"/>
+                <rect x="6" y="150" width="288" height="32" fill="#fff" opacity=".05"/>
+                <rect x="6" y="182" width="288" height="2" fill="#000" opacity=".55"/>
+                <rect x="6" y="184" width="62" height="118" fill="url(#pGrip)"/>
+                <rect x="66" y="184" width="3" height="118" fill="#000" opacity=".5"/>
+                <rect x="6" y="150" width="288" height="152" fill="url(#gSheen)"/>
+                <rect x="272" y="212" width="16" height="74" rx="3" fill="#0d0e10" stroke="#2a2b2f"/>
+              </g>
+              <rect x="6.5" y="150.5" width="287" height="151" rx="14" fill="none" stroke="url(#gEdge)"/>
+              <rect x="0" y="190" width="10" height="18" rx="3" fill="url(#gChrome)"/><rect x="290" y="190" width="10" height="18" rx="3" fill="url(#gChrome)"/>
+              <circle cx="258" cy="288" r="9" fill="#16171a" stroke="#44464b" stroke-width="1.2" stroke-dasharray="1.4 1.4"/>
+
+              <!-- EDIT (optional): words printed on the camera -->
+              <text x="20" y="173" font-family="Arial,Helvetica,sans-serif" font-style="italic" font-weight="700" font-size="16" fill="#eceef1" letter-spacing="-.4">Canon</text>
+              <text x="232" y="228" font-family="Arial,Helvetica,sans-serif" font-style="italic" font-weight="700" font-size="17" fill="#eceef1">G7X</text>
+              <circle cx="100" cy="170" r="4" fill="#0b0c0e"/><circle cx="99" cy="169" r="1.2" fill="#fff" opacity=".3"/>
+
+              <!-- lens: outer ring, ridged control ring, extended barrel with printed text, coated glass -->
+              <circle cx="136" cy="246" r="76" fill="#000" opacity=".5" filter="url(#fBlur)"/>
+              <circle cx="132" cy="240" r="76" fill="#0c0d0f"/>
+              <circle cx="132" cy="240" r="68" fill="none" stroke="#2c2d31" stroke-width="9" stroke-dasharray="1.5 1.5"/>
+              <path d="M70 212 A70 70 0 0 1 150 172" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="132" cy="240" r="58" fill="#0f1012"/>
+              <circle cx="116" cy="258" r="53" fill="#050506" opacity=".6" filter="url(#fBlur)"/>
+              <circle cx="116" cy="258" r="52" fill="url(#gBarrel)"/>
+              <circle cx="116" cy="258" r="50.5" fill="none" stroke="#85878e" stroke-width="1"/>
+              <text font-family="Arial,Helvetica,sans-serif" font-size="4.2" fill="#d4d6db"><textPath href="#pTop" textLength="118" lengthAdjust="spacing">CANON ZOOM LENS 4.2x IS</textPath></text>
+              <text font-family="Arial,Helvetica,sans-serif" font-size="4.2" fill="#d4d6db"><textPath href="#pBot" textLength="104" lengthAdjust="spacing">8.8-36.8mm 1:1.8-2.8</textPath></text>
+              <circle cx="116" cy="258" r="37" fill="#08090b"/>
+              <circle cx="116" cy="258" r="29" fill="url(#gGlass)"/>
+              <circle cx="116" cy="258" r="29" fill="none" stroke="#8a8c92" stroke-width="1.2"/>
+              <circle cx="116" cy="258" r="19" fill="none" stroke="#2a3a78" stroke-opacity=".7"/>
+              <circle cx="116" cy="258" r="10" fill="#02030a"/>
+              <ellipse cx="105" cy="246" rx="9" ry="4.5" transform="rotate(-35 105 246)" fill="#fff" opacity=".75" filter="url(#fSoft)"/>
+              <ellipse cx="128" cy="270" rx="6" ry="3" transform="rotate(-35 128 270)" fill="#9a6bff" opacity=".6" filter="url(#fSoft)"/>
+              <ellipse cx="125" cy="248" rx="3.5" ry="2" fill="#5fe0b5" opacity=".5" filter="url(#fSoft)"/>
+              <circle class="glow" cx="116" cy="258" r="64" fill="#ffd68c" filter="url(#fBlur)"/>
+            </svg>
+          </div>
+          </div>
+          <!-- EDIT: three fun stickers about you -->
+          <ul class="stickers">
+            <li>☕ Powered by oat lattes</li>
+            <li>📞 Customer calls are my cardio</li>
+            <li>🗺️ Roadmaps with a sense of humor</li>
+          </ul>
+        </div>
+        <div class="story">
+          <!-- EDIT: your story, two short paragraphs -->
+          <p>Hi, I’m Maya. I started my career in customer support, answering the same five questions about forty times a day. It was the best product training I ever got: I learned that most problems are really clarity problems, and that the loudest request is rarely the real need.</p>
+          <p>Now I lead teams of designers and engineers from the first customer call to launch day, and the nervous dashboard refreshing that follows. I like short briefs, honest trade-offs, and metrics a whole team can explain without a slide.</p>
+          <div class="off">
+            <h3>Off the clock</h3>
+            <!-- EDIT: your hobbies, one per <li>. Add or remove lines freely. -->
+            <ul>
+              <li>🥖 Sourdough experiments (some edible)</li>
+              <li>🥾 Weekend trail runs</li>
+              <li>🎲 Board game host</li>
+              <li>🎧 Podcast hoarder</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PROJECTS =================
+         EDIT: each <article class="proj"> is one project. Copy a whole
+         <article>…</article> block to add another (the first three get colored
+         side panels), or delete one to remove it. -->
+    <section id="projects">
+      <div class="head"><h2>Projects</h2><p>Three launches, what changed, and what I’d do again.</p></div>
+
+      <article class="proj">
+        <!-- EDIT: headline result (big number) and what it measures -->
+        <aside><b>−23%</b><span>checkout abandonment in 90 days</span></aside>
+        <div class="body">
+          <!-- EDIT: project title, company, your role, team size -->
+          <h3>Checkout redesign</h3>
+          <p class="role">Brightcart · Lead PM · team of 9</p>
+          <div class="cols">
+            <!-- EDIT: the problem, what you did, and the result -->
+            <div><h4>The problem</h4><p>Nearly one in three shoppers left at payment, and support tickets pointed at confusing shipping costs.</p></div>
+            <div><h4>What I did</h4><p>Ran a teardown of 40 sessions, moved fees up front, and cut the form from nine fields to five.</p></div>
+            <div><h4>The result</h4><p>Abandonment fell 23% and payment tickets dropped by half within a quarter.</p></div>
+          </div>
+          <!-- EDIT: skill tags -->
+          <ul class="tags"><li>Research</li><li>A/B testing</li><li>Payments</li></ul>
+        </div>
+      </article>
+
+      <article class="proj">
+        <aside><b>+31%</b><span>new users reaching their first win</span></aside>
+        <div class="body">
+          <h3>First-win onboarding</h3>
+          <p class="role">Ledgerly · Product manager · team of 6</p>
+          <div class="cols">
+            <div><h4>The problem</h4><p>New users signed up, saw an empty dashboard, and never returned.</p></div>
+            <div><h4>What I did</h4><p>Defined the “first win” with data, then rebuilt the first session around reaching it in under three minutes.</p></div>
+            <div><h4>The result</h4><p>Activation rose 31% and week-four retention climbed by seven points.</p></div>
+          </div>
+          <ul class="tags"><li>Activation</li><li>Analytics</li><li>Lifecycle</li></ul>
+        </div>
+      </article>
+
+      <article class="proj">
+        <aside><b>$2.4M</b><span>added annual recurring revenue</span></aside>
+        <div class="body">
+          <h3>Pricing and packaging reset</h3>
+          <p class="role">Parcelhop · Senior PM · cross-functional squad of 12</p>
+          <div class="cols">
+            <div><h4>The problem</h4><p>Five confusing plans meant sales discounted heavily and customers rarely upgraded.</p></div>
+            <div><h4>What I did</h4><p>Interviewed 30 customers, simplified to three plans, and grandfathered existing accounts with a clear path forward.</p></div>
+            <div><h4>The result</h4><p>Upgrades doubled and average deal size grew 18% with no rise in churn.</p></div>
+          </div>
+          <ul class="tags"><li>Pricing</li><li>Strategy</li><li>Go-to-market</li></ul>
+        </div>
+      </article>
+    </section>
+
+    <!-- ================= RECOMMENDATIONS =================
+         EDIT: each <figure class="note …"> is one recommendation.
+         The second class word (eng, des, sales, lead) decides which filter pill
+         shows it. To rename a pill, change its label text below; to add a new
+         pill, ask for help since it needs a matching radio button and CSS rule. -->
+    <section id="kind-words">
+      <div class="head"><h2>Recommendations</h2><p>What the people I’ve built with say. Pick a team to filter.</p></div>
+
+      <input class="filter" type="radio" name="f" id="f-all" checked aria-label="All">
+      <input class="filter" type="radio" name="f" id="f-eng" aria-label="Engineering">
+      <input class="filter" type="radio" name="f" id="f-des" aria-label="Design">
+      <input class="filter" type="radio" name="f" id="f-sales" aria-label="Sales">
+      <input class="filter" type="radio" name="f" id="f-lead" aria-label="Leadership">
+
+      <div class="pills">
+        <label for="f-all">All</label>
+        <label for="f-eng">Engineering</label>
+        <label for="f-des">Design</label>
+        <label for="f-sales">Sales</label>
+        <label for="f-lead">Leadership</label>
+      </div>
+
+      <div class="wall">
+        <!-- EDIT: quote text, the two-letter initials in <i>, the person's name, and their title/company -->
+        <figure class="note eng">
+          <blockquote>“Maya turns a messy pile of opinions into a plan everyone believes in. She is the reason we shipped on time.”</blockquote>
+          <figcaption><i>DR</i><span><b>Daniel Reyes</b>Engineering Manager, Brightcart</span></figcaption>
+        </figure>
+        <figure class="note des">
+          <blockquote>“She asks the question nobody wants to ask, kindly, and the product is always better for it.”</blockquote>
+          <figcaption><i>PN</i><span><b>Priya Nair</b>Design Lead, Ledgerly</span></figcaption>
+        </figure>
+        <figure class="note sales">
+          <blockquote>“Our pricing project could have been a mess. Maya kept sales, finance, and customers in the same room and made it simple.”</blockquote>
+          <figcaption><i>TA</i><span><b>Tom Albrecht</b>VP Sales, Parcelhop</span></figcaption>
+        </figure>
+        <figure class="note lead">
+          <blockquote>“The best PM I’ve mentored. Curious, direct, and she never loses sight of the customer.”</blockquote>
+          <figcaption><i>LF</i><span><b>Lena Fischer</b>Chief Product Officer, Ledgerly</span></figcaption>
+        </figure>
+        <figure class="note eng">
+          <blockquote>“Her specs are short and clear. I always knew what to build, and why it mattered.”</blockquote>
+          <figcaption><i>AK</i><span><b>Aisha Khan</b>Staff Engineer, Parcelhop</span></figcaption>
+        </figure>
+        <figure class="note des">
+          <blockquote>“Maya protects design time and brings real customer clips to every critique. Rare and wonderful.”</blockquote>
+          <figcaption><i>JW</i><span><b>Jonas Weber</b>Senior Designer, Brightcart</span></figcaption>
+        </figure>
+        <figure class="note lead">
+          <blockquote>“I trust Maya with our biggest bets. She makes hard calls early and explains them well.”</blockquote>
+          <figcaption><i>MB</i><span><b>Marcus Bell</b>VP Product, Brightcart</span></figcaption>
+        </figure>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <div class="end">
+      <div class="end-body">
+        <!-- EDIT: the short line next to the buttons -->
+        <p>I’m always up for a conversation about products, teams, or a good sourdough starter.</p>
+        <div class="links">
+          <!-- EDIT: replace maya@example.com with your email address (keep "mailto:").
+               Clicking opens the visitor's default email app with your address in the To field.
+               The subject line after "?subject=" is optional; spaces are written as %20. -->
+          <a class="btn mail" href="mailto:maya@example.com?subject=Hello%20Maya">Email Maya</a>
+          <!-- EDIT: replace the href with your LinkedIn profile URL -->
+          <a class="btn soc" href="https://www.linkedin.com/in/your-name" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4V21H3V9.75Zm6.5 0h3.8v1.6h.06c.53-1 1.84-2.05 3.78-2.05 4.04 0 4.86 2.66 4.86 6.1V21h-4v-4.9c0-1.17-.02-2.67-1.63-2.67-1.63 0-1.88 1.27-1.88 2.59V21h-4V9.75Z"/></svg>
+            LinkedIn
+          </a>
+          <!-- EDIT: replace the href with your Medium profile URL -->
+          <a class="btn soc" href="https://medium.com/@your-name" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="7.2" cy="12" rx="5.2" ry="5.6"/><ellipse cx="16.4" cy="12" rx="2.8" ry="5.2"/><ellipse cx="21.2" cy="12" rx="1" ry="4.6"/></svg>
+            Medium
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- EDIT: small print at the very bottom -->
+    <p class="fine">© 2026 Maya Okafor. Made with HTML and CSS only.</p>
+  </footer>
+</div>
+</body>
+</html>
