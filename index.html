@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<!--
+  ==========================================================
+  HOW TO CUSTOMIZE THIS PORTFOLIO
+  Search for "EDIT" to find every spot where you can swap in
+  your own information (name, text, links, email, colors).
+  ==========================================================
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- EDIT: page title shown in the browser tab -->
+<title>Maya Okafor — Product Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* EDIT: brand colors. Change --accent for your main color; --t1, --t2, --t3 are soft tints used on cards. */
+:root{
+  --bg:#ffffff; --surface:#ffffff; --ink:#1a1230; --muted:#5f5873; --line:#e8e4f1;
+  --accent:#7a3cff; --on-accent:#ffffff; --good:#1fa971;
+  --t1:#ffe1ee; --t2:#d4f6e8; --t3:#ebe3ff;
+  --shadow:0 1px 2px rgba(15,20,25,.05),0 18px 40px -20px rgba(15,20,25,.18);
+  /* EDIT: fonts. Swap the names here and in the Google Fonts link above. */
+  --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  --body:"Figtree","Helvetica Neue",Arial,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.05rem;line-height:1.6}
+h1,h2,h3,h4{font-family:var(--display);line-height:1.05;margin:0;letter-spacing:-.025em}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 clamp(18px,4vw,40px);overflow-x:clip}
+
+/* top bar */
+.bar{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 0}
+.bar b{font-family:var(--display);font-size:1.15rem;letter-spacing:-.02em}
+.bar nav{display:flex;gap:2px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:4px}
+.bar nav a{text-decoration:none;font-weight:500;font-size:.93rem;padding:6px 16px;border-radius:999px;color:var(--muted);transition:background .15s,color .15s}
+.bar nav a:hover{background:var(--ink);color:var(--bg)}
+
+/* hero */
+.hero{padding:clamp(48px,10vw,120px) 0 clamp(44px,8vw,96px)}
+.status{display:inline-flex;align-items:center;gap:9px;font-size:.92rem;font-weight:500;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px}
+.status::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--good);box-shadow:0 0 0 4px color-mix(in srgb,var(--good) 22%,transparent)}
+.hero h1{font-size:clamp(2rem,5vw,4.2rem);font-weight:700;max-width:22ch;margin-top:28px;letter-spacing:-.035em;line-height:1.05}
+.hero p.lede{margin-top:28px;max-width:40ch;font-size:clamp(1.1rem,2vw,1.3rem);color:var(--muted)}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.cta{display:inline-block;background:var(--accent);color:var(--on-accent);font-weight:700;text-decoration:none;padding:14px 26px;border-radius:999px;transition:transform .15s,box-shadow .15s}
+.cta:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px var(--accent)}
+.cta.resume{background:#ffcf3d;color:var(--ink)}
+.cta.resume:hover{box-shadow:0 12px 24px -10px #e6a800}
+
+/* section heads */
+section{padding:clamp(44px,7vw,88px) 0}
+.head{display:flex;align-items:baseline;gap:18px;margin-bottom:38px;flex-wrap:wrap}
+.head h2{font-size:clamp(2rem,4.4vw,3.1rem);font-weight:700}
+.head p{color:var(--muted);max-width:42ch}
+
+/* about */
+.about{display:grid;grid-template-columns:300px 1fr;gap:clamp(30px,6vw,72px);align-items:start}
+.side{position:sticky;top:20px}
+/* camera illustration */
+.dispenser{position:relative;width:min(100%,290px);view-timeline:--dispense block}
+/* digital illustration of the camera (inline SVG) */
+.camera{position:relative;z-index:2}
+.glow{opacity:0}
+.camera svg{display:block;width:100%;height:auto;overflow:visible;filter:drop-shadow(0 22px 18px rgba(15,20,25,.35))}
+@keyframes glow{0%{opacity:0}6%,14%{opacity:.85}26%,100%{opacity:0}}
+/* the lens flashes as the visitor scrolls here (scroll-driven animation) */
+@supports (animation-timeline:view()){
+  @media (prefers-reduced-motion:no-preference){
+    .glow{animation:glow linear both;animation-timeline:--dispense;animation-range:entry 22% cover 42%}
+  }
+}
+.stickers{margin:40px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.stickers li{list-style:none;font-weight:500;font-size:.92rem;padding:7px 14px;border-radius:999px;border:1px solid var(--line)}
+.stickers li:nth-child(1){background:#fff1c9;transform:rotate(-2deg)}
+.stickers li:nth-child(2){background:var(--t1);transform:rotate(1.5deg)}
+.stickers li:nth-child(3){background:var(--t2);transform:rotate(-1deg)}
+.story p{font-size:1.2rem;max-width:58ch}
+.story p+p{margin-top:16px;color:var(--muted)}
+.off{margin-top:38px}
+.off h3{font-size:1.2rem;margin-bottom:14px}
+.off ul{display:flex;flex-wrap:wrap;gap:10px;margin:0;padding:0}
+.off li{list-style:none;border:1px solid var(--line);border-radius:14px;padding:10px 16px;font-weight:500;transition:transform .2s,background .2s}
+.off li:hover{transform:translateY(-3px) rotate(-1.5deg);background:#fff1c9}
+
+/* projects */
+.proj{background:var(--surface);border:1px solid var(--line);border-radius:24px;display:grid;grid-template-columns:230px 1fr;box-shadow:var(--shadow);overflow:hidden}
+.proj+.proj{margin-top:28px}
+.proj aside{padding:28px 24px;display:flex;flex-direction:column;gap:12px}
+.proj:nth-of-type(1) aside{background:var(--t1)}
+.proj:nth-of-type(2) aside{background:var(--t2)}
+.proj:nth-of-type(3) aside{background:var(--t3)}
+.proj:nth-of-type(4) aside{background:#fff1c9}
+.proj:nth-of-type(5) aside{background:var(--t1)}
+.proj:nth-of-type(6) aside{background:var(--t2)}
+.proj[hidden]{display:none}
+.proj aside b.word{font-size:2.1rem}
+.proj.noaside{grid-template-columns:1fr}
+.proj aside b{font-family:var(--display);font-size:2.7rem;line-height:1;letter-spacing:-.04em}
+.proj aside span{font-size:.95rem;color:var(--muted)}
+.proj .body{padding:30px clamp(20px,3vw,38px)}
+.proj h3{font-size:1.65rem;margin-bottom:6px}
+.proj .role{color:var(--muted);margin-bottom:22px}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.cols h4{margin:0 0 4px;font-size:1.02rem}
+.cols p{font-size:.97rem;color:var(--muted);line-height:1.5}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 0;padding:0}
+.tags li{list-style:none;font-size:.85rem;font-weight:500;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:3px 12px}
+
+/* recommendations: CSS-only filter (radio buttons + pills) */
+.filter{position:absolute;opacity:0;pointer-events:none}
+.pills{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:30px}
+.pills label{cursor:pointer;font-weight:500;font-size:.95rem;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:8px 18px;transition:background .15s,color .15s,border-color .15s}
+.pills label:hover{border-color:var(--ink)}
+#f-all:checked~.pills [for="f-all"],
+#f-mgr:checked~.pills [for="f-mgr"],
+#f-team:checked~.pills [for="f-team"],
+#f-stake:checked~.pills [for="f-stake"],
+#f-mentor:checked~.pills [for="f-mentor"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+#f-all:focus-visible~.pills [for="f-all"],
+#f-mgr:focus-visible~.pills [for="f-mgr"],
+#f-team:focus-visible~.pills [for="f-team"],
+#f-stake:focus-visible~.pills [for="f-stake"],
+#f-mentor:focus-visible~.pills [for="f-mentor"]{outline:3px solid var(--accent);outline-offset:3px}
+#f-mgr:checked~.wall .note:not(.mgr),
+#f-team:checked~.wall .note:not(.team),
+#f-stake:checked~.wall .note:not(.stake),
+#f-mentor:checked~.wall .note:not(.mentor){display:none}
+.wall{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.note.wide{grid-column:1/-1}
+.note.wide blockquote{font-size:1.2rem;max-width:70ch}
+@media (max-width:700px){.wall{grid-template-columns:1fr}}
+.note{display:flex;flex-direction:column;margin:0;padding:26px 28px 24px;background:var(--surface);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);animation:rise .35s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.note blockquote{margin:0;font-size:1.06rem;line-height:1.55}
+.note figcaption{margin-top:auto;padding-top:20px;display:flex;align-items:center;gap:12px;font-size:.9rem;line-height:1.3;color:var(--muted)}
+.note figcaption b{display:block;font-family:var(--display);font-size:1.02rem;color:var(--ink)}
+
+/* ===== TO REMOVE THE IMAGE CAROUSELS FROM THE PAGE, DO BOTH STEPS =====
+   STEP 1 (this CSS): delete everything from the "project image carousels" comment just below this note, down to and including the line
+          that says "END OF IMAGE CAROUSEL CSS" (the line right before the "footer" comment).
+   STEP 2 (the HTML): in the Projects section further down, delete the 6 carousels. Each one starts with a "TO REMOVE THIS IMAGE CAROUSEL"
+          comment and ends with a comment that says "END OF CAROUSEL". Your project text and skill tags stay exactly as they are.
+   Nothing else on the page depends on the carousels. ===== */
+
+/* project image carousels: they play automatically (CSS only). Hovering pauses them; clicking a dot or arrow takes over. Set up for 2 to 5 images. */
+/* EDIT: HOW LONG EACH IMAGE SHOWS. Change the number in "--t:4s" on the next line. 4s means each image stays for 4 seconds before the next one fades in.
+   For example --t:6s = 6 seconds per image, --t:3s = 3 seconds per image. This one number controls every carousel on the page. */
+.car{position:relative;max-width:520px;margin-top:24px;--t:4s}
+.cr{position:absolute;opacity:0;pointer-events:none}
+.viewport{overflow:hidden;border-radius:14px;border:1px solid var(--line);background:var(--surface)}
+.track{display:grid}
+.slide{grid-area:1/1;position:relative;margin:0;opacity:0;pointer-events:none;transition:opacity .5s}
+.slide img,.ph{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+.ph{display:grid;place-items:center;text-align:center;padding:16px;color:var(--muted);font-size:.9rem;font-weight:500;background:repeating-linear-gradient(135deg,var(--t1) 0 14px,#fff 14px 28px)}
+.proj:nth-of-type(2) .ph{background:repeating-linear-gradient(135deg,var(--t2) 0 14px,#fff 14px 28px)}
+.proj:nth-of-type(3) .ph{background:repeating-linear-gradient(135deg,var(--t3) 0 14px,#fff 14px 28px)}
+.proj:nth-of-type(4) .ph{background:repeating-linear-gradient(135deg,#fff1c9 0 14px,#fff 14px 28px)}
+.proj:nth-of-type(5) .ph{background:repeating-linear-gradient(135deg,var(--t1) 0 14px,#fff 14px 28px)}
+.proj:nth-of-type(6) .ph{background:repeating-linear-gradient(135deg,var(--t2) 0 14px,#fff 14px 28px)}
+.slide figcaption{position:absolute;left:12px;bottom:10px;background:rgba(255,255,255,.94);border-radius:999px;padding:2px 12px;font-size:.78rem;font-weight:500}
+.prev,.next{position:absolute;top:50%;transform:translateY(-50%);width:34px;height:34px;border-radius:50%;background:#fff;border:1px solid var(--line);box-shadow:0 4px 12px -4px rgba(9,30,66,.3);display:grid;place-items:center;cursor:pointer;font-size:1.3rem;line-height:1;user-select:none;opacity:0;pointer-events:none;transition:opacity .3s,background .15s,color .15s}
+.prev{left:10px}
+.next{right:10px}
+.prev:hover,.next:hover{background:var(--ink);color:#fff}
+.dots{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:12px}
+.d{position:relative;width:9px;height:9px;border-radius:50%;background:#cfd4dc;cursor:pointer;transition:background .2s,transform .2s}
+.d::after{content:"";position:absolute;inset:-8px}
+.auto:checked~.viewport .slide:nth-child(1){opacity:1}
+.slide:nth-child(1){--d:calc(var(--t,4s) * 0 - var(--t,4s) * .15)}
+.slide:nth-child(2){--d:calc(var(--t,4s) * 1 - var(--t,4s) * .15)}
+.slide:nth-child(3){--d:calc(var(--t,4s) * 2 - var(--t,4s) * .15)}
+.slide:nth-child(4){--d:calc(var(--t,4s) * 3 - var(--t,4s) * .15)}
+.slide:nth-child(5){--d:calc(var(--t,4s) * 4 - var(--t,4s) * .15)}
+.d:nth-child(1){--dd:calc(var(--t,4s) * 0)}
+.d:nth-child(2){--dd:calc(var(--t,4s) * 1)}
+.d:nth-child(3){--dd:calc(var(--t,4s) * 2)}
+.d:nth-child(4){--dd:calc(var(--t,4s) * 3)}
+.d:nth-child(5){--dd:calc(var(--t,4s) * 4)}
+/* automatic play: each image shows for the time set by --t above (4 seconds to start with), with a soft cross-fade */
+@keyframes fade2{0%{opacity:0}7.50%,50.00%{opacity:1}57.50%,100%{opacity:0}}
+@keyframes dot2{0%,50.00%{background:var(--accent);transform:scale(1.35)}50.01%,100%{background:#cfd4dc;transform:scale(1)}}
+.car.n2 .auto:checked~.viewport .slide{animation:fade2 calc(var(--t,4s) * 2) linear var(--d,0s) infinite both}
+.car.n2 .auto:checked~.dots .d{animation:dot2 calc(var(--t,4s) * 2) linear var(--dd,0s) infinite}
+@keyframes fade3{0%{opacity:0}5.00%,33.33%{opacity:1}38.33%,100%{opacity:0}}
+@keyframes dot3{0%,33.33%{background:var(--accent);transform:scale(1.35)}33.34%,100%{background:#cfd4dc;transform:scale(1)}}
+.car.n3 .auto:checked~.viewport .slide{animation:fade3 calc(var(--t,4s) * 3) linear var(--d,0s) infinite both}
+.car.n3 .auto:checked~.dots .d{animation:dot3 calc(var(--t,4s) * 3) linear var(--dd,0s) infinite}
+@keyframes fade4{0%{opacity:0}3.75%,25.00%{opacity:1}28.75%,100%{opacity:0}}
+@keyframes dot4{0%,25.00%{background:var(--accent);transform:scale(1.35)}25.01%,100%{background:#cfd4dc;transform:scale(1)}}
+.car.n4 .auto:checked~.viewport .slide{animation:fade4 calc(var(--t,4s) * 4) linear var(--d,0s) infinite both}
+.car.n4 .auto:checked~.dots .d{animation:dot4 calc(var(--t,4s) * 4) linear var(--dd,0s) infinite}
+@keyframes fade5{0%{opacity:0}3.00%,20.00%{opacity:1}23.00%,100%{opacity:0}}
+@keyframes dot5{0%,20.00%{background:var(--accent);transform:scale(1.35)}20.01%,100%{background:#cfd4dc;transform:scale(1)}}
+.car.n5 .auto:checked~.viewport .slide{animation:fade5 calc(var(--t,4s) * 5) linear var(--d,0s) infinite both}
+.car.n5 .auto:checked~.dots .d{animation:dot5 calc(var(--t,4s) * 5) linear var(--dd,0s) infinite}
+.car:hover .auto:checked~.viewport .slide,.car:hover .auto:checked~.dots .d{animation-play-state:paused}
+/* manual mode: shows the image you picked, with arrows */
+.cr.s1:checked~.viewport .slide:nth-child(1),
+.cr.s2:checked~.viewport .slide:nth-child(2),
+.cr.s3:checked~.viewport .slide:nth-child(3),
+.cr.s4:checked~.viewport .slide:nth-child(4),
+.cr.s5:checked~.viewport .slide:nth-child(5){opacity:1}
+.cr.s1:checked~.viewport .slide:nth-child(1) :is(.prev,.next),
+.cr.s2:checked~.viewport .slide:nth-child(2) :is(.prev,.next),
+.cr.s3:checked~.viewport .slide:nth-child(3) :is(.prev,.next),
+.cr.s4:checked~.viewport .slide:nth-child(4) :is(.prev,.next),
+.cr.s5:checked~.viewport .slide:nth-child(5) :is(.prev,.next){opacity:1;pointer-events:auto}
+.cr.s1:checked~.dots .d:nth-child(1),
+.cr.s2:checked~.dots .d:nth-child(2),
+.cr.s3:checked~.dots .d:nth-child(3),
+.cr.s4:checked~.dots .d:nth-child(4),
+.cr.s5:checked~.dots .d:nth-child(5){background:var(--accent);transform:scale(1.35)}
+.cr.s1:focus-visible~.dots .d:nth-child(1),
+.cr.s2:focus-visible~.dots .d:nth-child(2),
+.cr.s3:focus-visible~.dots .d:nth-child(3),
+.cr.s4:focus-visible~.dots .d:nth-child(4),
+.cr.s5:focus-visible~.dots .d:nth-child(5){outline:2px solid var(--accent);outline-offset:4px}
+@media (prefers-reduced-motion:reduce){.car .auto:checked~.viewport .slide,.car .auto:checked~.dots .d{animation:none}.slide,.d,.prev,.next{transition:none}}
+
+/* END OF IMAGE CAROUSEL CSS (when removing the carousels, delete up to and including this line) */
+
+/* footer */
+footer{padding:40px 0 40px}
+.end{background:var(--accent);color:#fff;border-radius:24px}
+.end-body{padding:clamp(22px,4vw,36px) clamp(22px,4vw,40px);display:flex;justify-content:space-between;align-items:center;gap:20px 32px;flex-wrap:wrap}
+.end-body p{margin:0;max-width:36ch;font-size:1.2rem;line-height:1.4;font-weight:500}
+.links{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;text-decoration:none;padding:11px 20px;border-radius:999px;transition:transform .15s,background .15s,color .15s}
+.btn:hover{transform:translateY(-3px)}
+.btn svg{width:20px;height:20px;fill:currentColor}
+.btn.mail{background:#ffd54a;color:#1a1230}
+.btn.soc{border:2px solid rgba(255,255,255,.6);color:#fff}
+.btn.soc:hover{background:#fff;color:var(--accent)}
+.fine{margin-top:26px;text-align:center;color:var(--muted);font-size:.9rem}
+
+/* around the internet: Medium article cards */
+.head.stack{display:block}
+.sub{font-size:1.15rem;color:var(--muted);max-width:62ch;margin-top:10px}
+.posts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.post{display:flex;flex-direction:column;text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);overflow:hidden;transition:transform .2s,box-shadow .2s}
+.post:hover{transform:translateY(-4px);box-shadow:0 18px 36px -16px rgba(26,18,48,.35)}
+.post[hidden]{display:none}
+.thumb{display:grid;place-items:center;aspect-ratio:16/9;overflow:hidden;color:var(--muted);font-weight:500;font-size:.9rem;text-align:center;background:repeating-linear-gradient(135deg,var(--t1) 0 14px,#fff 14px 28px)}
+.post:nth-child(2) .thumb{background:repeating-linear-gradient(135deg,var(--t3) 0 14px,#fff 14px 28px)}
+.thumb span{padding:16px}
+.thumb img{display:block;width:100%;height:100%;object-fit:cover}
+.post-body{display:flex;flex-direction:column;gap:8px;flex:1;padding:22px 24px 24px}
+.post-body p{margin:0}
+.meta{font-size:.8rem;font-weight:700;color:var(--accent)}
+.post h3{font-size:1.3rem;line-height:1.2}
+.post-body p:not(.meta){color:var(--muted);font-size:.98rem}
+.more{margin-top:auto;padding-top:10px;font-weight:700;color:var(--accent)}
+@media (max-width:700px){.posts{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.post{transition:none}}
+
+@media (max-width:860px){
+  .about,.proj{grid-template-columns:1fr}
+  .side{position:static;display:grid;grid-template-columns:minmax(0,300px) 1fr;gap:28px;align-items:center}
+  .stickers{margin:0}
+  .proj aside{flex-direction:row;align-items:center;flex-wrap:wrap}
+  .cols{grid-template-columns:1fr}
+  .bar nav a{padding:6px 11px}
+  .bar b{display:none}
+  .bar{justify-content:center}
+}
+@media (max-width:560px){
+  .side{grid-template-columns:1fr;gap:26px;justify-items:center}
+  .stickers{justify-content:center}
+  .bar{padding:14px 0}
+  .bar nav a{font-size:.85rem;padding:6px 10px}
+  .hero{padding-top:36px}
+  .proj aside b{font-size:2.2rem}
+  .proj .body{padding:22px 18px}
+  .note{padding:22px 20px 18px}
+  .links .btn{flex:1 1 140px;justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .note,.cta,.pills label,.bar nav a,.btn{animation:none;transition:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="bar">
+    <!-- EDIT: your name (top left; hidden on small phones) -->
+    <b>Maya Okafor</b>
+    <nav aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#kind-words">Recommendations</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ================= HERO ================= -->
+    <div class="hero">
+      <!-- EDIT: availability status (or delete this line) -->
+      <span class="status">Open to new roles</span>
+      <!-- EDIT: your headline -->
+      <h1>I enjoy figuring out what works, why, and how to make it better.</h1>
+      <!-- EDIT: one or two sentences about what you do -->
+      <p class="lede">Senior product manager with eight years in fintech and marketplaces. I find the work that matters most and the smallest way to ship it.</p>
+      <div class="hero-actions">
+        <a class="cta" href="#projects">See what I’ve shipped</a>
+        <!-- EDIT: RESUME BUTTON. Change "your-resume.pdf" below to the path or web address of your resume PDF. Examples:
+             href="resume.pdf" (the PDF is in the same folder as this page), href="files/Maya-Okafor-Resume.pdf" (inside a folder),
+             or href="https://yoursite.com/resume.pdf" (a full link). It opens in a new tab. You can also change the button text, "Resume". -->
+        <a class="cta resume" href="your-resume.pdf" target="_blank" rel="noopener">Resume</a>
+      </div>
+    </div>
+
+    <!-- ================= ABOUT ME ================= -->
+    <section id="about">
+      <div class="head"><h2>About me</h2></div>
+      <div class="about">
+        <div class="side">
+          <!-- EDIT (optional): the camera is a drawing. Your photo shows on its screen (see the EDIT note inside the camera below).
+               As the visitor scrolls here, the lens flashes warm (current Chrome, Edge and Safari; other browsers skip it). -->
+          <div class="dispenser">
+          <div class="camera" aria-hidden="true">
+            <!-- EDIT (optional): the camera is a drawing made of shapes. You can change the printed words ("Canon", "G7X", the lens text) in the <text> lines below. -->
+            <svg viewBox="0 0 300 330" xmlns="http://www.w3.org/2000/svg" focusable="false">
+              <defs>
+                <linearGradient id="gBody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#46484d"/><stop offset=".06" stop-color="#2c2d31"/><stop offset=".5" stop-color="#18191c"/><stop offset="1" stop-color="#0b0c0e"/></linearGradient>
+                <linearGradient id="gEdge" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".1" stop-color="#fff" stop-opacity=".12"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+                <linearGradient id="gSheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".12"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/></linearGradient>
+                <linearGradient id="gScreen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2d2f34"/><stop offset=".5" stop-color="#111214"/><stop offset="1" stop-color="#1b1c1f"/></linearGradient>
+                <linearGradient id="gRim" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#43454a"/><stop offset="1" stop-color="#0c0d0f"/></linearGradient>
+                <linearGradient id="gMetal" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5d5f65"/><stop offset=".2" stop-color="#e9eaec"/><stop offset=".5" stop-color="#9a9ca2"/><stop offset=".8" stop-color="#dfe0e3"/><stop offset="1" stop-color="#55575c"/></linearGradient>
+                <linearGradient id="gChrome" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4f5f6"/><stop offset=".45" stop-color="#8e9096"/><stop offset=".6" stop-color="#d9dadd"/><stop offset="1" stop-color="#6b6d73"/></linearGradient>
+                <linearGradient id="gBarrel" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3a3b40"/><stop offset=".5" stop-color="#141517"/><stop offset="1" stop-color="#050506"/></linearGradient>
+                <radialGradient id="gGlass" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#030409"/><stop offset=".35" stop-color="#0d1736"/><stop offset=".62" stop-color="#050710"/><stop offset=".8" stop-color="#2a2260"/><stop offset=".92" stop-color="#0a2a2a"/><stop offset="1" stop-color="#030305"/></radialGradient>
+                <pattern id="pGrip" width="3" height="3" patternUnits="userSpaceOnUse"><rect width="3" height="3" fill="#131416"/><circle cx="1.5" cy="1.5" r=".75" fill="#2d2e32"/></pattern>
+                <pattern id="pKnurl" width="3" height="10" patternUnits="userSpaceOnUse"><rect width="3" height="10" fill="#7d7f85"/><rect width="1.2" height="10" fill="#f0f1f3"/></pattern>
+                <clipPath id="cBody"><rect x="6" y="150" width="288" height="152" rx="14"/></clipPath>
+                <filter id="fBlur"><feGaussianBlur stdDeviation="2.4"/></filter>
+                <filter id="fSoft"><feGaussianBlur stdDeviation=".8"/></filter>
+                <path id="pTop" d="M75,258 a41,41 0 1,1 82,0"/>
+                <path id="pBot" d="M71,258 a45,45 0 0,0 90,0"/>
+              </defs>
+
+              <!-- flipped-up screen that shows your photo -->
+              <rect x="82" y="2" width="214" height="152" rx="4" fill="#0b0c0e"/>
+              <rect x="82" y="2" width="214" height="152" rx="4" fill="url(#gScreen)"/>
+              <defs><clipPath id="cScreen"><rect x="87" y="7" width="202" height="142" rx="2"/></clipPath></defs>
+              <!-- EDIT: THE PHOTO ON THE CAMERA SCREEN. The picture below is a SAMPLE so you can see how a photo will look here (it is stored in the one very long line that starts with <image href="data:image/webp;base64,...).
+                   TO USE YOUR OWN PHOTO: replace everything between the quotation marks after href= on that line with your photo's file name, for example href="my-photo.jpg"
+                   (keep the photo file in the same folder as this page). Use a landscape photo, roughly 3 wide by 2 tall (for example 1200 x 800 pixels). -->
+              <image href="data:image/webp;base64,UklGRgSMAABXRUJQVlA4IPiLAACQnQKdASqwBCADPm02l0ikJiUsI/YIkYANiWdo+7Ziv3j/52K/wmEt/5p3IIf/9Gapf//2LUYvVuH/9W/9tWL7fbB8Tv/dD9p7ImweJZ4Tu5/lv2u8mj0v/Df+j1Y/UbxF6A3/b9KLOJ/1duApbf9/hi+m7/t5dpWP93aovdf6X93v8X8aF/fzH5U/vXz6aUwJHnv8D+f/Wf+xHvg/SX/u/wHwCfxn+5ee56+/3m9RP7a/up71Xo6/s/qN/1/09vVC/9XqYeb//8vaR/s3/q9ObUofkv/p/5n+D9t3r3+49A/j97x3A//Dav8h4H/ak/I/v3oLwBfZHh82hr3gzY7OOwT5DS+kr4e9Z5O0+NFC+t2j9ny3n3i4Z/NCoaDsieJBqVUnpjhIdYXGU2K9nnIrPh71L52lV9rnmkVNnBUBG/PJEVU9Hm206b3Y15AUL2h51oCcRApHa4QKY0UafSJFPVucxfCMHzvVR9TtdxrBxC7gzF+gY472r4DjORfeeI8KiHoMwEfmyRHa/oixZ1R2oYk6+mMupKH4V9wKnflWcaMQA5Oog8yDFS7T0j3O+AFUV82dFkqXBjAyVRROEaBdypwxHmSa6JiRTzeyj5Jb3tLcuTfwCVQJFUyiqMfo+vWKC0erxaELoqLj2jKosZeved+qKSQFwe82ZN/OcIIHLy7w9FCZFByLh2N3NasSs3Y4j1JiAUrz7gVR7bOUIHrYMkAyJWLD+0iFyZsx3yaxaFgstDDBgJHyLsCL61MmbzXKZKc/9GYEBhyDE8HBG1lyLNn2j2qXJOZxFq/pssgdInlLY1E6mDycag01p6FbsP0ThafLgUQ8hIfg1jUTq/t5W1U4eI+m7yvyRQREFwLnx6hSH94ULkH5PXUiBM8LkFXgCDSmTFE1MZxDE3nQKeET4y9ZV1j0eVVi8l4qRqZ8KGwcmKrVTN9cELPs3On6PccVHFhWUNNGxbHXR7V8H1blYoGjzgH7bneMqGflE8GK0seQtdkkTR646WdybumC3xZc0xtKmPaC8OBCBYJxX1S5um8AtPvQvN1IoWIsgO6xvWTvCL5pjFEY9k0mn+8T5gQiotUKxkwY4vGTAuJns4/1g18hoCkp/okaiKGiH81WB46NwZ97BgtSi42R6/vkZ0KikIWU+M5vrKg9Lzs3Uvo69yqQF3reTyEYIlN8UF8nQBJPf1R7xOqzgp9YMsl2QPM3z9MBq/cq+IRmVxQzh4N/ni7lkAw//A/xaPwAnMO7YAec1SC8/my/9yrHbbWIrB6jyBIBCg8pz9lG3ppFfftGgiS/20KZWj9auZ5u7/eWLKKxjHUkjoSdnKQWwI05kenwuujkhY8DfIGGd9dsVDvXWwIz/epuY1Q+Rg3m2pjlsAM+60Yhh87qsCJ7+tmH3ihknwoRLulquUy8b0x4CjtwNEN6rSZhfT5mTqfc86bxp3qrN7lUImtGz1HOrLYEkCWokI/5F4YwXkrtLv7tb61tOazyJs87s2w5JJXtU1Z+mK9KHt3qSA+JkXsqmu0jQo+yzkittvQdH2BPSE3kerDN0kPH3aSVS/IC62kQnITDxqWnzIzU4pQkAcvl6rjpVSRg+75jaQJ6HgNKFPqg93xgTUj8WiQr7iB4W6fgpJLWkzBjuBdO9tRNePIkhDi77dHJd1cK+nnAL0t+LAnRC66mL/3rIsmhUU8nWQmmPM6dCloNiGVD+a2FsuzB7J1aGc1YsepKTAoXDnZYr8i11phBiRw7iPLV0NJD5RVLilqVNMqNk6Z/yzGSWl39ia8ZeaCbjzgHRyNgsWJtLtndOQfv4KdO1s8pY2PtzpLgP/YGjuAeqsaK+Xe32h6vlQYRDtHOXMMCRckVT0lTQeVktf//9RxzWvNBERjZyZ2NRMHtlsjfh4rBGIu+kiqpJTOqAIDYJXVmE0z1/ICu3j8mvJyEhHmyXTmxyx2TJQS+ZfRDuogEyamheD6c5//7k1M6Oiy/9xdbhvx7PylH3BE6fAnpJxl/ANNtKO6TxnUYQ/REGUmvaloVE7r6k3Z/0mgljeNnJsce2yAU3524DIxO8AvgNedNnHX1zHT3n9dGGoKeub+DAq5YJnkFeEXTIhr0pen2nkAWU6j0W49p+9V8tpPuuqHwoMtLEtZOBRcSnteU8nKxf7WBwIVWvFSFjTkgm/jM35/C/p7tgrvtjbuZ47nnYJIgYbFGVrKsR1QdqgXxh7AxFZ8tJNyeNAuyHtPlA/fgPqkdHRlKA9482/CQYFJ251PEC+JfqdX56v6qGq/pwGjCrPPcU/KgZx5xL4wXsrHpePyrouUagHEQ8CFk8+yXaoxalUVtJlK393Pis1XuKBfXvIfWqnNzWNYgZA8Oj7fZgfXuvg4k4mADDUKgH2eHE8yo3nwpwWWR8oV9PM44WGLLkpe7PjRC7SkXkUowX3yEjcLGhdgQ0xZ2B1jSqhs4dKL8hVKw1IXwhOPAKWsGXcNUutxuV8FSA8rBYsonW6oW8D4tqO/yTlZrRdFvjVU6UxDtbzVAU3SsiZ9D0PNkTrt6KDxsB4ZUIVjLP96bTibz3AFmkruEWdqVZnYJXOlCxDtC2+6rD8xxHyWCudbUaGLPcGT1Wyv0NvcJ7cHbcJ0yIktEL53g+DduLSgtQAWRkeWAzxtJ0OQkHMZa0zJiyF2T5peSm0AZ9MTteKYZbld6Fm+dZXA+Yi8NjoDP+H9SBAJuV3lncrKsOszII//r8l3Bd2/C3VHfdLH751+Z30E3TYCUC8WR5BKRzbAi3xYAx1upds+cMR7QT4rvuNmIGvIxLrqLnchbqdXQBOQr0BKjynoPP5a5bEELUKwBmEPqATJAKqBHYUXp8EV+f0u/PJfEH/wCENXPHvmtxY/C/WYGWpclo4cjz65TL7g6kM5C3iY21GVnel/a6X/P/jm0QQu2gasqv/pVrIFxBFJcbFeOa0a2xS3tf73nDUbOqr0oHHOLS+1LOlPojTGPe8w6GWB1S4xKJVEhBcBXn77PKDQJ1GYaAgngfux2QRN0uz0vPXugMQZmHfUqt7PA798ZBwsnqwDI5BDLJIblRnonfWMEukJkwSDaLtzcHQ5iHeywAEiQQFfzjMtLpsuKXn6DkyrqFBOcrQoMJsdm00QrPXSWLxTDkiQ5w3MQdD4qYPdEgKu4CZGnDj4CrskuOAInlm9+S2kqQIBMM/oziCfTxgOj3BdntAAMx8aLfrNV8bon/wbdWFUF7WFLceTGPaEm6HRivrAK4Oiabi9tGaPbjCAk7wTpuF93AmEVHzHOJdDRjCPuZutbnEgOjUDO60uthD3AbLWR8D+x3P+738nCHjdlwH8xNSw8jC7Wezv8ryg0oJpj4ijrXTpsuka7+sN7klPBf3w5W7UEYQD/m8oArz78Y/sGm+DT//uvZzr1an0ZBzF7s42jkgmYWAsh78x4sFlYBZv6KtiK3c6ZHgrcNWCy4qMPiXWHPeeE9hjpdo2G8opP1q1xJQgoD6525XeHNQ0HL7RCX1pXPB31lSgxU8c0GT4WMDqSaVkCJJQ4HNuGsB+/NQ1aaSPvXEMp7rFlOmNHc93yOXPlaJtajhAsSHfY6VTXf6qrR+q/NQj47f7jlrwJD9PQLnzPdnvqhbxRs2/xVkTFd/RXuU8dKHVBVC+nFzl3JvAahXzOZUm6+dcTSOxHDgTRbibHxW9nNzPs/utfAc89GVUG4KDk1r+8+3z43+EJHVeveQs8m9ivvmWrICNrApjABQjxnAGC8Mtygohxq1Np4eghvk6gbmvecSuyTRKyVn6Wm3asIRpDAUQL6L079dK7eW0dd2RSAGdXT6xNPX2kFspBh2uqWYIG9zpvcD1E0tl7rdHOi55zSa9Ad8wfmQI5zz2JyP9MViesiLlWsFs3mGSQx7fVSo304uGX6VJYvxGp/pUg1Mtx99Cy43JMMvQfv4r2j6C+XSlyJODCEIWbfitiJ3yiYfr/ZZHnZzSgN5dbXDz5gmOcSK6c42gjik9jSYGPqlJpf+2ym1sgmlDySUn4gTs8iUOkeUNj2JhqYrf0qafYDlUqZhqczMu+UXFONE1zVM5Ssgrd1/Kn/OEFp6YHD5OBIcMSvKF5BrTVxtPurEtH/kiJ1Xn5apUTdXHDLoO3bITbgs5qk6hwVT4iY/N+5EClXdupBwipdGsxlpLz2G8cjyeeP/mwaVsE9/kAvXfeGDhV6ZmHrH3Ow6uDdVHVbwn9KY4bQBbvLO4dsiWYun/+xEc0aci9w6AjY9AJc3KKl1JEQ6RJJ5vmiKII6mMkw6OJHcCk5jrkbEyC+5V5r4/N7xB1ElAf8d+3/F5TlmLyd7tv9uDqpvH8hJyU0EnoXVQnEbgznzJMf/y/oLee35n1epci8HTLUEK9LdG/FBRQPFofkx4EVABzv/5RLVVXG6T2tKT4KyhzxWL6cUD4opgP0dhPVYGnd63T41Gpm70ELapAsid7Lu2JzH7kQ2lY82IgSZcW3uyTQ70koCPcUM6V+yKRJkUoZ9wI5AzP7m0IYUUvYi9j1JBRWq9QEEKnnZMP8dYW56dXj+MaFQnhAOx6i3LKC4xujFDPJRBZlK421FjG9udUcdGcwNZTOIG0FQzNbilZ8A45MldsV2ElK/zdD4z8T6hGINignbJ5VRZq2w8++TyLVxbEgc7lCapHxSmzVoDpAwSlCDPuUbpu/YR7U3MRspJervisdaqLaFx1ItWR9OrwDlSPYK4BbHnn2paQlMgNcqnDdtdWFbfgHfQtEq6Ef8wM11y+RCUkL/DGQm8l5xzFeP7UYrA2r8YZrNmwmQP4pIpLqowQEKQscBwo2LSLlNJtdtte9gOSk2dPeagg4xn/0Kslc7vg1ytO/+Wwvpc1LGNKv07zn6FlyoO0rqVLPOiAzHlTHwZ1AD2Igtweh7Xh5LoJmUJ+yFt+QGwQnE80GWg8NKQEJE3iPUHZ3TZG2pwJ5Tcdm+HJB/4qk7FRXCiO0v04QeEp47nsrnuNai4+qnMoEdmnARk4OQIu3IYhjpbNH/tlYEj8zVNFDsxfGrFqvKWuAuA6mlUl7Awmn0tWWrJkK5cOXVtj+oJPdhKsqaDcxJryftb9idXtdtgwozHJC1HgBUlOhRQASp5ayVdxFMZD55+U2ar14yk6fuWjrlfkSh2UEKxl2DZOiknJzG/HtU+rsoIk+vNxi5Qe6PJ4a2ENPZ19SgZD44aBLa8KHOu4OYohls4QIOrXi9238HwVBwGkC9kS0Y94MAnigjyQzfZ2xNciNx6S/ZWWySn0iSihqs22ZbPSK4QoqDZuy0id3KlNtqMmzemGzEqrkXboXm8D2yab9wLP1/tCnMGwUOhrqFoLgEIHrgvnhpcj2xdeRibNTzvJSH7+MGHl5HnbaK6f0XgcAWJ5RnWI7qOS5Xkhs1i/8XL/Ll4/qKzJU+o+kxuC0YQEw+4va+dpWEdupsKpAXQtbv1M9KtCRMi+KiOWOXRuE/v61l2kUvwFq4/lhlOjZC6jYCrJPgWgrBFLaHyF8E7XZuyKCk8HWmV3xr2/dJSHfHtWwuEovrfdCn0wX+l+mU4UbTEw3TAomJf78mfniMLO9uF0JC2KAR3Ad7mh05lEKEa1FXXNuPvV0JwulVUVUrEHYNDzYqEtdifnyAvMOhgJHsa8jQKXWL+dLUkWnG6BiofkdZCd6NRP5ylO1LoFEjuLAzShY54bbNB5hCJKNjJjlcMV7lx1qwRCbGImwEL2Fx4wWSwByFYkUNtAF1VqZo5bBnZMeDqU7IeYpHcpa5QWdnsaK5OoUpa9Wl8J7h2IDB0tPolnSQWF9E/5yJmxFoUP2+7heaRomXEAOl0q9UZIxTayre6yW+Aujugj8bs5trVFb/OzYdf/wmYAIGJy2Vc1DOxOG/PJzsLPv7WdrBo2bi4O33P6foqvDf37Me5fdxN4UpIHyoSK+tGNMtEovYcfmYTxoxs9uZt5NXsd1QQfXapa3f7erKh+LSB/XrPvL6/h8i/OPXradgKDfpmZIHoB0C+wHUPV65lQvtqR6WVqUm1hPKorAoYq4GxETeoNULJIo1T12NYiyGnrI1adYUKHmJBS+bFRnkCgxTbAyKr+lt21ljTxv83ozgMpLFLjfDI/SSE4bhQYf5wjZWsFHuIVHVkp9y5BUHOAWmIv23uG82Dh94nBeGuhdaqIWnAduXHPQLgno/zXgYn3Rq8BaokyvdvzCx25EgIu5+31XD8grSF0hx3NT4VEDbMxMSy0SKdyj30xSnXTbheyI0heDKRNPJm4mf89jPUoZNleAYTPJM+ZjMbLkVg8MxKxXK+epqyFmWO3lpuOxYCReKJ1IcY44DyefHm8FPUUXmfflLe6Pm2x3VUWss55U5DzZYIj7zQi5DXQ/6w5FmH89htqh6uRSswMAYgPfAdGuhN7bCzBnrJ6EQEqRUnCwnycn1+Ix9dY00xKmaPf33RWilkJ4alQ6/I9yeg0hFyd6+8AXEHJgrv9nodTOnBAhPsFJCon6J3YwLMKH8pZ/bdNA+LTxu01yjB50gx7HebC0Rj5smbKdwntF5vlQngCGFHv/IR2/GmI4bWp/C7vUHy49VZi6Pncyy33icqSqHwvJ/vNFjxOCP39DILZXK5jXE6pWsV/UJPuWIJvX5jpLL2lC7ylTJUOPIinH1QbPMxT1z05jO8kRAl9zU4xVE383MaN13iAX2j6Uqyer6zuuaRcK8M502aVRLPAT7lPy8tVLzqrKRszxqCYNKdnzHa8BzofLkxVwUA3icF/9/SCv/jLoNmx8JWevu1yPhfP/se81YSyLekF4wnJW1j1j/4DPzm/UXUzTdoM0JnwxEaB4qRrXWVBHPZ4ACsnVom4VgapFi9pay3AyWlPNpzG5ja3Qo/8VEENjdIP6sNCCKysLI/uBxtpQp8eGBSS1QfzOhqa4le10aziAXjbATfa96XO/d1YS4kn8M8VRR/+RQroh8w8WJKaplGIR13eSAd0JrqKMK/Z3lL+2rImlv3h+QfOe7sCr1Gk4pUJ3aoL1iic3N4uCWBapNEBzjMgIhpd9nIFY0i9qEoJ1YWFOeYyWMQwPXa+iZCoYsHdL5jD7ComuPDIrSVn1NdKoCGYBJ3ZoMBIPpBuJEAta+E9xX1Iz7URb+np41BtCAfYBxXme7tGsrZ2xsVqx77QAP7hCy9E/8DDie0xX1K3PNv9AqLYE2R3iIXFJWTuOz/dsK4dc7xQMqWBe6Ab+6huJcVZWRxWGEOF6aUcWNyzH5M6TpOCMKSOBpPzGG1w30XCBw56bNq1l9GJQjpSA275szzMXQssfkIr8JsPnTTG9SbFstTJMeBf9miUrXQC8sC9WISEkMZQjiZHW3h2b0uwEg6SmguerRNkxDIF3JwbrpyayJveAC2c01H0wTDV1Itzf4dJlJloVDRy1MAAzIYDXVl4tIy4tWhdZS3tVCNEuX2+sfbwkAy0aqZwIScYJoGFXKi4mxYMO97s/m6GGisZRpOs4njcDk7NGtB935yGYvFmXLtoS/wC5v0x0iuZZ1f9Rx03jhqbvpVV7DZNVXGCuYofPcJTAgfBu0IRpvsJtgk+5C97B4SMlhc5BNtdncNkKg2aV88rh01rAnE6fAgJr4v6R9HZYgcA5m6xDCjBcfAZQwz85VLb/kAN2UMEAn5szAZKxil0vgtliBHzA0XrOXZbewCrVpY2XrJ9/LI253KaAn1xpPER48Hi0wRKafuufm29/mZ+xBMiZjFaegQcylwVgGXVFXP6Bx8BtAknOGoJs1xiB+VI+vhb4zVXQXDyTb7bfsywaeeh63jcVJlbHSY9iVoU41jIqHjhMf+OqYC69tApw3oVEoYUMZdAxPAyRaVsL1w1soTUKyBd3KsOajggOzL05bCIMUcO68/fscALoqUDHxRsDg7xGC1rgC3dXPVbyiw3ipY5FtjSOMufJj2ICyNscfY2u/jFrjQMHwyCdU7KvllJgFbf1G5YrGwFIkyG3T66+wcQZ/IJGWbDP11fqBLjeGXThn+4FPSbr+4xrYlu+gQqn1CXi4ngQGtVu3Bq64eUlBCZ4lV/EBbxtF/XCxHusq+qyXqt26BKRfANqCGkDtmG0U4erHK13FN1WarQ8SLwoHQLCH0kO5DNZF0rCcfqSgL/DY5oFCtAAPRzhzJ32SfOnTszMxuTsGVDSZsgxy80CqY1NgtXriYQvgNPVh9fCPhDtZM37u1nIcCcBFevx1HJ2jkh1K7agMHt5hcYemMQB3upEv9TYNbEaLiftoq84b+ISWKW0MQswbdCZtE45ZTpyIiTSG43+ZQgPtqiS0ypjtHCSfcjojB6cZ6xqgwyQdB+gROXyl2b9OScaqnngV9a9UAb1oF7hhJWJCqq8rPKQL6Qyn92xWJryT0r/FxKziHr+SETzaiCs8QYmBpQwDuq5+eiY8dbWxT9mToPIz005hq1lLGNJ2C47HJMtpMTZNFg/Lplggohm46XXm94mNBSproFR8D1yntfckm9cBYof8KO+URuK2HdF/dsktnptUZFjuAl/Yn8uBOLwSvJM41SUz2D2DrNPUly2m2oFjp6es82c+SRzKzPYiXr6xwTlIpVTXVJCeW9xDTQUTjIWqoqzkfRW3qU08OGCGb6nPnzt4zJmq5gjBV0zBjUMl8jdOyTE1nWhj2D9n2/R/ELryMliRRaQXrdNhL92kaudwgZ4/CwJKpfgR8/J3wc8ZnN8ICjqmTLF1Bn6fGbV2nBiImDbEwu47KMAZKqU47QuMmrpz9n6GI0s3URN7Z0S0rH580rNwANDnDHuknptalIwYSCAB/BhlfBaR5AIncS3s28wGbhOdXVqam9YT8uNsjK5oMmOvuYotBTADDAevHL+Nc+v4s5aEjLjF1PvGrE9Z4/8p5blzgzQ956tJc84XQAT0wWHStWaa4FZFQMAqcAMKPYiKu3PnVfNk8C3yGgBhDa6JgvPip1foTKxg7iPrE7k4h4oaNmgU1VqHUkQLQ8CPA/c0EmlBoKRo7A0G52BqMu2eUYIDmgQ9v+yd+VRL99oAk+lJO9xbB6V6zenA1Ej6kCQ0I4+fZqbXx4tkXuofxY2GAppjbhUxdS0R/SzRDTxD+6SC64M4olbO9RdqX4PCwCvH5J2hNmw1Aeb3YdmjLZYO3/UhjeVjmBCaZgBVhiazVpGwTE3OlekWnch/0sVVewQttfz6VVaXAAvjqgkdSzjnkBMqXCIlLECGz3hj6aySoTjZ2AgOlkJF0SSYl/fuea8p78M25ESie78gisZpRwzsVgUfnyjadSKtiiZCXZPCGQQYOIIK/nirK6OENUvuev62pmbrBYzfzHxr98aRaKUs6gYH9J7MnUlyBXzTwnFZpKh9rVvPemye4fddeVPnzF8msEX7nP2TpBCbFIjJvAKLUCbc1JzKctzWJJlw5Roxtjm53aMoCc8I/RyVRh+0QpH7jiWz94fCwXZopcdwKxrWGhtpa2cMV6usZZx+DwGXNx33dOrEr4J+WrXfjdaJ2DNaarfdmtKuIH3Tg4+DZs5BVsoyse9GnN1XmifrltD/QNbW8ZHVwIG2DdtswBVlxZj5Oy3gp+X5ZlK6rUN856h6Ly7Jk8em5qRzX9tXg4jHbNARbhMAsOAhf8px1AWPiBkJy59ataV7zGUx79WOCgyebsKHG1QXPtULW3IDLyphiSYnzGYVA7j6L20Hm/FkHJAFjUZMoxDQ8Sr4vOgE1e1i3sdLkkjE5NAQSzgkdaE++sjtxr5iGBGRMYa3R6kkRYYALwXdA1ohvLS4swkWVglCag7BNBShe0e7mRKU25+wEXIF63FrntmY+0+UsNpn/YhJSyOvGoo08UNwmAHmjIYPwFUTPFZKjICO5CI7F832v5II18e7h4QDbAn+Fu3tMPmJlIo7KzEB5aSDSTbNgCtK1Blb/IuVZv2d3XGkg8slGQIg6uxAwY16FfSaktwuG8W1vHXXkwFwesWxesDXj5QcvPR8WJhqVYYehLnE+68BV0r3E71y6Bw3ZhbEaxOGz/g+go0YfqM6SfBrdKjqIEcpO4Lyr4japxpudLngORX/k60we11RkZ3CIKie7awHWsGlxYBeDLehFsAwhyaveXAZOAE+6d92hpAB6r2mBBwX0HUjf66rHblQj/XkeXKhwoN2OupFGItHYt78T9rNMILlNxzlsOM9vjiAG2xDsj4rchQoWICrTJ0HWf2cp+iomJoF0KYNE2x7rv6rCQDXYLYJr63TvsexWVUO3CRX4HMaDK3yr7oDfrznCCsYT7FYKFeFzoncljMhvsdiiP/FbWUZ1Gae+rr+5uahFEQBe/ZCVjd93d9/hPi0g0cpQ6i+Tu1Ep2tvLJGI745k06eOghEgKHwlKmEoappJqvC/1PH6gd6UuORkYZVchW5HH2//7s9lyiV9iHW8h93YQiPILeLF5AGlk/BL+w2PIZiqDo9Yj25TX4zr4vEbhz1QZt5pBWdiN4Cq0Mw9gEhdwpIDj14alQA9nu3++trU0oQSyYAW4RTi/mw0FKCkk5g8MJQzbqLrRcDppXGlLYcjiCXzh5vU3yZqqY2fe+m/8i/79ao3+YDqOjvxYHf9nszR6SfVVMTsXHjULRj0gi/jOlbdUq2Mr3R6vESu8raYRd+aE99uRN423XXJKA6iMI++rX35SILQousOKIxtHx7WKXsftcx/ulP8Im2B4dRdUCAaDSP7pYQ7+2pwttI74H6XAOlUhIdxAx4953sMQMgKOhI27WnY5svXA5h4OZptcZwW6PJ5m5reFGhYceSn7edSyci0xgMSar+D94YieWsManviHqQTLqHKTdvqq3/5AwdeLU/Y85zW+2Bydz6VozLH8W1qZo+8pUy7l0PL8wwrSoT/lWcH5cdnGZ5vsyxjpsYaskyT6NPeGaT7lMJlEObp7fkCBvp9+G/1WZ4vDfFMYvRDTngkgy9RYfCljZNACv5vN93EZpZkTVUUUsmhgP8ZstvcWW1Y7crwq5XkEqwiPuaPqxg+e613ErE1fITpVLTQphtzg33G9XCWs/9a8obWSIONJS4W2kD5XW60aEeDAN/loGBw73YoSc3wxbxXivR83F2Ds0bO5s5v/99bfyFIP+4qk6psJAkfEUzwKQ2EP6+1rOqms8c5YpHqDEMAHK87XKPSUZC4+jIO4fogJicRa144YseA8jyHHVOVTZggjgXfXgas7Ea/67dZFauBMIiY773IvB8tncUMS5iVbMLHpf+Cwvhr+MBJfE8kioSExepND/CEUCZJqhjtpRNJcTgOQ/gLynG6PnxURZfLtIDMGZRRsvlPmEt91olfC0+Qflx4L6aV3oZ8IAkdd4Cq1Xqg7Je8WmXsxP9bpJMWr/QruZxUvQYvcExXxx3qvUNYaKrAh+6sLUl6MOTgoWYQqoojGVTbS7P3rnajYpkuBkV8ZKnx6PIYjM9jnmzuapLxUip0uEF0UlLxwVX/2lcikj6I7xOtCuSsX+/Bpyvrw1iUOuY94zsdb4LpdXpkveapomYzIc4ZA8mZc+NYtzFFzMUu5EFYvYbb+kPjtvy6ytPP/IBbAL1nUGMgOf2cqeVpvIeBMk157BVXxp+iwzuQid46ssM8yEYYyYoSsh9Z7fUK89HSMO8n2rN97Qw8qwYmbv9eiBZ+ImFXVb+C7GCuNRzmNtENbhSK/g7X3LH3yn0ASv+cWjaJ/sZq7bLU6ekYCyB41figA/zhkjqkOYktQmTpR+H+WxZ2e7avsedWXREnw75mZqE3+Q17nzXCxJuQpeGPUqqq022BEOh5Yg3123rsGTP/1xPIXj/Jcg+t8gp0gT7gneaX9i04hW7p4XNRMgbNVYNmrf5N86dgUV5tzjoosENhYBbUBF7R26KWwfjPPAJTVkSzEBI660KtJZgX1O+bB00Q86xbuX/viLpJ1srDEYtqzws4nim9SWt+E1Uv5NxQPfGYk5F7KzxuGVXdVRFvEadGemm5iwYiEuzuUKldcM9Hgdtj79e2j5OeqfuO+73lp8fCHZ0ur6u7KizmCpBGN6CTRzBBDdebFMCU9fcbyQRsaHf7uEQhAmaIHUW0d/ja+ZSMBULT3Xyxfqi8R4Tb7gPjNDKjR9ED+oWD1t3gsFhf86VHPdcnpe7PoqBNmgM8mVCUPl/Juz2FUpO4lHOan72geLZOxzXEwefHHUCownIP/XIX1VulHhPkhhm+qnlr51kuerwyfjsK7mV/9u1sN/Dq6USgHBASQZd2nZkeY4T8QMx9+Hr4n4edMWRaxDpjY3Ch0hwX6JhqjiMD6mReIVGunSBuz9Y01fH+hE8TPYQNF3WL8HSSZ/ENIE3Uob8pAcbkJQ2Npv+NZvZM2TsWX8Lm/I43dmDjO27fWsRZFk1psVfkBrAWTND5f5on2wzIAyL/DU0QMD9tXrVSeQqiLxFycfxXWw0bPLMFieS39pW249jCoAaxyW5hg53JRTDaeGqZ0xuZWYTLlV86Pwo9NsNjiDFzs9T8LhFLZ6niel2NEv/yQkvJBlldPHIjPwUWJpa5/u4p1I+bma1nrybl03z4bV45z1lczksDdmQetpACm7XxTz+qJiHbT0T4YaLhft++x4KAKZckA+RHMFlQSGYJcSmdUCN6lKRQCcjBzCIwtEBaNkapkcYOPr8HO/u4LajI1zExZGah7PLLVxWVr8kYWdRzYhT6MHDXnINzv6na9aWnDCw0Sp0wG/WgP1+azl0tJCo1uKZHjh2YfirF8kgAa9pMTs0098XA6zz4yugh2KB3hIadg+jbvvc6bEq5pVLXgecptBa4ybiNOODGOJWOljEYex+RChJ2MD1d5pFX0vi111l1F8lQQ9fbvr1PiCJTghP2q5yOAf0mTIu7xNx1NiKeuVOOabU+sNaRVZ46qqNHJUJTDSEHyAGG5+R9uc0HZ3OD0+mFoq01XsMqrjmJZ4ZV1eI7/NjH/EDUqAPfnaerOcrzWDoaCGNSjZ+8AC1DW7Z6XRPfOmDvU1MEKeV5S9c0Jxs+SKFDU+TPX8oJT5jPFS8I6rwlXvkabn5pbtcAXJoVjrsMjNy3/StlmZJP4NDNfTS21ULmq5Us2a2Pfc6+BPxnA8a9iVEbbVdM+mwYj6zMYUXu6oVHNsWDfyc5wopHko82jdDsKMoSj/J2iy5lpm5Di1CPkuYccHY1PZ+UpNSpBvp8a4sZH5iIk1forg5b3OLKgyW+mVH7k2Tyundu3bLldoNFPislwcGihFCjlqmUBP202mVAOWYYIRsjsWGy5qu6SWekNUqXy4VKEHFDhi7NRp51IqA5Q1sucnm4yktIIzyc7pGFuPUAlVGQ10XucSwzkGwoLJtETs8xlOyGp+pqQcI/UfW42SWzEun9OBXgGE/6xCkqic+wWjBOvuHMDD7UkN+m+7xRxaj/7VPu2tae9tBoQBogZX3M79FSO5AP0TB0PFyDfys5mP0lP0H7VV4oMsd0f829a1YRri8Si56i4OnRbsroPneEGyb8mItcgpNZNnOMiq+uFYZG5m3CK8w8PYyPDb/vDXphq69rz40obXzbqoemG9aV/6d0aA0L/y+/m0dcsVKxjIpyrGATwEVcSQWYuEe9o6p9n/q8eiWaLke831FwOMmJMqka0w+S2lXxKeGl5Hmv0KdVM7BsfYjvqBJ+RQ4WfLSorJWvSJhS8OX1fW9re2Ehg0FWszecj584hiUOv3ozBVgr9MknSsq4l7ifWZXcbE7aKOGg9Qix1LZHyDMCjC7T1V9sLSDBcLf63mvlse/x33j3yuCY+fKF+A9x7bFKQh7L0oHVSADqpCcz5b6W8KwppTR2scB8PbxnWYiuxnvP2a8FESjZl/eUVkgBpBaElhEyLgBkooAE2d9pozPsyMMPvG49NAPOgYRHIki/mkkPluR5tEXjGG9q2FleiyNapnemBRJQfygPmu6bXUv+MhYEpW9yRorRaZQ4MCgmzDDtF/6MsoBz7Q0r+qoZQvLUWaTi5rpr/wQtVgngZVkEPQuXVPas6mTqms8W2yp3wbpSySmk5U7GGr1ZvTsIQpydZUQjwG9I/swftE+32FrUS1Nh83mgWkI1+x6HECZ+JOkC4wJAKb7r2YjYqL20eGQMLZHgE1E0yPr6Fjs9CMV250tO8duJfhHeAkvRHMAylESXoZ9gt9d2ajQ3cbbQEt3cSDxUfc6Mq56dW8kWXue4cUGR2R7AGRqxa8qLAkXU/wSnPEEyiEOBjFlQ7j7P+xe4GmsV0TvI8Yi7ZU5PunO0bXID+YJvqSUfxnHk//oh/z3+Jc9TP+nxBSPiC4tngXXEcTUJ+5OFyfb+2dpmVl2w98NPRVznLzrhniMmHGCdzMrnUvUk9omSHnub1zjJTHP3NiiT7EXbO3cAhkvUwUKGf5TaCmkPhWQCJf//Ds23EA5aBi7qBAfseFMSQsAAoB/dX8qYrVxebmS4OqRq92IcOzkMUa51iGyKpqUjf8kP1isA82XaM9/USqOh+O72dS/iJyE618NFaMGgnY3MoY6R3nKALjb/9Tb0UYspxTMyL94/UF9tquwSjO8D916fIUykDFVWOLRGV38uVI53P56o7k4SWfAhgqy2ePpMBD1YsQ9YszizNv9EA1wdcs0V0Jyqkj0Of9VejrVpPGdDPqpvUgUevKpIHrTMPNKb7JN+BSMguB+HDtieTc6DUlzJvpwIh2ntJmY0o6bU2cDWwFkogbTEe5UEXYLfkG67XopA/6XjMdX5uKHTzUxNnKFuLNi50pyYPiUFEFM91GTWU/IjCmpyNRJjjYnGNSmUu/8Gdi+2wXHVH8eOIQNuJoJX9oCt4QBpi+3eCO1YW4UbHsjMI7Oxq7pyamw0x1M5FH9KjNPMt48Anzv5wzET8Ce6fqcLb1PqIN0q4JGSUVQZZs5MyPFbiSYdd+60gTDkyfoiFQ80UJPMZcD26BpCNqBNAiOGnnqYa41m81QMNg4zGML1FTvSt/6We2eNSzKRcRDSC+qw0OqVfu7hLFEdbqIFiFN+0oRLDhxgi+vIPOnGvGb12Dlhr9xv2FsMnUNCGD+6Gpp9eXS+peCyjfwbBc2zUfntMzVjPHqWxeOA69mnt8XmmFMyJzbaEHnuyz0IY8iccV3cbQZq6jsqShkXcgdAx9wVSKNL0Vc7t2VjG/AbsASmPA22SboWbLDh05s33War/KEw+qgiFb445yNWXxqVQT4rm2q4V5+jiE/JN+di7e4j2QIImahjD7irVfjihogMeD2lPWM+2F8pcAFOUeNy4zmzuj6zDfpzAB9bMlIwp0ljRtQp63GEFcG9f6KS924nJzEg1blAnTij0/xNOLFJWYhdjbZSQQzCd1WvWOmTJaDQZIonpgWinGPQpBs4fdpPQN3owPKP+rexlPXykpAKC1tsyiK6EA9cwbv41i9WnAAfs+FS4E+C0/fvSnXzfrgNb0RGU5NQ5AuXKGGklebJfmclryx7Ytmj/MzEK8Uf+YPxeqYMZxpKeQ9AXBDoI5KDXzgF9qXkMXAHLkpAoz/eUodynjHjVAwYFhACpRp3nzREJP7pgAIPvJmv/bkrKcK9JZOcU9tcC9qpFNjm05/c+aNr/mAZxbp1mpqwnd48tljXKiYqPvJpz6meba52q7OlqkxtS8xcgwabqvfBKLGx9H4uhxPX9evYq0LqsvuSHIRAt3rOi0aJAZEk6y7N6o+0goxRt8pCrTpKt/7Nh6fHe3wgYKtYQOK+PmC7glzcFPo43+rwqOYLadAGPsfDvYRag2AIf9xoSw6e/i3EN549w/lugpwpjWGBr92yEinADDdtTY76W3AbOBRdBs01VpzUszl/1QLYqiMgmmQtIJXS6SJmhLIAPQp0iRSUYZGnfrb/QTVGximAtJU00mz48sTzXr7PJppHvGnl1onWwPpc91+GGMmTZdshi1tOUtyMc5okZC7OdVfkkSvntbb1XMR8qS42DEwm/OdrDenbcKgBY5gKgp5BCJ+uBP155vZ5tmbaesE07VmpbLvJOGDSoI4D8GgMnhYfIoumkp9QMOwARRBTwGS8BOROau/mW75reAORFj/SGBj/Gmt+XG1cyZnFsyjOQ9NL4sOHP3lQab66iSOkvonOZsa+GuzHe+rfYM7X0TdOnCie1vZqiXsc6RUHf+iGZev/vqT0lb8hP3z79s8fWscOC482qMTSY5hbWzRR1GSLzb842T/9KKSqJquZdnSsXk6merTV5SGHmY520H8qW0j9XiO6n7QeGHY6pr1Xk+jetdPynj9YfSD77Yh9sP4xEdWgkKHnttMdMsS3UDjYdzaewyaC7G4Cy2OJ6EuggIi23AHBomKlW0sIgzjjzyhMDdDbXuXhbsWt6/mfs3PsqkGHSXMG0y4XxnClE+AwEEQqRlKMEW8IU1xJHzvNFjedrZIw9HMae4aIHm1K3mMyG11z1Q1cn/BTkboogdGznKrfvsmkTxSnU1ZUWTDk6WH77OZGog1bmDrgg1cGXifRhZqQCj8a7loRMe263bjcOGz/qoy5f28c17mv98FiiJaylM9fcUxb2/h6l4NJHP7qfXqBmeXeIL+lNSH+I6V2hV/2139syzY23R/XRNVEa1RO42I3E2Yfz6XKRKxNzMKJarl8lNMEthJxHM0iWebDtd6DllQRoy2QRan7LFrWcY87oAm039gvJFe3eNH9UxdmLjKkC+hTsiYTTKuawaU2FP9rIRvLXNWVJsq0aOfOHJrAtKrmKsX0mKzMA7NVg2exoZ+Gy5MjQ7mZ/MhiZMvezECl8Br6qKRth944PQiw4o7d+89FijEtQ2p4ByyR00Y1KTDmZLcoUtxuTjQd6BuWFiPGGf7roOP6wbpeRFy/Nb8fvt7gzieuWhqiLLB6y67UKYKm2k/xx9nLVTRj0M/OpZU2LTHtDcpc8eoso2f1wLbmWdUiIzXD1OyyNpSYBgDaBgmix1TNp5MpyIl369knsNfWhieMll61SS6Ycq6IHC4kcyMoMxP6YoV9zqS7G7grndY2ymtzV2/OwT/68jrLu+8RSJMFV+KrBUa3mQ/F9APqsfmVnKMDyZbCA+4uI1lcqcODczjq8BQ2umRu1zQE2VNblCp1q1Nycv7tH6F4RPEQqSMddvn312An1jaA5pKtrAIAVRS0b8go6jYPNgIfFLxi2gtchN+wNw2BMe6A/HjXqBZQgrzFkIjZiU2hxF1VgZKEQcdloiHtm+5J6xH26gXqnvO4XjMfcPK3Z69eX2kSfpaTz4bkeni4ifxq1XU2vQojdVpX+hR60muhmopK0HzRAj2qMJSLWhw+7WDVrCApIdxcqQFSi9uO2FaLSgRKUtCgS3AmWaBEyREk6bbNTKK7Sj0FDKFnU9IrQqe6+cXmgN666CDPC2LYrZR9ho7J6RFtKz6CbEAO7aT3mBc2tKlXHH5G4wo6MBFLAGfWVVRCW7dHCzPJqEuZgg/legysoS6rasNlk6wyygsj5LJjLNM8gcLJwkviXK/5DV3CqK8Gugqy4YNvbJ19ObDcgqyMzfezNQl36OO0KGotvhZO4SdMu7upY5vYdvyveG3eUdJEqkfQ2uPKE0nWRH39wNT6dxR0/dr4HZIwVcSd85jlQ/ZcFJQjRCEOJ6BP79h68BExKRpcc7aZ/4MvSWp4VQ4JiLs8SaUMLJIz1F5c3hHiIWlOxsuFVVETsDZGNdXeGx4OUZPU1s136GSrx8872gxRYfdhz8r9/o6cThhpiBdOcdkeWUCYaQmrBJPs9yDoCol+6hoBkga+OSxmpXbLotnVzZbYaVmdpLgoQ/6U1Xs9cl4fVOP29gzvGilS/0GI02otITp3S2qziQxw09sbmy3ja4J7m06Lxr5Rforlyy9zoGUOq64EfJK01daoR2IbNTMHXsCp1+Zs4XusA+wBRPoPYey58Nd7peiGqzkIjfqQfygErm3ev8PyuFoR/Tf2lbFLgQ2zVgf56WrgCBlZQfkDodFdziR4dmhwtryfHub7uh/zYojUirOGeLRQST37usj5Vwym2PzdcWad60dL7vOKv5Bl8adM314pvlYiP9GzPDRmK7p0x+YSsgeqMwXUIxB4IJqlztqPQFY1cp2yxRu5vc8h7Yp6ITEJWkArv26wUlyL92mndPMMI6Qx7KnvdUKeucPjSPuaYNMboZXLfAm2FmyNHz7yFA5HJ6YXvueLdug/OHBnGb08rU/OdEDKRLn1PYQQyLl7FttkULrdsNGen4hKwh7opZXzeCgjitR14vhRYmlsBGC871YKFJaOGGLWEMV/h7nRotSuNnUzC64ikAmgIZ+lb1fMhH7DHJr21Sn9wcT6qQlpMSb96I3hwVb6O0+Ctl3cUtVHL3rt8dhia981EbHagilfQuVWyYAMoVYccB5XvEeZNhhA4vZZAEgPg91dSXyF4/YJX6GV3YLto8afTx/EAZenGK63zW+rWodrXKmbjXNObG5O9R3aZuAPY5BZQiicAjOmoA0YqBYk0/2XFA/b0MjBlhKC6fxgEXF5PjAyNf1+V28cA6YinXbG2ruZ/DriNtF2A8Ju/yPIgqpAz2HuAPEZoYFOzg9UF048NJbogECaJQUbIfqKqqMWBRyNKHsoSNaCcOQTmDjvNgweu1OD3fX0bGPVZhql6BaKmjAGIrMVO6Zi2AUg4+Q3KsnUzMO05fJr8JC2B4RURQSnzHTk0JRf5kNz2HhglGV2/jXMwUZnIpmDnL0btvlvehqv3vblq7qZdGBjFhh6HDw/1vN/MB1AXcyNGL1AT1HOu0hgli5ea3rml0Hc9oc1SFGcgiDrO59kSCJqaGbeGmaafvWF6fPiofaTno1tC9YNFdLE003oOmkBwJLgUsuSgbtf7oxZiWLzaiqhmrfGIYM88uP11JJDNBDTV9CdNn9G9F9c2rYFGp3QKEh7+4ZEc6dZp4x/fb3lUcgxvrYs1nnBVWON7qaq2dPDJqjCvcPONUDIpjUJ3la1pUX6ft5uFGzrE9pX5Rd+HZRocmt/VF8dD4E8aZMm5qvFBe5gOeDc44xwM5duOIoUGG02d/YLNsmOSLWw1u9yehVkByl5MN+wcYTlkZi+8GBRrmRGLAvuRGiNYR3M9WZrlPWpNbAkssTd7Kb1f8oxvEkBNJDcaf5zFNlM1AM1TJeXsVFbdHbkkNxpWFrfYX+ELFOJhvABvT7LhHcP+5AMkKnqK/w9EqA9PjeILTSyjUWFY0Rdq4uSeKMWLfD4S5MBQquzxQQsiPzzRoryqGBb+IMGeJhy0+QnmWMHm89Lt6QjAJ044N12eKW9yIcAOxnwamY81H9YcNsjc2OPLKx/ieXjXETypW2h/ZXvPPWrX3xZ6Ui83s9dJvrou1g9GJJoR1RFH5Bl6cihgYKGbdGCUnkUJvyvBF3gWl/pWm3n7kVuoySPirCWi+Qqmw8eslLj/+bPQQJvmxGHpZjSTp0GJOIgBFxewoKU3xZr7JkSpLsXdmB+pmaHryOD2acHxxlKndJGwwr/Xm/HMOu0qqd6ai6aVzfn0XTUwjiC0/P6S840aqCLIuR1+84yXMXt5siYiKbjkq16eSxXzzJI/v76wJGBc/je6HBd0ZvnR3JAMvOCN3ZYCOOTaEo8d25uO8vNcXfqDnFvoaQ7YEFBvympPls6KlZW+IRcj0oJI1zM2jn/wc2J+gkYywRU2QUIHeACpQJXZvzYqVsC1y3So+d6X+nfGbNXsyQnIHsPeF08OZzL/4w3hzHH/G+do5A2zcltDR4yvmWWr15y0O0ixLXfzpF2hLdjn6dqZ3pyty+T3cQ7VaN+nyKpc4vUDICleAFtbSUjpWZeYcA5tPtT6bHYAHtB45iaH1dcr1/rXRHtEy61lWXN8ZNdDcbW1wpsHjDgL3HuvIfT9CasLujGiyuQXPOVjBzvVS2KGP/pZ/xnHrBUlK+H08smkCAqEpg7qeMTXmCoxLXJttqm2KgiCZfYdIw8YLAz8YEiMuZcBD0LV43Ekx8hkdSBcTWc9LyUn6jDSQssSFJ9WKYLjKVgNwfrrcaRxIhTEMYIbTbzR5YMtKJIutgnbhVSbKjc1lThPET6GnRkGpePkO77rBWkNeFVPYQn70hXCbFnkD78aGsRNBxc/yM8PdXkUJmToXv3tAy2FwGTBxIBtplbxVSQMDemv9lZ1V2/0DBNsjzNPfDYUBPANYThZz+9gOWPAPMgsIvdwk9WWZ8IL7JtiFG6U/lLSe/zjZfWRWc46+0cEbxswdvhgdfVqm6Nt5QbxVoN/eOOTzfPo8Lh6VuW65a/COQZeUOCBIgvB+4o/9VV8n+GZEVDdvTmNJJl+M+YY3pfxZCHQVsxHMwK8FWjzRmN2WODggbBMhhVjtvlbNFTyN4QihLljAiTMfKzFAKN1azWpfnPmIL3Zl6XiDflURX8ilCY3bhQ4PulbIpnYhpBpt8j7HnRVr6pdKVJ+4WRT3f2vi4dXhu8eRf1YPokFBJw/YFHslNpN0en9QR/d9WsAW6JTrIOBsaAtOHMbqDLU2SwuxdNhanxEkr/lHwYvbN8bPw3iRWpk5U8xShWgwSasYBpvCmHXJsbtm/2FELJS9kr9MiCBkDf2hSTuOcG9qLr2T/3pRAkbjpeW2T8x0W+m6F+NgMPYAFqVbG7gec6+1GSViMenORiQ5BWNiH6JNb67vnUAEu6rqJjR7ucDwdY3gllh80Ig+yEJyapzGHLK7le2GucD3oRk8agA9SxFLE/2fDvHLvLsgQpKTFIETF3emS42eC1SddFuhA+4ErTAOXE3IY5feQ9PbfimKywP/i3LFRdrKzJedv2RejCnTV4S9KVl4uRhOG68sQgDKkc/wxroPcIsXSQbZhxtwnkaVkhTu1/UG8V4v5ZfboMPJCm59xB/k9YP/UYUKjNiRNX6/0B7UxJYoqKmsopguXJMfjCP9GHpVrzGtIqN+LxB9jL/T9aJc+RBYyi0iUAL2EKhikFSP2uelLi6wuxqOljPL1IJw2potpuHSvWA/VkjePD9RC5BK39vmlfyzve8JDAMF+7hipOmAesiGxn2h26QqQfgttjgqqMjlK8gijTF0P3hY2reTw0Pe1/IIg/YuUA8U7vBO8u2bFhJQyJzK7OObCOXjud4CTk89CgA0qtrMrtAHBJlIj3U3Fx6Pw2NOpgJAESsCfGYtoRVir9JmDm0spBPpYPAjattw4pQCAqGG3DhI9LUNKKEepvoqCENgp1SEKdNOWqkrTfxDP/UQpkWtaTWVvup2pHz6aFZ1jdR7lLctlmBrsEQVf0JuuJrs1aDK7rNjzj2CRV5TllzHU2Psc0S/HBgdDKS/Itl7jBWVrlESqo91rgAhVtnCRPmcZieGsZ8eT0bYd8Bg936JunOngcnHhPFM5LOw4OfiwX6xe6mVeYrmiMfvzjMngNPFqdH6QmzZLqLW0PCPz4a4CPMYOJrmac6xAEYky6Jyihi1Rj9Jr8zwLneNOVbangzXBguKJqY6R5MNqPp/vY/wSezKGPZuB7lY5UX2FDtrtKqEzm903luM3Oodl/PPNGhTfGpAWUAxJpB3m+73Vk+E95/2e0uJcHz6aKFdwqhYfFIpRc+YgUKcfmBMefu+AOkCNlaQVNL2HxVsUlU14L6106e9hQwtEeZRgB18AIGOAKEeZ/EuOjFK9IGIIQwZ9500EmHP/rmQH/Yx8eLlQUZSkNjMGStpEmBeWPn5Cv991CZNvBNjSjVpqwYSrbR7vwm13ddB2TU5sNP+fdq70BwhQDt+meYsPXRIVN8wHU2laMGwG6VDBuHihoL3Vgkugm8XF1GOA2Ybw6PGGgKu8M0JFcjnnzr+FsrQOpSaan4UlchLAaj7p7wggsajbwJNE+fnyvv8wBFSGaQZzD14aecGAqMrgiP1AUm7BL3amuWgYEJ3vfagnRN41WD+W7NxG/cKQh9CiE3ZcbfFskkz1NGFZcZqlICb6aoell7W3kclgI/ez5rmxApa5x5Ms8YCXxOD/TUe3VM/EYt+rJ2U83KW8lvoXYqq7+iZJDvl/4u7owlZt/eZGz3/X/eUJq20IEj4DJGTOsda0GN9YKm1wBRz+So6Q9TNzBncGfd601iymHE8SJ7eoX/HJfYYlBe6JNNsVjDiwBP315aV9m7lWnLNo9aSAJVZkCpx5fXm4iZlNgQRwLVvLr0qASDlLtaq7+rWKcNnIaFlpH+zFcjUHVaWVXCM0KT3pkRtIq/D3EEor2z5/TOUUITpCdnWtVBARGhzB0vUXwjYjmZcY9zBlqRH/Ywv2lYWdNbUV1TNjNscp3EkDqe/CKN8crz/aZ2rNsZyJboJLYdQG4sTYD+nqHEUsp0LoLy5r4QfbGQqga6SgfqZGXZGNRpKPX7iSAgkYxYsymZGe42dqS7kkZvkZ0egX2YOACwQQk9X1W+s6kR8igzRjYfKoQ+cnJ3TZoyBw85Fvu23CGHOhKbykH7+atU3aXYY62GlqtU7AGTJyCtGWfwF8MN0WNb4vyeM+gyNZIHvhhwdjaUXzUt9gxIgmHNCemvKnbNJ69kYc9bkbOWFqfUdqSRJ5vIaByxi2Y/0YPPesOhUtZHyXv0zl3qB3qaKNohNEBI3o1ydQz+C/rEpLEuxqIOBOpbIh2qGG60N6uycGCTxfbTaYq+olMoBQlmxxehHgsW2sjXmhH0T804PlKH1HoTZuqRSWgONOx6kNQEfPNul8Y3ne2oiwXaHk+zcb2ZqJbbehwCZKfRpwhwkaEF+THHclc/cP0+zP4+QbE0IqQHSxhjAtxCGKF4QtqAeeVzdlIpuhAHVzGimRAoC8q1MtsNEldzxnEgHi4yluyZS1jegUr7WoRcnJACY7pNgbMgcTE2Nt4Fz2MYH/hlH5PO5hvt6axXM0rUnLdxtAEdTfXtXt0vnFyrPV8TABbIQIo8xqISDlqVFxutD+MAAAd5qy4NFMNOXcSee9OS9X02kAsgEWyF/t6EWf1/vxBVNnUcmXnLoss2GzhSWRoWGd2utJhD7P1DWuxDLzhsusXdI6JlZw4GrsTp8mdrGkfjOYliM9NdMrr9vILLPOwlWWNJm3gXxCaPvFJXMX6i9Erxfd4VZDQv9raC0e+apvFk51+WkIwFoPJOMtWi+Z3a5mfw/qSYGosjpuGNHPP93vTwJTfbv3JuPQzDuIMxCUCAFOKKQVhrm6/D4lhOkB+wr4n6qZ/WQ4ADdzLLNGVb142Ch5GhR6Jx+4vFCL6VDBfXPJVBKRFSvIsopWGZODRXufRzCuAGS4V9stGnGfZ1u/haR3JJCV2KTzoFKSSC5+pI+1NH6Ffp2ENU6zle4RQ9gRNdA4WlvdaVfNCiHm95P69Po0XKhoEUHERJtue4aFAjSZv5ya0zHAb5KEjIpiPDZ7MONwplUJkTdZfD2OvqXrhYl+LMhlobm7d1ON8uICU2JRXgh51u5/oNO7Ujs97VbWDytnQTsNVGNTryS5Ma1TzUJ7GiJFa4YNUMBLv3l67CQJzJoZb59+FBjRrK5KypN2gu+oRUzXpmq5vhnGFj6dq8/wgdGm2V11nj6J5abeYPO45tq4hfsONDjaMlH4oyhDLeFNwDv8smKJDGEwFocFGVWtLGPXQuvU3rXVy9bgo9jdwr5OjqTVDCewDm4Ix12hh4lnB8v3r42dAKS6+Al1tKUTxqaClohehnkAUJK/9Wdpz9juGjiXJqJBVLkBt8m5p3zuPATq+RmYf2aXiHkTnobRSgHdQiLF8mgZHxaR9sUdtfTBOrKiD64r3NDTtTgic8d7LxeZF62f49+8SmlhXqd1xels/HXzUQWPMwK/usmH+k0NacplKh/HhQwLSTpVj9kwFE/3u4Szw9qUWProJYi+qsj+qa5Q8PopgqWZGXB95mQJxcLMqi5c0lOibD5eHKCKAGDrD3H+1BC5uJerORl1VsdAW6gX53gk4zWcRg3LnVrHlArq8svaMaljuM0bW2cQYLs/S8R2ruxkNgUZu73xJ8Xiwugire6yA3fs4hs26hgSOtJgO/jv5XACOggtf0p9b3pdeEmj+Yi6YlV5dy9E2ktsJCtEFEsZ8NKgMRjXa+N2vX+ESlfIUY+7kx8YiqlmKmXye1OKxetwEgBeuNPlOrjeRTi1yx7RXjaxJNVi/LFCVfcVBS+UrCR7pHrDfso6lhmitY0ZORZZG39gII8NUfLTiAj6ZQW0FFIbgyS3S5HxJ5JD9HS6DuwcK6VTAmGpEL6/GPMO5RdITxZmUbtnnglBJ1WLs7smdxsmLgQ+XvM/cnIZqBP5kPUC57WeJ1NrpjcmU0s7pJiMI2lD5zE1QpUr+61DPx2cg27ty39B4tTZfOXGRcqiX3cnGM1nte7c7U5+mE411puXT4vuUGDXBqH6mdpNfXz3waO/Xg2GsnGIBjCyaiLC5QZMb4UyL2l7EhpecET4ni3uBPTwJbXYXYoR+iRKHVa24bzaHLDIRhDaAKWLZWZkG2kkxEEx9bY1ZWp8+eZdtz0sffaP1mRhmS2RGPEi9vCIPm2R9VTVvYeYkKxdIU/JtxVEf9llB9ZgppiAzjSCpEjwpTx7pm+ErXS6NK9tNIBEjZF1N1FKat883KCrDQ/aXpQoSi9566uWNapVseivjxE1buC+8vB2dOvtvYTE8ZXBGh4kiGhO/EBg2TYz6FgBcheLxGun8bsmgPQLR45h30k4SKLnpQbffP1kWuzVcqX/8eAL63YFXPPS3GWpP5IZ1RlQxSUfVpD31bYM+ILmhbnD1ZGw6+MOWIaYv+qFEej+rtXLzdQVwQ8XO/6LvznkzNmPGtIkwkiS2NxypUvsnSklQ6xitd13O4AhD913TZhxHZTJgif1pGUssdLzVHdnS3RYryFgg2Zn3/9l4fdx+0wpvyDEF16W/JsccSis9C2dBYgpKfB5Pjthi1rlmRLmxLCLd+K5ZiE6XaO8mbLZm4Y9PGFsXiEB5j1dkA6MMktqbqWRJ33HyK8bBJvAmb6IK3lIwVuOpb/k/FVaJxOnELurMCmg89G3H+BziZFsWvafryOkArVBWKMmgU7zX6WNpsbvI2VryWt5sdHED0aTyV8PKBxlNwVgztZlU96qPSP7bxrrRP6ZvxXCJfHbgHG1suErTxxYCiEBZhFaqGkkEkxIaxsuFRlADIo3P6UYBtMHXeQ5aR88xiQSWnfvEo/+YGu/ppRGFwg/C48v7EUtEo67sXCH1cKcu9QhR7yvgyzXCmmQQ0oaniuX71AqDsK6xUr/AI/tgl2BIXuayIt2TOlNVimji2FUJqaHX87Ya6qsM2xHkGRJ4sZskgAPotsbixult+HDCyvPNf1Gy+DdnySlLIaZ0XYw0j7g4kjybwPtI+jFHI3EfHLfJ0GbXjyqKtzb4JugU7om+W9GwfLuDVfVsiyiqdjqPpb0GJDLloVk/JHRkGvU1T+6ApnouzQwuCwcU6vvVmwYQE9TLaK1hxCfYvzaupcOSkf7SXIoco8M6t9GOMvimvSjHP2Oko8bwd1F8ypcRPg+MlV2Qs30h8AoHeRUdQOGvoizZPJ0mWB4JHDIz0e+xGQZzLCri6xP3QydySG50ak2DftsgxQG1cIbOdilnq/QdWrFNDTcXzGW/SIptGm9NqwstNrjqCWJtGc+eXKcjBaru5SvE+K60Sy80CjB5Ow2JDB105H4YhRlds6GwPOpcuHx23iN0mj59Lzmg0iZBlz/YMpJ5NJTC9bh9QoEL+Yr4Z14WhVmDkonfmjZbeNOZIetpZAk1vLPbpVdaS3jATSTUXPqGovg7DxT627lFCyieM4Om44xWD8vA88Bt0YmsZyNu/Pofn+GrfXfFnv4lhf66xk1LPELvHemrRIVHVtHuMvxEj69HbeDOvD97QMlVQe71CrWoRa4aQN11XYKFq+8W9kq362H+gdDQP1GeBxkOtd+QmGrrX24VjVtY8dd9s5bwQyXa+2lHXtqWKPOanyCqthYRODsQp1glUb9eLqKF+qZdPtLCjk8Cra4oqWIXmlDYiF0nq+oqfC1wS8FtHInsM0oAIV8JiFCFLNUvf0sftk9UNWrBAA13Lj5OdkjWwfT4oGaQA1/+1Wq41JbPD4bi+3TPQt/zrLzvA6F3PbFhGNvDTLdq19vt8HNLMwwWh8HlCltphG0iHu3oBuezlNTokO+k+aiSKTNg4FF1qru2ca98Dz/xk8D51jKbp1Du2sjhdOA8HpE/M5b9yyrho8lWCTGy2t2cHW8QZ5F4nRKe3pmR8tFYigQumicc/ik4V6HscZQHUj/XD+h6mG+7dYG6E7Mv64e0i2mW9Y8M7LXngnz5rMqQ8qOYAgeGs3IGrD6yKKT4aEmGLWb6YA6ZwdACd7yv3Won8L5sZ5VWEa6Toa4y8FYVw7pljGopGwR9T9u0XKbPPXJKonYSxyJVd+unbyWwCf0hlTykSxDvrg5iq08+djqeEOweom7IVUigX6KEDc4zsnlZo5pze4kt6da1z0RlMtbYkZkiK8hiL18l3r/efUtvXEUssl0UhHNFPA7z47bJnqaBec1LxC7ZC8aApI9GUiNcMoV8qGtjpqJj3qwiiqwZO2kLKWNxQRrPzAZ0t7iaih4mWmDN0Hv+wKRTZfZadYUcHERZis8QASp2qj90IJOA1ypON77yySbAjMUVOA6TBeatnT49QF98oXeNcm01jOi1oin6y3YPvXwfSFuyGGIh1UPqwcPg8VVQS+OXOsNIO2xNSt/2VqKZRfwK/kfabDyQt569Z/rxSj+BegSuJCSurAHn7orNNvIB3rE0BtsFoP4v/EdqiulirC27ZK9w1ZAe7/6R1NJcuFkTAvSpEcYNqy0N3YvT8XDFz7+xMdvh96K0JhpLarXeyh7SUD7vg6nLhsVgLuNH2OZBCt05mf731E1rfsrkI6dAFYkVhZxZSvSNk/cVT77s0NaxNvKH/7mAfX4efX+xKVZxmGXNdUtzqGGgUBOkycCN0yztTu/KVDh3aTNGeguZa9+PtYx4YGo4EQn5b/XRas5iY/NI7fy33ndoYTdL5XBXkVoprBwPv4JnKqi8Bq6PAYAiOCsXutptQCJNt+Xvk4zOaT1cenrLTUdeQWiNQBmtdbRPgOqyfhxEj/xPxCXzDApHxSqLRq6ar2Q3LxGyhU4F8o0qGD1EszUggF+RXfm3r/byqLVgU7ZIW59Zl9byu6SSUlGZJh6inPJk1VKGum7Ii81BV9NGXvAIQS5a8826zbVBWbmObWNyDLQsH6M2vnTMjq2jIYDiiNOkylb7hFVug1fftZ7McMjHr2NLNzcEVjfS5ukRmkUUIysmbX1B3dLzO0xujzxeVzCOUNeXvOUaUf6NbI0/7cfu2a6AJjM3kbNs5WvLHmnczCztTojhQrcwnPIjxLMz1IzHoqRRu7+IX/vOcCih6jHZm50/31eW56ZrN0a2zz/ZIAiswyNEujRogfWJxNd3w2zC09uoX9VdScxRa7HGeZ1ceR9ZdIsX+5UU7Xl6RIavhljraPIqKibWW6EmP5Q7GXMnHYQYMAtZPXm2vQQKf80sxhnQcQhrG/PqQrENADbb83YWEZkFAK8+P5bbi9BFCUeLVdRnbm773+Rv3suB0NHJXibV9/zPKWNWuuGP2YsxdS5y2SvHigwK4EmbBsQtF1SPDV3s7GRU8BycWrxr8N8muScUiEV4IvzcpdIkwFDVKDQAPB0Gmp00NZHs/P1zkTas8khXEUI0SIRgAI3IZZ7AhhgAb4cXBOvKe2J4bM8hNx98E9WW39WPkHRxppSOPjxq6wUIx82SV2zg/B1DeceU4b7CRf8wCuuTSAoMybb8N9P9RyBsoj/rc7iblUGgnixHviz/GSr+d/ksZltl4UQoGCQafaKG9CMDiiNSPKw6i3EXu3RYPJkS8eCjnaod0evAgQgW4ZIQmkbU+2fN/nqW8d1pcRlvUnNdTq3XaFEC/hCe37rO30Y3IqVvnRyHmiPSXyvuL4+Y7XYRkAQ9WbMuJmGB7hB716e1G+q4qRbuK1Tv8fIpIPmubyxquBwL1RVtkfbMpeemSHdaYQuYaSha34+9phbVbiyHYSLYU2TFe76mdKyPBEnh/XOB5GONI+sFJRiTNAr+RAgKPSnzbATxjXtSmd71Finx8qNP55OMc/UkYkw168PpkTRYsH7s62lwE+/F1Ug+HUi9xA/X04LwxOd2mFcB0D/fIsIDIYJvkwDtZNysJ7I6k0w0lVNSz7tuJbFI1x0+kI1Pdsj30ttsCd3/xSiosu/Pq+zBFM3czgcX0l6EOUP8XeTPzymdrdcT7wlH9g7CEexyKDsj9Zn2Gr3I40ll16re0/5ihsIgJLZtG2N+pDhGY3dPrj/2YXmUKjBO11FnbC4E9AMAR06BgZGs+pNvMT4YhmjAxUGGoygAMtaMxqb2AO9XRVLPwHU3NcNMUAtIckRkrPr+nRcitgp+alxPbi60FKHJiu/yoQh0tRbCu0Sfg83aqsGEWjtt8UzqYCHHMtlfbEp5lhbTpYhWMBc+5pQiIpI9iwGA+P2lM6TeBUE7R7VcfQ7gW/FIS9EQZMrb5TQ7ryHGJZdQIh1oj6EkqxSd4yPdOvMceOkpz3MPqSKG86yEA81X8b+Gdeh9BJqvPIhTBOgXq8314H+H+aWFY8V4hxnpy6vktuTAygOcalzd9U4VaVSbPozGWqz1G0gquMlrcbTqyw1WzSWifMp7cgkQAvrdkl+++C4G3o07FbfwRRtNov9idDVPrpAnpQdnUhUavb/GUXYp8LmnfZy0fpozq33mlpze+iys7bGTiAfEnUZ0Lp4cRRouCdTD5Luzww42JFlREFddgLo52WtWDTscOMeYFtP9aMJU5ympFXFYEmCf1UjFgvNQXwopqtDr/fGILSL0+sOzX0gOpj83tNqNjWeIbIIJu0f34S8HIBFdHJheT6k81iVK77JrhVS2g3ZnqlFok0Iu1iStv4NOn7IOab9kKA/X0/y2jYcfLRw9e6Uj6At8v1Wh/JFBZSr8+UEcU7Oxb+N4bdIaiXWIqcIcYUM/ofaeT6pW+3nvtIbwVBzewyREzkjY50AWGFRzyfe9pQm28ZjguxUiHKPeufnSlJmYneDRHatIkmxBefqR3uDMQZlpWcHe3YPiAlhA/XmYWB15eKj49JyDqaihl1s87DPwO+cyFRpqaLNNWjIX84/2CETTebU4/s8jexCiIE855Ue8554i0ujFPQrIR+8CatOo0Yd7o5KK87488PuFPpzJH+P/e1t+jRk7/aFT68NF1AqL28uqGyLfH+x+CizMFAOmJihjIheF5Vadf2gxf6WYkrDG3W81uiTCvs1MIpBYhRESfq/vHI+nsXInlp5Pp+/ujMgSPK2Kdx2eNWbUkpirgltsk43KNLDgZIsy613TDkiX/iLFkvIccqoO+Ny+/1OxsAbC0xBWq/7xORBXYY0q8q/pVnvDF3HG1VkwbSNIjskODIouuJwLu+uuHRKCYNFZy4fhyM8NRaUxhqQU0X5kUnA3s5S2tx6Pks9vSfIQIBcTe+PzQrFJ3xnXCjSS7RhVsrLEVWRAEz/dJ+gGBE/Ak7p6B7G3SwI62vFIxrnGtx2iWTalAbLpBcnq8ctDgD1nwAUkfnQpYdU+JgrWltQqUJwIa3Uj03H+cMwgO3DmcOYizbKnm9pTgBGmOMk3+dcsTf6+p07ubtXKYWC0EIFvytNNUAWrVZbZI2V0N2VVJYbo19HpoeeVJq16UKc3OMH9EXHBwpMsHTjKRpuMAARdAXSOoutNaTGfzKt3cgJW6u43Fn30KcS9VMq7kzVHbakHhACR1yTOvqf8bsHVLNnFtmTuY/ooqOvDzTNbjtQm2hCl8zrg2BfWhcSqAeYVeVRUtCS9p60J1fv4DdtwKCTmoAz6kHdiqW+XJXsh5RY8BP8Vjv35/CZvcj3Oz8QZLHtaEBzO+vdF9JlOwcv/G7m5a9Zu+L92bnmY27keiRXUHEQP3WHv+ewlNEdzZkddBNVVTBLp+CBqIFh2BBCPBMCvfXXvrW5Q1hureJRLrUcQO5t++dzqRo5s5zXvQeP3phPy7MbH4UXHwU2jbMaSQakWzbouoZB0ZjiOzDFrGS+Jhf54DZkT0rl2NvKeEtIE3zf1a8p8UA2hkaYBwWsuCOGzaMTtadJABopUZJ27fCzZQk6h9ze67rnt6ELy69y89g+gx6/aaF8EVkM+sev2FGbwTYHJpr7YaiwXZ2vxQj2k4OENtJIP6+JR8eQx2jwTGjeWrJ0UeekqF1GjqCxgYBEZBmOciplthCy4EgdfF2Zgs65zQJ7n3m+Zaem6dqW1XBDWTwLUGXTVU9l7QC+aCRrmOVDK4Z46MhVro5SunfSWJJEglQoVCT7bVMzrRsm15HUaKNPB5BIgACSy+udlqzHxYupiVrA23BolZIzm4hbpY//NuWC3S0DEllR0KNWcuAkwbL/oK+3s6Jgpbj9U9NRYsE0AWUgdf0wVo4SZjEXGf3lHyq9UpmWL4yW92kW8upDrsV2CvoWfAz+bdH6Te3VN32Yp53KrrF3dxv77aTW3zLlh5nhXu7NnU/5ovnv3r6mt0Bt1zDGz0ZBSAbDCduFBcBNX+iFzsILLsKpmiMYzus2pVVVAPzn3vc19bSfTSAMqtD40cUSn620ESgaemdEUm36wmqUKIkOEmD7Cw3aLtoXtnqdL+SLOqZIQQQLL8Yy0HNyqzryGMEpURjZS7ewUbOYRfdQ+eG/z2WubSsbA30EopD5I3exNNtiHo3TQXUDvfuaq6ssB+HBqzFDw5V8Hh3KpzmPTZO87VhrPY/eYHk9sf80Hy4jF7/YIkonRBQbRDfbDnx/qIgZ1QmPrsSB5j5qmESVc0GR2HQhVqoMrHDDMzRV0n0l4ptVx3DB0I374o+wk2W17NT2x/gRCYx9YDx1wGW18ZC1mDY/5gyCwEK/ARkWhbvjmY5+BLA8h7/VkBeAZQcGGe75wSGjiqaDnFWQ2JQ742Dr4dFac/NzNm67Xv+RXiQqmOZNrpxAVkWx60RIJftsTynI6AZ4aWdwWcltCdph0jUCrdMDe1FQ7BTxgwPWCjyD6IyhJYGPscRtLbBD/6hyCmu8adyGDTetExdHX3xo1xTOJ4yfQBByKXqNQFBTmJOoOcNVMBP0H5QOR9RgukHQA0t3K6iALvguXOOgpgPRZH+XywBrZScYQ8UwVHDBcS9GjCWcMv7kKV7NeB+LB+NKOdCwqXKAGksWMT0DrFYU9hEU5JMaMGyeBOxTpJSRDwRKegONEcyds6h4EOqzZ0gRpWIlzCmtl8YrPQVVYvZC/tvlR4Ch+6PxdoG1dzlfcZQu2FxEd2iS0JQIQkFcW4zHtq41ImtUoCaIAFHPO2som5j8bdkpD9OhsOQlxZ2/NjUePTcYaJ5tRfcgdkK7a6wVuVhkXP6ew52IjAWhrQnGy9OYalEqkOS1BfeV1zGbVpJgm4s87RwaT+bk+ztHtCTUdMItx7sawBgRS745zWpSsjdjt41jaotEAnFTydsS9WuQf0/yI8pqjWmhOm2DdDuTv7QXKxwZwLckWce4CeG37YyYqSQdwT0c8k+7M5aqoY4VY+msIVxb/hP6iMPBXk14GY/R72IkbUNvMBfYVaVETdfVXGYWPspaanz0DuT+XG5Rz7lgHcNWKy9Ly6PGuIEy/PV2fXemoGI2zp5kIHwVlUymtvIX788227lA1QHYIlec8Nwkw8ZwMloV6JtfEyDqepQTqt6O+gYH4NcElmrnQKp9lLLq+MfpYkojV2ZuaSffhfV9bJxPz4eyrfj3Vk9KZlXQ6+AyPzolQy+Y/iIhAiE50A5a4u3hO/rObZS5gUPJJD/pmxfy5OaE//Swz6RDDEF6RWypVhD3BXBAQ5hvRXH7gDw9QONzykSRx7t4UBZ4XHg8MAwuRmSE0itIq31zdngK/YHSRfv0aQd+HTn63XThMDg9imzoMFees9WPY3L9BZouMHjsj2514DvMTLZBWb6Tz5bxmgZObALlZZjgQPSla+Lejsr4RmvdJ0W34rtGXgeNwBgnINmPQp7XEolUw0TIBzN6OJAliCoCsD41zIbikvn9vEFENf9z9QufLiwhpgFiD5HOcDwm+whX7TGBXmDvtSxaguVEeh7wwqDXFvZjNXpfcCUVWDB75OQEz4KlFzagaIkN9iBMjItPHSS3mqimWeQF5/e8KI2X2Xk4+x+xzn7NztUau7OTAAwoGLxz6livAvFhuHAgx+ODPEC4f9TOeyVMbxBa0lPoMlxCeK9VfmCGgZ8lR4tCScDMBene0QGeLABxBrgX5U/zyvjx054LBDSUsEq7UexLTE3qBkMzb3HfhjbGWidVKjb6yUaMJlKPMLHRw9TmgUaIf/DPsvGCtNXnGQHMtmPBkIqafOLDG4AYeFe2uA2wm9BMqqU+Vyd4IbatLW+WPww/bbfLQvKRRcRIQYgkG8f3VrE7HD3FLkmfq23y/VxxV4gjKam9ov6GT/mHxTOtfKlyOMJF3sWVCecVXlZ2EZImJa9tgECsY48pwXFT98LKfZFXYUs8zrDSM9tXoatNf5sDM8lLdf3uVdZE6APy0OpdzICEt8STHZ1wxVJJ7Ji/OitEThJcue3yGdOewt71ZIuQesANmIN+YgCmBf7uADb7oTDGcgQAsnfPcVZt+r0N5MhnQAXkHHhlZkLT32QdZPsW/dfBjU52a7uCdL94nAjeKo1qsXm0r7HQTXE/8R3hUsqb7G/w0myy0uIEVWdWGpbvHD3tZIkyI0vmbos+1J4lFY4aQqmFy3KhuXkGCOLUl85CfqRX6h04S4zst/fhW4rqJ3u0UjjwnO9WKwgKwVFGOU8+tAKkBhPpxFblmC3Z4tGoTq4wcqtIp98k1jxXSi1aOFauvRFdaSTXz3/aW8TWqXgMDm6lGIymmc60lFhwiy9rr2IatLhRgjrWlVLeYMt/lY+XYGpfrSXLiZr/I4v4Lb6dTYFgOJLkg6eLGmAupb2EgaVZLjJgZx2uuiv/7EKRgaGYDZsOT6OSazsuZT7KVnQEYznJ4S04RQYMGz8CGPOj6QmsxVBQJHfvrNAVvQMZjGDfUSHaocE8rowqA/vtQS+1tgInUd6JZDWFqhdvG/+H+JzlYjnUc8gJdHx5tkRavDEwEPsnJigAe1J1ioH85ln4NnKadW1V8cODe5tUQ90ZNuU/ygSdOn1chdgalZotf+sejSEPCiHC5YaqjI6yoapyLAddH68WYq0GJR6tqodQeMVPgy/I7obU82w2++nmdEShpo5SQOicVAS6hgno3lLDlSxY9w6IMHrzrfRTUsnjFQbUOOkD+CfEEsxo7QEny+26vhDMVEbfbR0aAfkrqzLybgsB13qBHIimMfeVUN4KsbRvNQkH9ijBpYMc99UG97C4SkviyC5lON0OgY1EVsOjEOMFVfx2foSCVX4TfhGLll3Q175scu68FjZrKPnLvdnqOvn9WR8LCtkE9ZC8xK4nC0qgxUltWIwPYS9gdQOZ3xpY0aPW/WWe1Y/ggqdAhOie2DdNvWzILWPu0QpyL6yG+g/qp634TiqDbmHq3lTfAmk/UKZb4oxgF43c5oqipH4kuSP/1N3sU9Xwp8TDd8Cx+daRg/jZkYZot5KvZYuMCcpngV+87iMI62m63bTq2yvwWjK3yDQr9QB4xe2AN6z30RdT9yDgEgTIQ3bEei8LH4LYvi8Vu4SqRZWe3D6ejP26YiqpoAC2hwl6aDKy7pz4MGzSNSAn4IZmyLx8VjzToylbmAPgqzg16SxxVLezHRcypjrUWper5vliKaNja/hkgA0lShmcGyEm2A6QiqsYXD5sOPykAy8pJgAG4E9vKLKEYbeFsERyNSPfqnRyhrkGwTTFENM3ay+ilQY5Cr9I0OPFTHyGj0ACVtFJWPkf74uN91bZlVxwWYpjfPgq+LkE7xFCdSihJ2fRz7KsLVIF6X8NckMg0vgatmgc2s2MsqLTnPY8sM8LVl7IAqE04z0/10CkbTgaibnhf976UW7O0WP1OHiROP+wVooZDvtngSvrdBw9DU94nM+9xijooFXA/S4PFZCZt8fKG8RmjPsoRImmDmPTPyloErqpb9MdYr0diXr3QBfix1U8jbM8zR7v6ZjeFTAejioncyC/e2J+yPoDmRodtFTT006kBsh7F3pEcYkfhHVV8LrqWBrnEY/KlzjJbhOKVhm8F2QXs44i9U+mQI3Jd9wyiHM7OY1QvBhX0TOQkAr9T/1oA0zfpsaY5UncnPDqFF4INteYP3w/FISswcYFm2YaHrpH0NN4vFv0G7VJiXQtjZ2i0ahol+EOP6mbVRto0T9jzTPD0H2srae4Oj8CUrgXbwJOD/OclSRMsHJvcg0hgCQNOELE+zKzE5iMzqr3VxRYuFiD2I7T/rj3iwoT2Yl5dGsPp9ggygtv7HwZQ7wm/Ijmb2R50d6y8kRaW/OmBiUMA/CH1pIOARinQIfRWg9bK1OvEnU4tYMJF8vCic3vmTOdevgEyLPm7S7fT/CQotlYxZ2gij2vv/7sxluZRyguwvDVskqLUhgYEekdKYBIxAuJ3L7WafRuuh6D9S/ZXHHPDQpcKqI96Wa5vD+cdUGOUazm8Cg0HKOeLNgpcM2pbxjnpwwabmBzRzcKNtui13/6dAqbOT24zPM+TB7RTZgUtyvIyAzdT0Il6WKluIWc1KKo4pu+f9J7RbWvOP6a8OyDpMPiKhtBgsnEZ+33vBqnucdMP/UjITxgufPqcXzbKsfZsZhBe8Y/5unDnsOuDZ8TWbzf+HEwwpJ2icgU9ZsXhbqleGGCt1cxNxXG0ZaN55J2ERph4ocddRfxNyQGHVwySAJzQqWHJWUpYx2oPuTGKaWS41QorihuufqqSJaXXDkQtG2M9VNm5ttQxw7+SWwFXNTDtiYTZhmmIGqoXG5Gvxak0b0hnWpa1bnqIHWY7d2HP+n1u7Vj40dmfYNUDpfIv7Kkxtp2Z8NGwBcatywb2j6JyeG+7AIEcr205+okyHqgtP9aanpzMQVq+gZ9q1W1LOCf3Xt73AukYO6GkkYyv5ozYtQ+VutdGzyEdcyuks834zicJEkwlcAVo3f9H+x/APDrOau+fckjlJM8Avvy5y3ZUDleh557v/riKWz1c9FWPKYy2vL3gdh8lr1Sv8tzzS64So0y4ySiJIDMcCiDNoWKsmC2A7PlqpxLhQ/Oc1p/KJHJhHl7ImbAyVnHZFYKtgJ5c28KAi4YkZK9rCcXNYlX5H6NZxnCUTcHiM81gyxHFXkTEQzZegbAqNUBr0EGPokjEKaj3MH9JsNpp+f8DDL+rXJetPYahchglaHwFaEzDvU7OYybiC08ZfeU06wf3D0IsiCyY7TxaBnYKf2oEhBRT9Ix23LN5qKY61ZtVeDj931uZdDgSK5l4R1Ym3HRh1Bt+jun5xfNSR2zs0twdKCQG7hIkTUcuEMsSwCL0GDkT0LCRhhWWXLObaQ/3ISWySIVRj1G7Tq/djAXQ3GaeuRO+JlqzRIlZD1WihTyUMA2RSx3Vw3DZuwrQFh+CqxS7N1tEYLhsNkXmBXCiCJmZrYjNMvHG2SEbT290jk1UPQJ+Jh9zsajidksqoKiZpB5W2WAD87Ffekown6pdx2QtL9uzRM8rclo9IyRRYkyDmro++6V6XFjzdo4YZ00w+8QONyMorWdNCpdHWAFPYtxY0AybdJ/BnApCZ7BdqpKMubeKlB3rQTg2X06DZlj8Ki2w+VohLJxSogDhgvcT2fSgHMOyzr/VFDQZdOR8FYahn006AZJS+fU3Go4qnFpa34EkqCbVrORuwbFRvhNOxpm3OFewX38VT3hTwEMXfOfEBVPkeeusRyu0lZ3nhb44ZVZfAMeAq+IAQoNaXTPrfZ3iIWwDo+OSmQOeUwgVKY2aKACTsGGa2p9fKta7d5tea7GrAzYfxMbdRq3ZVhowQK3+kd/zjRuS7qeq0GEwDpdaz1kAbo1lc6KReQvsOk3mR8GRyRizE9XvuxkOBEy4JyuT2efN48k6jt2uCS+pXeLD394iCPo4eM9Bp1RuEAO/iXJfInSHrGNSi+RiFl2a0DDSlLU2vyiRyD4X1Ho+NXrsjkuXoSiLOdtgykGxWXjanjBLAVIuMgwl6vXLkRgyTPtyPEMUcUd3klwu5OV6MdGTrg0FLiDATVfZh0hy4Ir0MoVSLgnvWysDXDU/kvg0okam/TTtO5enw7xYA6eJf6Go1d1TyhDAwJDcBoZbDF+162H63zL64LuxIYHExUGrNidCigy8s9Pfi28bp7onGmCysySWAqQFKZKxNJJz7SUVPyJ6JBPdOAYd5SqBNxdptYcGpbbWUEwH8NR9hs5KtYCt9o3h8MnuWht6p2Bl1QdbDY569h6Kwtc90xdUAsdaWsbVsHUOmQEfhowHVoVlurNSJjI6HtmDo5kHG+61prWGIGoEJm+5gzQMywtsXcoLkLSmSKOHxmC+wEHpx9YHiyetc4uVrZ4i4QXNc0d7thB0ZivjkHhJWIoUEXRSmOr0sO+dRqdQjjnbsnUREXOlPRAIJgTdnLu6ExEZq+sbH+afKKVlwDQojVJRB/ZlqO8nZ5wM3vKEVfyvzGvmRjDfjU87PNSn1eQX6itIrZx5CuO0y5GsfR8BqyXF+3YTzO29h/k1Q/5f0Hg3xxtNu0c9V4zJNXIp/1BJj4q6ROTNssxGti5XRoKkeEj2X/608hywO8BqHgwu3DokcJSFy5/f5zdB+3hQmnxKfoE7dT94x9E2U3Z0Qg3LY3KHkI+/3MF5PEzusCIeYS3YLX+taZXNieFSHCKm8s+nbTwS8M7hIh0tHEnc25Tfhvon4dwzifJ1TLD+CnYgfgM4bQz342twNtIwlFTtbfE0vCq75Riagdas7oTyVlLOeG9553QYcvvnyVRvZuz/tDLkK1/Wr+TSmKq8wbyQunSRXi4Z8351Od5YT0H/jviGB8JqaoKNTWtVs/mYloLN4UWSqVOrICS0wkLubMTj1ccKBm7RygSuxtw93C+x7YjZyB8PW2NFdhH2eGYnBc2NQw0XadY8iqJs+Ar0gFLIv7KL4MmVEqVRAPe13CMDB3D6i1ikKDEAOTEqoTQe/o2LYtPQb5e73D74Ru9WPRwBuBIp7MwIae4Nrq41aZuMPEjb0bGlj/SSmaoncnUTtXjWLsPHaMAHOK2PTD0GGo7GeHAWt9nz4RnVHfjGLSygGTzRazaeboh+fRlClqXrp+JdUueYJf30OJF3H52vT+m5ybpTcWDiT8qRZr3+fmN8h/whk/VVs0WIiuNH9C1KMa0Ty5HYV32KJPUwQ7SnOlofjosGHkEixmX9Ct/2daj9QSIwOSrqJdt2+HOCdZPAfFmhnJro+5B94l2skgyeTQO0rGuIEyPReQtW6xHq0h1zaIeS8SQ/uj20KhrnffVJhhEh95uxgI3dHbRRboOACrJMhQ0fAtkxnK2qxox6jJN0xAgIw5hbS6VBJG2kn//NsN7ncDMXtPXtEqO6811AyzG5eiEVWkUSF5ss/8zytUKWOZM6spKLLkzJ/HhweseyLYcobmZG20yREkkxHHwgxAOtxdk6D7ZjvsygYXK8jqPb3W28OWFWeDQAlGle2BNyr1ZxPoZD1Jrs102CacM1r9JaTxnMJzo2ELC8ViYoYmks/Qupcqsr/ke8SJzwGWkaqnm/9ungh0Hjfduc45MN46ZA6YJJ8pc8lKycBEXeuAWvzKrM+OnhsV8UfHhcVcLkCzH3Oft2LdDoZDjdXrXCHKjI/eTS0QgkvZMy7pSQi0FCzmb6QxsLe5lTmhzQWOdr8cNkFuGI90FUjfnnoqFzDgl2esznB4HHCvCSYuo5ISzVFLioNmXru86EN3aP05/ITiillGyY2oMfaoaCiZP6FViv+dxO75XOjI5uRuNKdfn1oJ4DKc6u4YmxvQhcgId1/66q7kLj8g6sKRoF5i7nJS4X3sOz+6NYX/I6J9w6sH+c6aZV2Wqk47EmBHxW90Zwj4P4/uORLOsoXmeTjPWgs6IPYwvGEErew0e314/7+m/7CPj8Rc+6wQV4IkbRCWna3dnmtDHRNEPXZgwzHBKMhAHovfqHX9OzBPXHvAowmtFJ1eti44j6NNpSZHmBL+51p/PTag5hOpZ4ji5LJ300qHYXZYZNz26aoz5FOLG440vzhV/++uDRfLZIHrdoFDsJSHZwqHxeqtBX3YO6h/ly9mRpNNdbe9XnjBExCQda58V5J/xanQ1XGX6e2d5bIjPxJkhoMfq6vjz2RcO0JOQfO0bpeI+mbitDz86A2WrIjYvPXt6S37uCVLlah4pYT4W2Cm5Dn06B1nz3gaXt39ej+dNPT+XBgF2YB3HV5wyv8O6/U5DvZlk/7/7kV6nQZTq7sqoRPWijhaM8/RdX80nlV6c/eo6DW6gKRc0GAC+jKZARCST1wS/LQ5FtMp7xWpAYVaoVK9rmthKhuPvsBSHPsrWaUTzljynq7oElH8hT8Ea8HMjvD0NxmnLZtLQKg9qjZguUFL7xyqEUp1AXsK+CSf5gjuEx1FFRXEsYtOaIMV/WB57Wc03zfl/kd85InbA9W9c7r57TFbuSqBtMNYUSuH99ndgag+0abLM2L166vJ0PeJdhfP6vK+NQ88sG746V7a0iqJgpCya1q2mrDWJ87VZ8UIDLNADuiXoUH/WMaHuIZkBibbbfEI3+zqShQWk3NAvTwCDRTiZ5OJC+OpJC1D0B8L0vryUteaK+TqPOg8efzbuS/XLdUq3nDPeZaeogrR/dQMOCYNttftlAt4I9GLH+YDSviOcWVDNq8RORLHAWBtAhqYG5dy2vLZfnSUWGIZyj74XGsQbuIM+POTdXCb+8ZHkxRYJ7nRbgezecUeN/7ydy0hiDv+zmdp7xURsf0NGUtBX83o82xKssatraiYY9qn227uulUsTJUB9dcD3izzGW+vuj00OdeO7QASsYH84kqdzdo5nFkZed4Xd8a3IUiOWYtVPssr41XdIuHSR4CAebNiGOYn0FaiTTchkTG+NFTROjO5MA1dZTs2RwuHNmH39HDYAnqr+0qINQITfemtYyJREpmJF/QqxzdbkDh2QJJTk4E0QfgH0MzoVW5xn3+GncvcV8qw581K019LgVYfU5/5lz2VqDzh7Azl6VU7qNyQpOYtxo2kHC7sZ6ky0ik7BKSK/FnFH9dM+6zXS8Dq32PpmBSu/ABC53GXlKTUKah10WqTyHmiOsM3pHe8ChUDp73zkerYjtgRuPllEFteJM+DazsaQ7V2e6whlFvGVbvdMt5rpskGpPoR9C4ssiLFpTjLSrlXoyAgWNlEdGRClZP2LAbFL7JddK+Vi9Pz7Th+dIaeaO1YhNjqUTdcmbbHtGd+ST980pGw4X9W+csM6hMrsQQa/mEF7IbB+sQ6VK4DDiCH1lNtUh6VWgiUpbvrxYCwytMoruan8aVk2p3i2PbwWuo/xgpjVgWP6agOPB/o3u1hwPudb2i33gsyq5kxO2Bsvx3Da46NlNRVt9EZzqscA4ZXjESkjvdX2MfYTKchWEfzGLrdRjzl/W3WxRACav4sUWV8s9AqQe/faETCoXz0kC19aJ5T/zGInwyoEzNpJdxvDgkltmGtMO00pa+PnE5TQIKSywRYEsDIStUylSf0KWgOSugpMNFM6VTQJGURp1px/RfCVtonSkk4La/9jCJBUffOJ+rVExp2gLr53/0BAOn+pYpqViK+av4XKlLqO7Atwj2ra0uxOMXj7ZfcFSlO45n8rvL6sf8IFzbPzibr556ykXUiQDEDnNjABZRgarwC5EVtgt6tu2MCWlxuYW2GomN+MrbCPH3rzNNbZ/YglHGCbPs1/yv2joO1mIRafTtJOdOIrDqCe7zE87w0r/7dtuNB1KkPowEbPkzfI7+G1mw574O2mnrxMgVUecqvYBQQAjmCumJGHJFVisMvJ7n57St/kGyBSKC8lhIEQEpmkOXhs7PA4eav2HF+vov9eqvsM9GH7vWGgoU59CbpusToqbmPHOFtscSW17+shfCzYCOAFGV6UirFSrdlqEO0JQfZmLr0JCpopJ/advq58IFXyoBcKhcTQW4pp33plJxRtww+dJyKglsHjoKqxliq7l0YYEzC6dQOcmxdTT5jPJlC5hli2XD+WUUFe1NsYnWPtp8o1PC+y21lm9GClW/eBzmqzxevx67uja2N7JjQ9rpx3+CCYjBYCZ4yXTNVgnZqCWSU+5OHKALND+W+EpdHIXEdzoZ5pYbgd40yjVyWrH00ou3lu6VgtsoY6z1LmGZEyDl6nU8bp43I9fB6g1NWIILu+gk87VfoALn+2X0OocdU+4e/mOqaC/AqLhFbnKCMrw5hMSLhPPJLD+yNk8OV2oZZmRMY4LoGMcuMpnzpTSaclmaRIkVjLFfkWTXU9kenw7hqRoJy+af/XMqJzpbRQWna1/NibfTgvZa5GQIWkGytLmCnN+Ma1Eux/SDCDh9CToVFEVXjkUh9Qno1ZwPVXhG0kXgusFp13xiNHskRAu2v/Cnt8ocKb8J0bGa5HBLwuxrBuoBo7VXawHaI7YuEszCQ77EJztBrmgEl/lYOUWPrTWUvmlfHO6hXx548j5aJd76Uk8Wpk0Goz6YbFVCXgcDOQgV6GKStzLd9/Ub/UGz+XLZeM81qYYDW8q4ES5qyq/0KXPirMWjwuUyoBHotGQAsPY/UKYDnNLwqxkiIKgL+cR0DxWpbl3OThlu5/ZV1GWnxVB1MyInFaV5iU32e5kXMKrNeRi3yxS75UAJNQXtLhqrC6e5NocYdfj3CJWymHp00QZ7HvA6VESve0QTXyh++55OTbzLXKRpF/XS2OMr8sftAb4xtyzklr33+kJyVKPn5G5cAsPGY77S/Ya55dTbbHOFk4rMoUW/6fXLfIOiL4iZIjXRibGYCuSJOPh8XZG+MUkFoVheGzgXhqrwcrxAZrXfK4p0dH6E2q54ORabbZLvQuMSbseWULdWsM/vKluLMvSv29KLgYEo9sbNxWP5u/WpncI6n8rZVXVHtnDayE9yk03BTArTXraH+w+C3pKXZbMfwladets7pQMya2mMM6Y5z0gF5WWhNTSiWnpyYNRlkU5edMk39l34w8MNOg9C6Y+Ha/WK4aVbJJcS6bLmC/FVkajtykgOGe3X33+KFT0J1wv1GSYKBF2BTjevlGisWkPkpWiQ80d3RcyQr6w9+xqAEqLWbb92HlhDzjZUaL6CYYgwzo4MEcDY1uGzFIuK89UX6XaY7PIhz7ih99gln2pWcNk9ysQaXS4E9MHwGn7BZBFLc75V6mYvcXbBn3j0ZOo86xka9AW4j8c7cUKECRYyoXbnCpPGbr03FtLmfKp9nEVmJFTXD4coUERlMvYkIpFqUcTfqDY3jnnDjCMP6O8QeLRq3bZrQsKmLZxqHmyTeuvNkQ0T9UuvhlTKO+RTPL4khAbE7pb0pLbPXCnfAs7vhIG7GlDiV4Y4MISxwRQVpcUmqvQGS8rBSbUGxZBlmQbEiu4FhGGPj7q1kBcladWAcTW3nSWpcdM75D1mYxCLYzeE4RKVqySRtu7j3Qt1ZTammbAYZY48QV72VF/D0EJu8Zrd01XbXyr9SWY/TTIDqaLHHzkQiwbjd2YXnhUyFtUzlSLADAeszEaALc64hb4CnNjpSd4PSONO8I7Ll7dDvnR4wQ155xBMydal9Yt9oW4bFi3SpE2xpTJgAssZkeKCOg6vwqpEgx3MnTqI64D3Q1aejRW4qsOrFgVoGr0Z/gj27xhLV/EzNsRTLNZaizEIexMXNWQfsyQjjsrYVlgv6HXsuUoDCsR3/S8Qhpf7fWZ9jhL0RuhBR42sVpz6y4srJEuygYYP024S+cF4n2q7gLe109bZJkXzPVB92V/LhiAMI47lJfw/u+ZDCxQwFlIIqJKT/EsxEBpEGGhsjul6H82WsuGRbVibpWb5ZJGqWG81CeP7/Ww0g/dQDihhIxZD059I9CMC541uXBusMYM14g0xqTWTYLsOgsLejaqsyCi9ahoBUDYMlcCxOe7ElylPMN2Za2mIk2qco2f/MzeDx3/vLDV24IILrsnVnKdwMZBkHpvvYhq9Gqwk8eDIn+YKAXxgm+295EZHQZDUvOobnRHQri9SeyOdADtKt4ZwE5R8TCtM2wmReqCmR+3g5nMuYCDKrYt3TlLd2B0su6CZOloHmFdUTNGRvQqarhOe3zzvEgjJQJKJh2Y82B/OaI00g08bQwfbPJlZJx5NmCmbGKkiWA35Gg7YRj9buuCQj7gU1946g0jDEmy6GC7xnXBRxq60chHoqtm/KwCJqDimG2XqCnmb5ObJbkqaCOBIq+4NwUIcz8RWPXLuL40ccguMwcouUAsST/VezGkQisKsfR1Lm8wDqnj/2WeZYJMDNs1MiBYfBppIyJYaRfyCvM7HZq8RIPDAe4cEwEvt9VPwBjcPSB+JXubnzURGzfOJ2ISOwyOn0/z7crYkqNXmJ8mAGbU+AClOwoYpSCMS+zsufgfgLluXWT0P0r5+paGsIrR0xvTHa+TGOu5gaS5HrbLAVLxO3qCO8sfP8tz6HwVE7306B7vV9oo27e8wtrOw03b62EV+htDVO1DhEAnjnFy+SfoxubRWmE2V+a8mZ0v8PWBxRjc/RWhZZdomm/R9iBe9SWnnDvcrzl5b83kCIrkvapeU4C0xWgTpO8U/GCu9Hc8W+T9N52uQeYgB+16tP7uz4llKeigqxUIhg5UeGMXeJtR7JpO1PWhP822fp5LZINT0NWFOcRwY+Po65MqWIkjonB7+gZ07m2mcrzjK3Kb0l0e2rOuQH3kJlpwmiNMWd8JlKpUYgzGcvRSHaT3j00xaqdHCAQegqpzJ2VhtjV85esrRIHcnhytnNf5DNi7jRGU6uQfIoYBKfxAjshMJ5vkdpr/rUvH39omXxszONoKFd2IF0Hgek2EIY6xO8Yf9vswzOdoNrqCHRo8JWpKwBcCPd7TWjLVbgudV8qD86hUD0HWWpmyxzW/h2Aps5CmS8fArFDYVgdfJs5jLYoXr8OKJaSZCxqNCBtqL0u5S6mltT1tghbXTgJ+ZlBub4kqLRV1zayC/fLQOL7b/bJpS2xbAyR8Qx4cMUXJcPHmLDw+tOSjh/7BkYJr4izVOBg8B9pbPYyhii9G7P+PIWtD8vDK7t8fZi1bg6C8n+g+ZHR2El1rPPPSLAQUVZfz6/nayTvCh5nLLIOq1zfxcWtVP4Gvj+Ki7PL+T/ilJYBpdKJUK+7hJFZMf6bPqIjEW1sfg7ZBBRzmvLbPEsqHJm4S8pJtb/MYbNV3XQAixhvEP9S6CqIPXFLIy4EjWPZaLpovI1Jknt6AX4xDNNvnQIOUmajpxFqaSBGI1UyKKgrlDmnIT3ieY3QSt5mXBAfCYI1Kkpxx3qvT46B2gNXwGqw4ebrdvCrQQr8PZJz1V62SC1b13tr/VCywrvRR2iCYP68LEV/kyN6DtKuysax5uSsabbzjTYU9K0blvZFAvmJH2WE9jvEJytyv2Bha/KXtBjN5zOUoNWKE71hByCxhw0cS90OH0WBgsTPV54DHnG86sk3kkAYXBfV5VnCwNnxNWbU+BmHELCuq4qvtf153CekBwhnxGmfMeMdmqwe9TBPCuCnLqldJZkvnLqHwG0nEtLB1MbTLpyzZv7G71pnArWO0FLfOdPfkJ12uqNFq/NlJwnukwXy+ER9HyZa7x7WVQ7KG2vt7XSIq6xnF0roGhXh1ad5yrSJcdON+CoaQz1ezTVtymXTvM1pP5C/OwzDfI77Ck9rtk5a03untvs0r7YOfBIOmAj2MnwxkriwZ9C1+/UwKIOl8DlovQy9DGIxADKexKGzhM3Qqbw2S/ZVaS1eLx5GV1UUjHPSty/baYGZdqLs/ZpmcvMqZLwf7JbesItuTdXNUzPxJ/1gQbOUPN2A5APYLZPI0v2eQxj4Zv3B5EQyjz+Q9lOJHe6cCteKpWW78Evi7503MRnMPgzTF+zfQGDhNEJ9O4oJAJOH3XlfKWAAJTQZPJHwFxoAbedYgQmC7F2tKY6yHKslvb8BVpeoe/uaq5pd3VJaJ+evKVPMt7amkOzHyp8K1vLDJqKHl/zdOqPZtDS9LFKI3GJn02JVSil0g6AIdUyyJWYbEQGYblHYDDdLyy8yV0Kzp9dQ9WTGBC1m2Wdrbqfqaw0C52CilO+CUcm1n+79Q8JwR/+CJb4zp36uPEPGMSHbBTFIX5H8La38G6mDkqY2CAoqvdNdn9hzpoV1Ln/35bgcdr4+vVbq2dDQ+Gl4GHp2+kAif7gLXLwQ8It9n6RHOVU6aJeLmFDclIXsXZXjIREeRHqCfoDpxLmwzKCWvbL4Kc9Iby6spiCaE1mqoShMa0NKR2CvY8biT/JjRuXUe160l5dhfIfOAzOc0Git+gmMLREzVpNCpoQ2y+QrYtXzd2soKo7L4XsGgYwgd/ugg3FR/JeCLJH3OzxSJmMx+Dr6cTNBYsDyafsjFTciqwAymwCn10jJRB97OdfMnjlavJKHXoNBsHblErYlgkaY4amAO+Hp6dA1oD3Py+c5EMDgqxpXnhcKSPM+3WWcTFTYMfPb0rrEx5qKBMpKWvjvpf+BagAQta0ASJIbFfuaMqEg2JqQ4M6YN9Sarl9KAQVNKDkWQC7ONbPJnsomXZ+Nj5fVBsFHeP0tM3uNd3YLff3KlBl+ebpYf364SoBn5ZujiiYoGUPuKuNfTXSg3KzGAIk2VCYHr2OnxGxqcfGJx45yTmYhGvdaYa+paYH44vD73aeKE3j7SviBTQd5fbggeQAfU2qi3iHpByfnOB91h6Fueeb0rP5q1noBcVY7kgtFGX3wguFunpW/c0lTg5FQdPDwP5rui35u+GwDPxvm16N4EEcajXmtFVL23PS+6Xpr1+ixwjrE8UfYNn51CE9bGsjgFRuELmafwuD3Ne2C+nHcna3gjEzj3kamHGkonp2TqwSuRmBHYV1zFLCHmoq0MKmXR87f7sTfrXCu5QiVjNM1arcW7dJ+W7LLScpfpCORpd/MsJ8CrQD5pSNBYXl4B9VjzqPbTVW0wvGkjM4eI4lgHpTM1ioT6xUCefyKENdKvOSl+k0qMNtlDCqw3WO5P25OglHaTD4MJJca5/0A++wT24/0qcwAzmZnM2LagvFcHVJLiGDlLhZrFEtPVvtM6joUccFbw9Tf9lxl+a3eP+Xe9zGN0XfNAFR6Vine2uVPKvKgnjoWq0q/LGYDa769yJCAf9WWfQ/SvaD6QXizn+WRv3dFFtEpwCQexZyC+J6mDpSgCoUL/4eq1orZW+puYt6v+O5Wo89E417IV9oXUFxuP/s3bQabzB2NXie3k5mutrc7XgAvI8zqygtiUogCd2/YZ4IAaa8etCRn1fJYFTmzjnpybq2KTyFCMntZTUuKg+jtw+tWM/yAfZlSbDGRxRaSlgG7ufJMx8nsK2xh9fZUfutxa4ynzokGg3ihQ29gireRsy4TH/6QlwpntaYgbU2wyUhTNYMcFV1ca9sFcGfGr/b0kZzfmnbQC8IzX4UcfsTnIqmlZBzbNbNM3WA+DmVEMUABxfQz/gwwIiUndlEtRW7NQXphf1L7fq+sP70iOX95O1RePUkeMHYOhBB/xF4t5C2wz5pu3sqCPnvRYYygtRFwuTN5R5ozXBner6+rOwTCsn1jp70oFwIlttNB2iS/cxGTTWnr6nVLJSHcd18cBM4suv6GDgQPKw49LbWO6l1/qTrZfThEPvf3GliIlbLO1BJQLuInGmjOOoov8GmPwU8x+0t0v05TGUSYJJa9FNESc3UAnyBWD6FzHHPNo5J3eJhxo+KT3YkAskqRsjXy7Zgdp9qNCRtDjdhJF7GIa58Mlex0cC1aeRIiNVFic2Datk8ewC7B+ssHES7LJveF7Ln0npQGAOpwU42uWfVkHX7VkKXkhB3AeNRhPdnyoeOzfBl/dabtXgMk/8RhMx8Tyhx7eXX/xEIDix0sioChJzAO6k7Oi6yg5p9xo9NMZY6r1z5fSoYU17owPqlP+cpJf4LmButU1dTkpNQWq+tiyKbADmRvennor6LKaNC397SeULqg+BRAYA1OyLaXCcjeH3JHcbmVODYDf3fXC6QuTGPQkMD33xAaKFfD38lvy/HYDhjqFhPcBstuRYO2o0xHjO2f1zzTvZMy/8mOfyaDt20lFJyPyjBk7k/IKoOfXOQCJqCllhwH/oMBMzpGO0cCrrvjonQSSf5LQrjVUIocKezP/C1g4m6YJ0mc4YnzE2Yk/xB86kHjtyI+2jAfV0iAptKpWlax3AQtO7DzXWJJdUsvnZIspqdyVABkZ8L+ln3vW9um7pG/1cFaLbGaVAhqbkvL9JL05StgIpuTsmo1W7EhvrE2JTXb5XK+pffWHkQu2TJ7bn7UwQ7nq/g0skQjfi0FiRsyTqIwxQAJiWgp8G2EvGRg28aknihwyPU8bPM58nL8sxvZOJApjXGz3TstSiJZZmTSEIcLDNw5THI0jGyqlTKyUqElH/zlXGNOUle8v0brWZ4+wMIOiMJn32nB/CXaOCiuwTIy3zEKpBST4cmWy0UGLfA/Qu4eRcaFQNFSwNCnq3nKdiU5qah8UakjUtT/D7r3YcHyJLsaywMOLN5bMbenzgurowx7pYiabfMLmZZbVDHbQ5/I3t6q6AVt4fMrKgFYTTW0Dm+ByJtU+OiYCjLgtfWReVAGsKhi28Dlq8nRdM1XwDToCPRqmxAvTgJsnFVx9MjRooG5GibB/wtE3QR4m+q5PivaeDDsW+3uCN7NyzuYRf5jcWljH71XK6V/X//KJ/q/wa03u5DBLwcH5VyIOV0C/Q9cYtCFxlahAPijW1IK6PYBh6LAM74DEhzvykUTCHFxAeCyJ1qaX0uLKo7JbTxbSyHoluHH2lkuu4jkGpA/1uKf0vmpwwSFx46o7zb233q2v2FbMG3SFb6D0OCh4BAE19k25UcvBjk1i4BeSxuw1H+1r4u868fD9JDEYRohvKBTQYiugXhwZvfXmdgtMFtWmNhJetzVsmvqtNiSUdv0eMUPhfpFRZUWbogImQT6ymgn7JKlLksLKryGMTXgFvELAGK/hZaCuNepJJOT9mgl7fkXWTcbasyfinBl777AtOL8u2RplghwK2wNr+UHgQgRL+n8sp15Vhnwg29xA8BkS8tT7yKmcVKpMoTRpqStXqzdVgyZyElu6Kq143sYIX4LEYohntEGyCwJkWkGQ5jLxyBLwm8UxL/S265V7cpPhyXBKpKszE3GJdAyS5v/bh/UNvW7PwZJyefjA8uRej0r2kDcJ6BbfqDgHABo8OzqjHj1LP1i/Lz3h9g8Dx3WpjUDH4gArVIuW3p/Qu4ZvCLqfuKXkjyJem9i7I759R1pzwE7SAHO0NLeIvxOEKZpIoTbUQYOg30vgySsa//yJBy+FFH3gMemKYNDK/5RoR7xDJeBGfMmHUxiAa+AChX4drAGjQ4j/vBVm0rFKefQ6lSTqQq8TNMl7Lnn9hiIpIUR6dujkFXlp3N0k7MWiclacto+3EHrD/+p9QqokIikSUB6+EHZceAfj0YbZ5NTYiXPfrx7jUN9EZujASu0H0JqK0O6nVzXF1qn4yY0rWcxCxaE+5V5BPW1QhRh7WbpAkmPHI13+jeyqyIg+Q+ppL2kePb5kf+gBR3YmhXIDZE/zqmwfhgNBlOIdzBPTtQnHxH7KERpvzGhJoOhrEcJFkJ5U7ZcnXzSq7Huov/QY/JS78pdh17Y+9IFGWHnfD9g+aYBwCZtcZWtFYfLGIMKn282AbzRirTLzvGByozufqrwymYbF6gla/J1pSbQfULE2ffZTmIa5RN/0jIgNmAJs1Kd82tXy2yRcDTECq9JnoSeK9dP7gMMEIX29eSz8i3A7IAAAA=" x="87" y="7" width="202" height="142" preserveAspectRatio="xMidYMid slice" clip-path="url(#cScreen)"/>
+              <path d="M98 8 L196 8 L126 150 L98 150Z" fill="#fff" opacity=".08"/>
+              <rect x="289" y="2" width="7" height="152" rx="2" fill="url(#gRim)"/>
+              <rect x="82" y="2" width="214" height="2" rx="1" fill="#fff" opacity=".28"/>
+
+              <!-- top controls: mode dial and control dial -->
+              <rect x="22" y="132" width="46" height="21" rx="3" fill="url(#pKnurl)"/>
+              <rect x="22" y="132" width="46" height="21" rx="3" fill="url(#gMetal)" opacity=".55"/>
+              <rect x="22" y="132" width="46" height="3" rx="1.5" fill="#fff" opacity=".5"/>
+              <rect x="76" y="139" width="34" height="14" rx="3" fill="url(#gChrome)"/>
+              <rect x="80" y="135" width="26" height="7" rx="3.5" fill="#1d1e21"/>
+              <rect x="80" y="135" width="26" height="2" rx="1" fill="#fff" opacity=".3"/>
+
+              <!-- body with rubber grip -->
+              <g clip-path="url(#cBody)">
+                <rect x="6" y="150" width="288" height="152" fill="url(#gBody)"/>
+                <rect x="6" y="150" width="288" height="32" fill="#fff" opacity=".05"/>
+                <rect x="6" y="182" width="288" height="2" fill="#000" opacity=".55"/>
+                <rect x="6" y="184" width="62" height="118" fill="url(#pGrip)"/>
+                <rect x="66" y="184" width="3" height="118" fill="#000" opacity=".5"/>
+                <rect x="6" y="150" width="288" height="152" fill="url(#gSheen)"/>
+                <rect x="272" y="212" width="16" height="74" rx="3" fill="#0d0e10" stroke="#2a2b2f"/>
+              </g>
+              <rect x="6.5" y="150.5" width="287" height="151" rx="14" fill="none" stroke="url(#gEdge)"/>
+              <rect x="0" y="190" width="10" height="18" rx="3" fill="url(#gChrome)"/><rect x="290" y="190" width="10" height="18" rx="3" fill="url(#gChrome)"/>
+              <circle cx="258" cy="288" r="9" fill="#16171a" stroke="#44464b" stroke-width="1.2" stroke-dasharray="1.4 1.4"/>
+
+              <!-- EDIT (optional): words printed on the camera -->
+              <text x="20" y="173" font-family="Arial,Helvetica,sans-serif" font-style="italic" font-weight="700" font-size="16" fill="#eceef1" letter-spacing="-.4">Canon</text>
+              <text x="232" y="228" font-family="Arial,Helvetica,sans-serif" font-style="italic" font-weight="700" font-size="17" fill="#eceef1">G7X</text>
+              <circle cx="100" cy="170" r="4" fill="#0b0c0e"/><circle cx="99" cy="169" r="1.2" fill="#fff" opacity=".3"/>
+
+              <!-- lens: outer ring, ridged control ring, extended barrel with printed text, coated glass -->
+              <circle cx="136" cy="246" r="76" fill="#000" opacity=".5" filter="url(#fBlur)"/>
+              <circle cx="132" cy="240" r="76" fill="#0c0d0f"/>
+              <circle cx="132" cy="240" r="68" fill="none" stroke="#2c2d31" stroke-width="9" stroke-dasharray="1.5 1.5"/>
+              <path d="M70 212 A70 70 0 0 1 150 172" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="132" cy="240" r="58" fill="#0f1012"/>
+              <circle cx="116" cy="258" r="53" fill="#050506" opacity=".6" filter="url(#fBlur)"/>
+              <circle cx="116" cy="258" r="52" fill="url(#gBarrel)"/>
+              <circle cx="116" cy="258" r="50.5" fill="none" stroke="#85878e" stroke-width="1"/>
+              <text font-family="Arial,Helvetica,sans-serif" font-size="4.2" fill="#d4d6db"><textPath href="#pTop" textLength="118" lengthAdjust="spacing">CANON ZOOM LENS 4.2x IS</textPath></text>
+              <text font-family="Arial,Helvetica,sans-serif" font-size="4.2" fill="#d4d6db"><textPath href="#pBot" textLength="104" lengthAdjust="spacing">8.8-36.8mm 1:1.8-2.8</textPath></text>
+              <circle cx="116" cy="258" r="37" fill="#08090b"/>
+              <circle cx="116" cy="258" r="29" fill="url(#gGlass)"/>
+              <circle cx="116" cy="258" r="29" fill="none" stroke="#8a8c92" stroke-width="1.2"/>
+              <circle cx="116" cy="258" r="19" fill="none" stroke="#2a3a78" stroke-opacity=".7"/>
+              <circle cx="116" cy="258" r="10" fill="#02030a"/>
+              <ellipse cx="105" cy="246" rx="9" ry="4.5" transform="rotate(-35 105 246)" fill="#fff" opacity=".75" filter="url(#fSoft)"/>
+              <ellipse cx="128" cy="270" rx="6" ry="3" transform="rotate(-35 128 270)" fill="#9a6bff" opacity=".6" filter="url(#fSoft)"/>
+              <ellipse cx="125" cy="248" rx="3.5" ry="2" fill="#5fe0b5" opacity=".5" filter="url(#fSoft)"/>
+              <circle class="glow" cx="116" cy="258" r="64" fill="#ffd68c" filter="url(#fBlur)"/>
+            </svg>
+          </div>
+          </div>
+          <!-- EDIT: three quick facts about you (where you're based, the work you're open to, and how you like to work) -->
+          <ul class="stickers">
+            <li>📍 Based in Philly</li>
+            <li>💼 Full time, part time, contract</li>
+            <li>🏢 On-site, Hybrid, Remote</li>
+          </ul>
+        </div>
+        <div class="story">
+          <!-- EDIT: your story, two short paragraphs -->
+          <p>Hi, I’m Maya. I started my career in customer support, answering the same five questions about forty times a day. It was the best product training I ever got: I learned that most problems are really clarity problems, and that the loudest request is rarely the real need.</p>
+          <p>Now I lead teams of designers and engineers from the first customer call to launch day, and the nervous dashboard refreshing that follows. I like short briefs, honest trade-offs, and metrics a whole team can explain without a slide.</p>
+          <div class="off">
+            <h3>Off the clock</h3>
+            <!-- EDIT: your hobbies, one per <li>. Add or remove lines freely. -->
+            <ul>
+              <li>✏️ Collecting stationery I don’t need</li>
+              <li>📺 Rewatching Suits</li>
+              <li>✍️ Blogging on Medium</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PROJECTS =================
+         EDIT: each <article class="proj"> is one project. Copy a whole
+         <article>…</article> block to add another (the first three get colored
+         side panels), or delete one to remove it. -->
+    <section id="projects">
+      <div class="head"><h2>Projects</h2><p>Launches, what changed, and what I’d do again.</p></div>
+
+      <!-- ===== PROJECT 1 of 6. TO HIDE THIS PROJECT: add the word hidden inside the opening tag just below, so it reads <article class="proj" hidden>. Delete the word hidden to show it again. (Please do not wrap a whole project in a comment to hide it: each project has its own notes inside it, and one comment cannot sit inside another, so that would break the page below it.) ===== -->
+      <article class="proj">
+        <!-- EDIT: headline result (big number) and what it measures -->
+        <aside><b>−23%</b><span>checkout abandonment in 90 days</span></aside>
+        <div class="body">
+          <!-- EDIT: project title, company, your role, team size -->
+          <h3>Checkout redesign</h3>
+          <p class="role">Brightcart · Lead PM · team of 9</p>
+          <div class="cols">
+            <!-- EDIT: the problem, what you did, and the result -->
+            <div><h4>The problem</h4><p>Nearly one in three shoppers left at payment, and support tickets pointed at confusing shipping costs.</p></div>
+            <div><h4>What I did</h4><p>Ran a teardown of 40 sessions, moved fees up front, and cut the form from nine fields to five.</p></div>
+            <div><h4>The result</h4><p>Abandonment fell 23% and payment tickets dropped by half within a quarter.</p></div>
+          </div>
+          <!-- EDIT: skill tags -->
+          <!-- ===== TO REMOVE THIS IMAGE CAROUSEL (1 of 6): delete everything from this comment down to and including the comment that says "END OF CAROUSEL 1". That is the whole carousel. Your project text and tags stay. Also remove the carousel styles (see the note above the "project image carousels" CSS near the top of the page). ===== -->
+          <!-- EDIT: IMAGE CAROUSEL for this project. It plays on its own (each image shows for 4 seconds; to change that, see the "EDIT: HOW LONG EACH IMAGE SHOWS" note in the CSS near the top of the page); hovering pauses it, and clicking a dot or arrow lets the visitor take over.
+               Each <figure class="slide"> is one image. To add an image, replace the <div class="ph">...</div> placeholder with
+               <img src="your-image.jpg" alt="Describe the image">
+               Images look best when they are all the same shape (16:9, for example 1600 x 900 pixels). Change the caption text in <figcaption>.
+               This carousel is set up for 3 images. If this project has no images, delete this whole <div class="car n3"> block. -->
+          <div class="car n3">
+            <input class="cr auto" type="radio" name="c1" id="c1-0" aria-label="Play images automatically" checked>
+            <input class="cr s1" type="radio" name="c1" id="c1-1" aria-label="Image 1 of 3">
+            <input class="cr s2" type="radio" name="c1" id="c1-2" aria-label="Image 2 of 3">
+            <input class="cr s3" type="radio" name="c1" id="c1-3" aria-label="Image 3 of 3">
+            <div class="viewport"><div class="track">
+              <figure class="slide"><div class="ph">Project image 1: add a screenshot here</div><figcaption>Image 1</figcaption><label class="prev" for="c1-3" aria-label="Previous image">&#8249;</label><label class="next" for="c1-2" aria-label="Next image">&#8250;</label></figure>
+              <figure class="slide"><div class="ph">Project image 2: add a screenshot here</div><figcaption>Image 2</figcaption><label class="prev" for="c1-1" aria-label="Previous image">&#8249;</label><label class="next" for="c1-3" aria-label="Next image">&#8250;</label></figure>
+              <figure class="slide"><div class="ph">Project image 3: add a screenshot here</div><figcaption>Image 3</figcaption><label class="prev" for="c1-2" aria-label="Previous image">&#8249;</label><label class="next" for="c1-1" aria-label="Next image">&#8250;</label></figure>
+            </div></div>
+            <div class="dots"><label class="d" for="c1-1" aria-label="Show image 1"></label><label class="d" for="c1-2" aria-label="Show image 2"></label><label class="d" for="c1-3" aria-label="Show image 3"></label></div>
+          </div>
+          <!-- END OF CAROUSEL 1 -->
+          <ul class="tags"><li>Research</li><li>A/B testing</li><li>Payments</li></ul>
+        </div>
+      </article>
+
+      <!-- ===== PROJECT 2 of 6. TO HIDE THIS PROJECT: add the word hidden inside the opening tag just below, so it reads <article class="proj" hidden>. Delete the word hidden to show it again. (Please do not wrap a whole project in a comment to hide it: each project has its own notes inside it, and one comment cannot sit inside another, so that would break the page below it.) ===== -->
+      <article class="proj">
+        <aside><b>+31%</b><span>new users reaching their first win</span></aside>
+        <div class="body">
+          <h3>First-win onboarding</h3>
+          <p class="role">Ledgerly · Product manager · team of 6</p>
+          <div class="cols">
+            <div><h4>The problem</h4><p>New users signed up, saw an empty dashboard, and never returned.</p></div>
+            <div><h4>What I did</h4><p>Defined the “first win” with data, then rebuilt the first session around reaching it in under three minutes.</p></div>
+            <div><h4>The result</h4><p>Activation rose 31% and week-four retention climbed by seven points.</p></div>
+          </div>
+          <!-- ===== TO REMOVE THIS IMAGE CAROUSEL (2 of 6): delete everything from this comment down to and including the comment that says "END OF CAROUSEL 2". That is the whole carousel. Your project text and tags stay. Also remove the carousel styles (see the note above the "project image carousels" CSS near the top of the page). ===== -->
+          <!-- EDIT: image carousel for this project (plays automatically). Replace each <div class="ph">...</div> with <img src="your-image.jpg" alt="Describe the image">, or delete this whole <div class="car n3"> block if there are no images. -->
+          <div class="car n3">
+            <input class="cr auto" type="radio" name="c2" id="c2-0" aria-label="Play images automatically" checked>
+            <input class="cr s1" type="radio" name="c2" id="c2-1" aria-label="Image 1 of 3">
+            <input class="cr s2" type="radio" name="c2" id="c2-2" aria-label="Image 2 of 3">
+            <input class="cr s3" type="radio" name="c2" id="c2-3" aria-label="Image 3 of 3">
+            <div class="viewport"><div class="track">
+              <figure class="slide"><div class="ph">Project image 1: add a screenshot here</div><figcaption>Image 1</figcaption><label class="prev" for="c2-3" aria-label="Previous image">&#8249;</label><label class="next" for="c2-2" aria-label="Next image">&#8250;</label></figure>
+              <figure class="slide"><div class="ph">Project image 2: add a screenshot here</div><figcaption>Image 2</figcaption><label class="prev" for="c2-1" aria-label="Previous image">&#8249;</label><label class="next" for="c2-3" aria-label="Next image">&#8250;</label></figure>
+              <figure class="slide"><div class="ph">Project image 3: add a screenshot here</div><figcaption>Image 3</figcaption><label class="prev" for="c2-2" aria-label="Previous image">&#8249;</label><label class="next" for="c2-1" aria-label="Next image">&#8250;</label></figure>
+            </div></div>
+            <div class="dots"><label class="d" for="c2-1" aria-label="Show image 1"></label><label class="d" for="c2-2" aria-label="Show image 2"></label><label class="d" for="c2-3" aria-label="Show image 3"></label></div>
+          </div>
+          <!-- END OF CAROUSEL 2 -->
+          <ul class="tags"><li>Activation</li><li>Analytics</li><li>Lifecycle</li></ul>
+        </div>
+      </article>
+
+      <!-- ===== PROJECT 3 of 6. TO HIDE THIS PROJECT: add the word hidden inside the opening tag just below, so it reads <article class="proj" hidden>. Delete the word hidden to show it again. (Please do not wrap a whole project in a comment to hide it: each project has its own notes inside it, and one comment cannot sit inside another, so that would break the page below it.) ===== -->
+      <article class="proj">
+        <aside><b>$2.4M</b><span>added annual recurring revenue</span></aside>
+        <div class="body">
+          <h3>Pricing and packaging reset</h3>
+          <p class="role">Parcelhop · Senior PM · cross-functional squad of 12</p>
+          <div class="cols">
+            <div><h4>The problem</h4><p>Five confusing plans meant sales discounted heavily and customers rarely upgraded.</p></div>
+            <div><h4>What I did</h4><p>Interviewed 30 customers, simplified to three plans, and grandfathered existing accounts with a clear path forward.</p></div>
+            <div><h4>The result</h4><p>Upgrades doubled and average deal size grew 18% with no rise in churn.</p></div>
+          </div>
+          <!-- ===== TO REMOVE THIS IMAGE CAROUSEL (3 of 6): delete everything from this comment down to and including the comment that says "END OF CAROUSEL 3". That is the whole carousel. Your project text and tags stay. Also remove the carousel styles (see the note above the "project image carousels" CSS near the top of the page). ===== -->
+          <!-- EDIT: image carousel for this project (plays automatically). Replace each <div class="ph">...</div> with <img src="your-image.jpg" alt="Describe the image">, or delete this whole <div class="car n3"> block if there are no images. -->
+          <div class="car n3">
+            <input class="cr auto" type="radio" name="c3" id="c3-0" aria-label="Play images automatically" checked>
+            <input class="cr s1" type="radio" name="c3" id="c3-1" aria-label="Image 1 of 3">
+            <input class="cr s2" type="radio" name="c3" id="c3-2" aria-label="Image 2 of 3">
+            <input class="cr s3" type="radio" name="c3" id="c3-3" aria-label="Image 3 of 3">
+            <div class="viewport"><div class="track">
+              <figure class="slide"><div class="ph">Project image 1: add a screenshot here</div><figcaption>Image 1</figcaption><label class="prev" for="c3-3" aria-label="Previous image">&#8249;</label><label class="next" for="c3-2" aria-label="Next image">&#8250;</label></figure>
+              <figure class="slide"><div class="ph">Project image 2: add a screenshot here</div><figcaption>Image 2</figcaption><label class="prev" for="c3-1" aria-label="Previous image">&#8249;</label><label class="next" for="c3-3" aria-label="Next image">&#8250;</label></figure>
+              <figure class="slide"><div class="ph">Project image 3: add a screenshot here</div><figcaption>Image 3</figcaption><label class="prev" for="c3-2" aria-label="Previous image">&#8249;</label><label class="next" for="c3-1" aria-label="Next image">&#8250;</label></figure>
+            </div></div>
+            <div class="dots"><label class="d" for="c3-1" aria-label="Show image 1"></label><label class="d" for="c3-2" aria-label="Show image 2"></label><label class="d" for="c3-3" aria-label="Show image 3"></label></div>
+          </div>
+          <!-- END OF CAROUSEL 3 -->
+          <ul class="tags"><li>Pricing</li><li>Strategy</li><li>Go-to-market</li></ul>
+        </div>
+      </article>
+
+      <!-- ===== PROJECT 4 of 6. TO HIDE THIS PROJECT: add the word hidden inside the opening tag just below, so it reads <article class="proj" hidden>. Delete the word hidden to show it again. (Please do not wrap a whole project in a comment to hide it: each project has its own notes inside it, and one comment cannot sit inside another, so that would break the page below it.) ===== -->
+      <!-- EXAMPLE: A PROJECT WITHOUT STATS. Use this version when you don't have numbers for a project. Every other part
+           (problem, what I did, result, skill tags, images) stays exactly the same.
+           OPTION A (shown here): keep the colored side panel, but put a short word and a short line in it instead of a number.
+                                  Edit the <b class="word"> text and the <span> text below.
+           OPTION B: no side panel at all. Delete the whole <aside>...</aside> line and add the word "noaside" to the article's class,
+                     so it reads <article class="proj noaside">.
+           To remove this example project, delete everything from this comment down to its closing </article>. -->
+      <article class="proj">
+        <aside><b class="word">Launched</b><span>Partner API now live for customers</span></aside>
+        <div class="body">
+          <h3>Partner API launch</h3>
+          <p class="role">Parcelhop · Product manager · team of 7</p>
+          <div class="cols">
+            <div><h4>The problem</h4><p>Large customers wanted to connect their own tools, and every request turned into a one-off project for engineering.</p></div>
+            <div><h4>What I did</h4><p>Interviewed eight partners, defined a small and stable set of endpoints, and wrote the docs and sandbox with the team.</p></div>
+            <div><h4>The result</h4><p>The API launched on schedule, customers began connecting on their own, and the one-off integration requests stopped landing on the team.</p></div>
+          </div>
+          <!-- ===== TO REMOVE THIS IMAGE CAROUSEL (4 of 6): delete everything from this comment down to and including the comment that says "END OF CAROUSEL 4". That is the whole carousel. Your project text and tags stay. Also remove the carousel styles (see the note above the "project image carousels" CSS near the top of the page). ===== -->
+          <!-- EDIT: image carousel for this project (plays automatically). Replace each <div class="ph">...</div> with <img src="your-image.jpg" alt="Describe the image">, or delete this whole <div class="car n3"> block if there are no images. -->
+          <div class="car n3">
+            <input class="cr auto" type="radio" name="c4" id="c4-0" aria-label="Play images automatically" checked>
+            <input class="cr s1" type="radio" name="c4" id="c4-1" aria-label="Image 1 of 3">
+            <input class="cr s2" type="radio" name="c4" id="c4-2" aria-label="Image 2 of 3">
+            <input class="cr s3" type="radio" name="c4" id="c4-3" aria-label="Image 3 of 3">
+            <div class="viewport"><div class="track">
+              <figure class="slide"><div class="ph">Project image 1: add a screenshot here</div><figcaption>Image 1</figcaption><label class="prev" for="c4-3" aria-label="Previous image">&#8249;</label><label class="next" for="c4-2" aria-label="Next image">&#8250;</label></figure>
+              <figure class="slide"><div class="ph">Project image 2: add a screenshot here</div><figcaption>Image 2</figcaption><label class="prev" for="c4-1" aria-label="Previous image">&#8249;</label><label class="next" for="c4-3" aria-label="Next image">&#8250;</label></figure>
+              <figure class="slide"><div class="ph">Project image 3: add a screenshot here</div><figcaption>Image 3</figcaption><label class="prev" for="c4-2" aria-label="Previous image">&#8249;</label><label class="next" for="c4-1" aria-label="Next image">&#8250;</label></figure>
+            </div></div>
+            <div class="dots"><label class="d" for="c4-1" aria-label="Show image 1"></label><label class="d" for="c4-2" aria-label="Show image 2"></label><label class="d" for="c4-3" aria-label="Show image 3"></label></div>
+          </div>
+          <!-- END OF CAROUSEL 4 -->
+          <ul class="tags"><li>API</li><li>Platform</li><li>Developer experience</li></ul>
+        </div>
+      </article>
+
+      <!-- ===== PROJECT 5 of 6. TO HIDE THIS PROJECT: add the word hidden inside the opening tag just below, so it reads <article class="proj" hidden>. Delete the word hidden to show it again. (Please do not wrap a whole project in a comment to hide it: each project has its own notes inside it, and one comment cannot sit inside another, so that would break the page below it.) ===== -->
+      <article class="proj">
+        <aside><b>+12%</b><span>conversion from search results</span></aside>
+        <div class="body">
+          <h3>Smart search relaunch</h3>
+          <p class="role">Brightcart · Product manager · team of 8</p>
+          <div class="cols">
+            <div><h4>The problem</h4><p>Shoppers who used search bought far less often than browsers, and empty “no results” pages were common.</p></div>
+            <div><h4>What I did</h4><p>Audited the top 500 searches, worked with data science on synonyms and typo handling, and redesigned the results page.</p></div>
+            <div><h4>The result</h4><p>Empty searches dropped sharply and conversion from search rose 12% within two months.</p></div>
+          </div>
+          <!-- ===== TO REMOVE THIS IMAGE CAROUSEL (5 of 6): delete everything from this comment down to and including the comment that says "END OF CAROUSEL 5". That is the whole carousel. Your project text and tags stay. Also remove the carousel styles (see the note above the "project image carousels" CSS near the top of the page). ===== -->
+          <!-- EDIT: image carousel for this project (plays automatically). Replace each <div class="ph">...</div> with <img src="your-image.jpg" alt="Describe the image">, or delete this whole <div class="car n3"> block if there are no images. -->
+          <div class="car n3">
+            <input class="cr auto" type="radio" name="c5" id="c5-0" aria-label="Play images automatically" checked>
+            <input class="cr s1" type="radio" name="c5" id="c5-1" aria-label="Image 1 of 3">
+            <input class="cr s2" type="radio" name="c5" id="c5-2" aria-label="Image 2 of 3">
+            <input class="cr s3" type="radio" name="c5" id="c5-3" aria-label="Image 3 of 3">
+            <div class="viewport"><div class="track">
+              <figure class="slide"><div class="ph">Project image 1: add a screenshot here</div><figcaption>Image 1</figcaption><label class="prev" for="c5-3" aria-label="Previous image">&#8249;</label><label class="next" for="c5-2" aria-label="Next image">&#8250;</label></figure>
+              <figure class="slide"><div class="ph">Project image 2: add a screenshot here</div><figcaption>Image 2</figcaption><label class="prev" for="c5-1" aria-label="Previous image">&#8249;</label><label class="next" for="c5-3" aria-label="Next image">&#8250;</label></figure>
+              <figure class="slide"><div class="ph">Project image 3: add a screenshot here</div><figcaption>Image 3</figcaption><label class="prev" for="c5-2" aria-label="Previous image">&#8249;</label><label class="next" for="c5-1" aria-label="Next image">&#8250;</label></figure>
+            </div></div>
+            <div class="dots"><label class="d" for="c5-1" aria-label="Show image 1"></label><label class="d" for="c5-2" aria-label="Show image 2"></label><label class="d" for="c5-3" aria-label="Show image 3"></label></div>
+          </div>
+          <!-- END OF CAROUSEL 5 -->
+          <ul class="tags"><li>Search</li><li>Experimentation</li><li>Data</li></ul>
+        </div>
+      </article>
+
+      <!-- ===== PROJECT 6 of 6. TO HIDE THIS PROJECT: add the word hidden inside the opening tag just below, so it reads <article class="proj" hidden>. Delete the word hidden to show it again. (Please do not wrap a whole project in a comment to hide it: each project has its own notes inside it, and one comment cannot sit inside another, so that would break the page below it.) ===== -->
+      <article class="proj">
+        <aside><b>4.7★</b><span>average store rating at launch</span></aside>
+        <div class="body">
+          <h3>Mobile app launch</h3>
+          <p class="role">Ledgerly · Lead PM · team of 10</p>
+          <div class="cols">
+            <div><h4>The problem</h4><p>Customers kept asking for a mobile app, but the first prototype tried to copy the whole desktop product.</p></div>
+            <div><h4>What I did</h4><p>Focused the first release on the three things people do most on the go, and ran a four-week beta with 200 customers.</p></div>
+            <div><h4>The result</h4><p>The app launched with a 4.7-star rating and became how a third of customers check their accounts each week.</p></div>
+          </div>
+          <!-- ===== TO REMOVE THIS IMAGE CAROUSEL (6 of 6): delete everything from this comment down to and including the comment that says "END OF CAROUSEL 6". That is the whole carousel. Your project text and tags stay. Also remove the carousel styles (see the note above the "project image carousels" CSS near the top of the page). ===== -->
+          <!-- EDIT: image carousel for this project (plays automatically). Replace each <div class="ph">...</div> with <img src="your-image.jpg" alt="Describe the image">, or delete this whole <div class="car n3"> block if there are no images. -->
+          <div class="car n3">
+            <input class="cr auto" type="radio" name="c6" id="c6-0" aria-label="Play images automatically" checked>
+            <input class="cr s1" type="radio" name="c6" id="c6-1" aria-label="Image 1 of 3">
+            <input class="cr s2" type="radio" name="c6" id="c6-2" aria-label="Image 2 of 3">
+            <input class="cr s3" type="radio" name="c6" id="c6-3" aria-label="Image 3 of 3">
+            <div class="viewport"><div class="track">
+              <figure class="slide"><div class="ph">Project image 1: add a screenshot here</div><figcaption>Image 1</figcaption><label class="prev" for="c6-3" aria-label="Previous image">&#8249;</label><label class="next" for="c6-2" aria-label="Next image">&#8250;</label></figure>
+              <figure class="slide"><div class="ph">Project image 2: add a screenshot here</div><figcaption>Image 2</figcaption><label class="prev" for="c6-1" aria-label="Previous image">&#8249;</label><label class="next" for="c6-3" aria-label="Next image">&#8250;</label></figure>
+              <figure class="slide"><div class="ph">Project image 3: add a screenshot here</div><figcaption>Image 3</figcaption><label class="prev" for="c6-2" aria-label="Previous image">&#8249;</label><label class="next" for="c6-1" aria-label="Next image">&#8250;</label></figure>
+            </div></div>
+            <div class="dots"><label class="d" for="c6-1" aria-label="Show image 1"></label><label class="d" for="c6-2" aria-label="Show image 2"></label><label class="d" for="c6-3" aria-label="Show image 3"></label></div>
+          </div>
+          <!-- END OF CAROUSEL 6 -->
+          <ul class="tags"><li>Mobile</li><li>Beta program</li><li>Launch</li></ul>
+        </div>
+      </article>
+    </section>
+
+    <!-- ================= RECOMMENDATIONS =================
+         EDIT: each <figure class="note …"> is one recommendation.
+         The second class word (mgr, team, stake, mentor) decides which filter pill
+         shows it. To rename a pill, change its label text below; to add a new
+         pill, ask for help since it needs a matching radio button and CSS rule. -->
+    <section id="kind-words">
+      <!-- EDIT: section heading and intro line -->
+      <div class="head"><h2>What the people I’ve built with say</h2><p>Managers, teammates, stakeholders and mentors on what it’s like to build alongside me. Pick a group to filter.</p></div>
+
+      <input class="filter" type="radio" name="f" id="f-all" checked aria-label="All">
+      <input class="filter" type="radio" name="f" id="f-mgr" aria-label="Manager">
+      <input class="filter" type="radio" name="f" id="f-team" aria-label="Teammate">
+      <input class="filter" type="radio" name="f" id="f-stake" aria-label="Stakeholders">
+      <input class="filter" type="radio" name="f" id="f-mentor" aria-label="Mentor">
+
+      <div class="pills">
+        <label for="f-all">All</label>
+        <label for="f-mgr">Manager</label>
+        <label for="f-team">Teammate</label>
+        <label for="f-stake">Stakeholders</label>
+        <label for="f-mentor">Mentor</label>
+      </div>
+
+      <div class="wall">
+        <!-- EDIT: quote text, the person's name, and their title/company.
+             LONG QUOTE (2 to 3 sentences)? Add the word "wide" to its class, for example class="note team wide". It then stretches across the full width instead of sitting in a half-width card. Short quotes can stay as they are. -->
+        <figure class="note team wide">
+          <blockquote>“Maya turns a messy pile of opinions into a plan everyone believes in. She is the reason we shipped on time.”</blockquote>
+          <figcaption><span><b>Daniel Reyes</b>Engineering Manager, Brightcart</span></figcaption>
+        </figure>
+        <figure class="note stake">
+          <blockquote>“Our pricing project could have been a mess. Maya kept sales, finance, and customers in the same room and made it simple.”</blockquote>
+          <figcaption><span><b>Tom Albrecht</b>VP Sales, Parcelhop</span></figcaption>
+        </figure>
+        <figure class="note mentor">
+          <blockquote>“The best PM I’ve mentored. Curious, direct, and she never loses sight of the customer.”</blockquote>
+          <figcaption><span><b>Lena Fischer</b>Chief Product Officer, Ledgerly</span></figcaption>
+        </figure>
+        <figure class="note team">
+          <blockquote>“Her specs are short and clear. I always knew what to build, and why it mattered.”</blockquote>
+          <figcaption><span><b>Aisha Khan</b>Staff Engineer, Parcelhop</span></figcaption>
+        </figure>
+        <figure class="note team">
+          <blockquote>“Maya protects design time and brings real customer clips to every critique. Rare and wonderful.”</blockquote>
+          <figcaption><span><b>Jonas Weber</b>Senior Designer, Brightcart</span></figcaption>
+        </figure>
+        <figure class="note mgr">
+          <blockquote>“I trust Maya with our biggest bets. She makes hard calls early and explains them well.”</blockquote>
+          <figcaption><span><b>Marcus Bell</b>VP Product, Brightcart</span></figcaption>
+        </figure>
+        <figure class="note mgr">
+          <blockquote>“Maya manages up as well as she leads her team. I never had to ask her for a status update.”</blockquote>
+          <figcaption><span><b>Elena Torres</b>Director of Product, Ledgerly</span></figcaption>
+        </figure>
+        <figure class="note mentor wide">
+          <blockquote>“I coached Maya for two years. She turns every piece of feedback into a plan, then follows through.”</blockquote>
+          <figcaption><span><b>Kenji Watanabe</b>Advisor and former CPO</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ================= AROUND THE INTERNET =================
+         EDIT: this section shows 2 Medium articles. For each <a class="post"> card, change: the href (the article's web address, copied from Medium),
+         the title, the one-line summary, and the "5 min read" text.
+         ARTICLE IMAGE OR GIF: replace <span>Add article image or GIF</span> with <img src="your-image.gif" alt="Describe the image">.
+         A normal image or an animated GIF both work; landscape (about 16:9) looks best.
+         TO HIDE ONE ARTICLE: add the word hidden to its opening tag, like <a class="post" hidden href="...">. Delete the word to show it again.
+         TO HIDE THE WHOLE SECTION: add the word hidden to <section id="internet">. -->
+    <section id="internet">
+      <div class="head stack">
+        <h2>Around the internet</h2>
+        <!-- EDIT: the line under the heading -->
+        <p class="sub">all things ux &amp; product from female in tech trying to land her next full time gig, one article and a couple gifs at a time ;)</p>
+      </div>
+      <div class="posts">
+        <!-- ARTICLE 1 -->
+        <a class="post" href="https://medium.com/@your-name/your-first-article" target="_blank" rel="noopener">
+          <div class="thumb"><span>Add article image or GIF</span></div>
+          <div class="post-body">
+            <p class="meta">Medium · 5 min read</p>
+            <h3>What shipping a checkout redesign taught me about trust</h3>
+            <p>Small details, like showing shipping costs early, did more for conversion than any big redesign.</p>
+            <span class="more">Read on Medium ↗</span>
+          </div>
+        </a>
+        <!-- ARTICLE 2 -->
+        <a class="post" href="https://medium.com/@your-name/your-second-article" target="_blank" rel="noopener">
+          <div class="thumb"><span>Add article image or GIF</span></div>
+          <div class="post-body">
+            <p class="meta">Medium · 4 min read</p>
+            <h3>Five questions I ask in every customer interview</h3>
+            <p>A short list that keeps conversations honest and turns vague feedback into something a team can act on.</p>
+            <span class="more">Read on Medium ↗</span>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <div class="end">
+      <div class="end-body">
+        <!-- EDIT: the short line next to the buttons -->
+        <p>I’m always up for a conversation about products, teams, or a good coffee spot.</p>
+        <div class="links">
+          <!-- EDIT: replace maya@example.com with your email address (keep "mailto:").
+               Clicking opens the visitor's default email app with your address in the To field.
+               The subject line after "?subject=" is optional; spaces are written as %20. -->
+          <a class="btn mail" href="mailto:maya@example.com?subject=Hello%20Maya">Send me an email</a>
+          <!-- EDIT: replace the href with your LinkedIn profile URL -->
+          <a class="btn soc" href="https://www.linkedin.com/in/your-name" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4V21H3V9.75Zm6.5 0h3.8v1.6h.06c.53-1 1.84-2.05 3.78-2.05 4.04 0 4.86 2.66 4.86 6.1V21h-4v-4.9c0-1.17-.02-2.67-1.63-2.67-1.63 0-1.88 1.27-1.88 2.59V21h-4V9.75Z"/></svg>
+            LinkedIn
+          </a>
+          <!-- EDIT: replace the href with your Medium profile URL -->
+          <a class="btn soc" href="https://medium.com/@your-name" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="7.2" cy="12" rx="5.2" ry="5.6"/><ellipse cx="16.4" cy="12" rx="2.8" ry="5.2"/><ellipse cx="21.2" cy="12" rx="1" ry="4.6"/></svg>
+            Medium
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- EDIT: the line at the very bottom of the page -->
+    <p class="fine">You made it to the bottom. We should probably work together.</p>
+  </footer>
+</div>
+</body>
+</html>
